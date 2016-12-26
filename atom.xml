@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.greeghost.com/"/>
-  <updated>2016-12-25T14:57:56.492Z</updated>
+  <updated>2016-12-26T15:25:16.388Z</updated>
   <id>http://blog.greeghost.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo+github打造属于自己的个人博客（1）</title>
+    <link href="http://blog.greeghost.com/2016/12/26/hexo-github-1/"/>
+    <id>http://blog.greeghost.com/2016/12/26/hexo-github-1/</id>
+    <published>2016-12-26T14:08:10.000Z</published>
+    <updated>2016-12-26T15:25:16.388Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本人几年前就想搭建一个属于自己的博客，刚好前段时间看见很多大神都用hexo搭建自己的个人博客，于是乎自己也动手折腾了一番，搞了两天终于弄出一个还过得去的博客。废话不多说，下面开始动手！</p>
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><h5 id="1、git下载与安装"><a href="#1、git下载与安装" class="headerlink" title="1、git下载与安装"></a>1、git下载与安装</h5><p>git的下载安装应该没什么难度，不知道git怎么下载的请自行度娘，反正安装的时候一直默认配置就行了，一直next。安装好后，鼠标右键任意地方应该会出现如图，就说名已经安装成功了。<br><img src="http://i1.buimg.com/add33098c0aa3f29t.jpg" alt="Alt git"></p>
+<h5 id="2、安装node-js"><a href="#2、安装node-js" class="headerlink" title="2、安装node.js"></a>2、安装node.js</h5><p>node.js的官网好像被墙了，反正我是费了好大劲才下载好。<a href="http://nodejs.cn/" target="_blank" rel="external">node.js</a>地址，选择最新版本。然后也是一路next就行了。</p>
+<h3 id="第二步（开始正题）"><a href="#第二步（开始正题）" class="headerlink" title="第二步（开始正题）"></a>第二步（开始正题）</h3><h5 id="1、鼠标右键任意地方，选择Git-Bash-，使用以下命令安装hexo-ps：以下命令中的-符号只为了让教程和实际看起来一致，实际输入命令只需输入-后面的命令即可"><a href="#1、鼠标右键任意地方，选择Git-Bash-，使用以下命令安装hexo-ps：以下命令中的-符号只为了让教程和实际看起来一致，实际输入命令只需输入-后面的命令即可" class="headerlink" title="1、鼠标右键任意地方，选择Git Bash ，使用以下命令安装hexo(ps：以下命令中的$符号只为了让教程和实际看起来一致，实际输入命令只需输入$后面的命令即可)"></a>1、鼠标右键任意地方，选择Git Bash ，使用以下命令安装hexo(ps：以下命令中的$符号只为了让教程和实际看起来一致，实际输入命令只需输入$后面的命令即可)</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo</div></pre></td></tr></table></figure>
+<p>执行完命令应该会有C:\Users\Administrator\AppData\Roaming\npm这个目录。</p>
+<h5 id="2、创建一个或者选择一个目录来放博客文件，如我的目录：D-Blog，名字和地方可以自由选择，当然最好不要放在中文路径下。然后在博客文件夹鼠标右键，选择Git-Bash，执行以下命令，Hexo会自动在该文件夹下下载搭建网站所需的所有文件。"><a href="#2、创建一个或者选择一个目录来放博客文件，如我的目录：D-Blog，名字和地方可以自由选择，当然最好不要放在中文路径下。然后在博客文件夹鼠标右键，选择Git-Bash，执行以下命令，Hexo会自动在该文件夹下下载搭建网站所需的所有文件。" class="headerlink" title="2、创建一个或者选择一个目录来放博客文件，如我的目录：D:\Blog，名字和地方可以自由选择，当然最好不要放在中文路径下。然后在博客文件夹鼠标右键，选择Git Bash，执行以下命令，Hexo会自动在该文件夹下下载搭建网站所需的所有文件。"></a>2、创建一个或者选择一个目录来放博客文件，如我的目录：D:\Blog，名字和地方可以自由选择，当然最好不要放在中文路径下。然后在博客文件夹鼠标右键，选择Git Bash，执行以下命令，Hexo会自动在该文件夹下下载搭建网站所需的所有文件。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div></pre></td></tr></table></figure>
+<p>接着安装依赖包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
+<p>执行完看看博客目录，应该有文件生成了。</p>
+<h5 id="3、执行下面命令就可以在本地看到hexo博客了"><a href="#3、执行下面命令就可以在本地看到hexo博客了" class="headerlink" title="3、执行下面命令就可以在本地看到hexo博客了"></a>3、执行下面命令就可以在本地看到hexo博客了</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
+<p>然后用浏览器访问<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000/</a>，此时，你应该看到了一个漂亮的博客了，当然这个博客只是在本地的，别人是看不到的，hexo3.0使用的默认主题是landscape。轻轻松松就看到了一点成果，是不是很激动，这就是hexo的强大之处，这个本地预览的功能，我真是爱不释手。<br>自己可以发一篇新的文章<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">'test'</span></div><div class="line">$ hexo s -g</div></pre></td></tr></table></figure></p>
+<p>你会发现多了一篇叫‘my blog’的文章，在D:\Blog\source_posts下会有test.md文件（需要学习<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">markdown</a>语法）</p>
+<h5 id="到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。"><a href="#到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。" class="headerlink" title="到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。"></a>到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。</h5><h5 id="附上我的blog-放在github上的whatcode-cn-放在阿里云的blog-greeghost-com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。"><a href="#附上我的blog-放在github上的whatcode-cn-放在阿里云的blog-greeghost-com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。" class="headerlink" title="附上我的blog: 放在github上的whatcode.cn,放在阿里云的blog.greeghost.com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。"></a>附上我的blog: 放在github上的<a href="http://whatcode.cn" target="_blank" rel="external">whatcode.cn</a>,放在阿里云的<a href="http://blog.greeghost.com">blog.greeghost.com</a>。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。</h5>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;本人几年前就想搭建一个属于自己的博客，刚好前段时间看见很多大神都用hexo搭建自己的个人博客，于是乎自己也动手折腾了一番，搞了两天终于弄出一
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://blog.greeghost.com/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>first blog</title>
