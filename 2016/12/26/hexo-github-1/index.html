@@ -90,16 +90,16 @@
 第一步1、git下载与安装git的下载安装应该没什么难度，不知道git怎么下载的请自行度娘，反正安装的时候一直默认配置就行了，一直next。安装好后，鼠标右键任意地方应该会出现如图，就说明已经安装成功了。
 2、">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo+github打造属于自己的个人博客（1）">
+<meta property="og:title" content="hexo+github教程之一：搭建hexo博客">
 <meta property="og:url" content="http://blog.greeghost.com/2016/12/26/hexo-github-1/index.html">
 <meta property="og:site_name" content="Tenken blog">
 <meta property="og:description" content="前言本人几年前就想搭建一个属于自己的博客，刚好前段时间看见很多大神都用hexo搭建自己的个人博客，于是乎自己也动手折腾了一番，搞了两天终于弄出一个还过得去的博客。废话不多说，下面开始动手！
 第一步1、git下载与安装git的下载安装应该没什么难度，不知道git怎么下载的请自行度娘，反正安装的时候一直默认配置就行了，一直next。安装好后，鼠标右键任意地方应该会出现如图，就说明已经安装成功了。
 2、">
 <meta property="og:image" content="http://i1.buimg.com/add33098c0aa3f29t.jpg">
-<meta property="og:updated_time" content="2016-12-26T15:49:21.664Z">
+<meta property="og:updated_time" content="2016-12-26T16:21:12.758Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo+github打造属于自己的个人博客（1）">
+<meta name="twitter:title" content="hexo+github教程之一：搭建hexo博客">
 <meta name="twitter:description" content="前言本人几年前就想搭建一个属于自己的博客，刚好前段时间看见很多大神都用hexo搭建自己的个人博客，于是乎自己也动手折腾了一番，搞了两天终于弄出一个还过得去的博客。废话不多说，下面开始动手！
 第一步1、git下载与安装git的下载安装应该没什么难度，不知道git怎么下载的请自行度娘，反正安装的时候一直默认配置就行了，一直next。安装好后，鼠标右键任意地方应该会出现如图，就说明已经安装成功了。
 2、">
@@ -137,7 +137,7 @@
 
 
 
-  <title> hexo+github打造属于自己的个人博客（1） | Tenken blog </title>
+  <title> hexo+github教程之一：搭建hexo博客 | Tenken blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -327,7 +327,7 @@
             
             
               
-                hexo+github打造属于自己的个人博客（1）
+                hexo+github教程之一：搭建hexo博客
               
             
           </h1>
@@ -425,7 +425,7 @@
 <p>执行完看看博客目录，应该有文件生成了。</p>
 <h4 id="3、执行下面命令就可以在本地看到hexo博客了"><a href="#3、执行下面命令就可以在本地看到hexo博客了" class="headerlink" title="3、执行下面命令就可以在本地看到hexo博客了"></a>3、执行下面命令就可以在本地看到hexo博客了</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
 <p>然后用浏览器访问<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000/</a>，此时，你应该看到了一个漂亮的博客了，当然这个博客只是在本地的，别人是看不到的，hexo3.0使用的默认主题是landscape。轻轻松松就看到了一点成果，是不是很激动，这就是hexo的强大之处，这个本地预览的功能，我真是爱不释手。<br>自己可以发一篇新的文章<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">'test'</span></div><div class="line">$ hexo s -g</div></pre></td></tr></table></figure></p>
-<p>你会发现多了一篇叫‘my blog’的文章，在D:\Blog\source_posts下会有test.md文件（需要学习<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">markdown</a>语法）</p>
+<p>你会发现多了一篇叫‘test’的文章，在D:\Blog\source_posts下会有test.md文件（需要学习<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">markdown</a>语法）</p>
 <h4 id="到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。"><a href="#到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。" class="headerlink" title="到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。"></a>到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。</h4><h4 id="附上我的blog-放在github上的whatcode-cn-放在阿里云的blog-greeghost-com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。"><a href="#附上我的blog-放在github上的whatcode-cn-放在阿里云的blog-greeghost-com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。" class="headerlink" title="附上我的blog: 放在github上的whatcode.cn,放在阿里云的blog.greeghost.com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。"></a>附上我的blog: 放在github上的<a href="http://whatcode.cn" target="_blank" rel="external">whatcode.cn</a>,放在阿里云的<a href="http://blog.greeghost.com">blog.greeghost.com</a>。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。</h4>
       
     </div>
@@ -484,8 +484,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/25/first-blog/" rel="next" title="first blog">
-                <i class="fa fa-chevron-left"></i> first blog
+              <a href="/2016/12/25/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -493,6 +493,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/26/hexo-github-2/" rel="prev" title="hexo+github教程之二：hexo博客发布到github">
+                hexo+github教程之二：hexo博客发布到github <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -508,7 +512,7 @@
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2016/12/26/hexo-github-1/"
-     data-title="hexo+github打造属于自己的个人博客（1）"
+     data-title="hexo+github教程之一：搭建hexo博客"
      data-content=""
      data-url="http://blog.greeghost.com/2016/12/26/hexo-github-1/">
   <div class="ds-share-inline">
@@ -538,7 +542,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/12/26/hexo-github-1/"
-           data-title="hexo+github打造属于自己的个人博客（1）" data-url="http://blog.greeghost.com/2016/12/26/hexo-github-1/">
+           data-title="hexo+github教程之一：搭建hexo博客" data-url="http://blog.greeghost.com/2016/12/26/hexo-github-1/">
       </div>
     
   </div>
