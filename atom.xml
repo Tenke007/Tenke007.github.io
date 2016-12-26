@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.greeghost.com/"/>
-  <updated>2016-12-26T15:25:16.388Z</updated>
+  <updated>2016-12-26T15:34:28.968Z</updated>
   <id>http://blog.greeghost.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://blog.greeghost.com/2016/12/26/hexo-github-1/"/>
     <id>http://blog.greeghost.com/2016/12/26/hexo-github-1/</id>
     <published>2016-12-26T14:08:10.000Z</published>
-    <updated>2016-12-26T15:25:16.388Z</updated>
+    <updated>2016-12-26T15:34:28.968Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本人几年前就想搭建一个属于自己的博客，刚好前段时间看见很多大神都用hexo搭建自己的个人博客，于是乎自己也动手折腾了一番，搞了两天终于弄出一个还过得去的博客。废话不多说，下面开始动手！</p>
-<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><h5 id="1、git下载与安装"><a href="#1、git下载与安装" class="headerlink" title="1、git下载与安装"></a>1、git下载与安装</h5><p>git的下载安装应该没什么难度，不知道git怎么下载的请自行度娘，反正安装的时候一直默认配置就行了，一直next。安装好后，鼠标右键任意地方应该会出现如图，就说名已经安装成功了。<br><img src="http://i1.buimg.com/add33098c0aa3f29t.jpg" alt="Alt git"></p>
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><h5 id="1、git下载与安装"><a href="#1、git下载与安装" class="headerlink" title="1、git下载与安装"></a>1、git下载与安装</h5><p>git的下载安装应该没什么难度，不知道git怎么下载的请自行度娘，反正安装的时候一直默认配置就行了，一直next。安装好后，鼠标右键任意地方应该会出现如图，就说明已经安装成功了。<br><img src="http://i1.buimg.com/add33098c0aa3f29t.jpg" alt="Alt git"></p>
 <h5 id="2、安装node-js"><a href="#2、安装node-js" class="headerlink" title="2、安装node.js"></a>2、安装node.js</h5><p>node.js的官网好像被墙了，反正我是费了好大劲才下载好。<a href="http://nodejs.cn/" target="_blank" rel="external">node.js</a>地址，选择最新版本。然后也是一路next就行了。</p>
 <h3 id="第二步（开始正题）"><a href="#第二步（开始正题）" class="headerlink" title="第二步（开始正题）"></a>第二步（开始正题）</h3><h5 id="1、鼠标右键任意地方，选择Git-Bash-，使用以下命令安装hexo-ps：以下命令中的-符号只为了让教程和实际看起来一致，实际输入命令只需输入-后面的命令即可"><a href="#1、鼠标右键任意地方，选择Git-Bash-，使用以下命令安装hexo-ps：以下命令中的-符号只为了让教程和实际看起来一致，实际输入命令只需输入-后面的命令即可" class="headerlink" title="1、鼠标右键任意地方，选择Git Bash ，使用以下命令安装hexo(ps：以下命令中的$符号只为了让教程和实际看起来一致，实际输入命令只需输入$后面的命令即可)"></a>1、鼠标右键任意地方，选择Git Bash ，使用以下命令安装hexo(ps：以下命令中的$符号只为了让教程和实际看起来一致，实际输入命令只需输入$后面的命令即可)</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo</div></pre></td></tr></table></figure>
 <p>执行完命令应该会有C:\Users\Administrator\AppData\Roaming\npm这个目录。</p>
