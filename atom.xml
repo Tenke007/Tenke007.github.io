@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.greeghost.com/"/>
-  <updated>2016-12-26T17:55:38.357Z</updated>
+  <updated>2016-12-26T18:19:12.906Z</updated>
   <id>http://blog.greeghost.com/</id>
   
   <author>
@@ -16,11 +16,47 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hexo+github教程之四：github域名配置</title>
+    <link href="http://blog.greeghost.com/2016/12/27/hexo-github-4/"/>
+    <id>http://blog.greeghost.com/2016/12/27/hexo-github-4/</id>
+    <published>2016-12-26T18:15:17.000Z</published>
+    <updated>2016-12-26T18:19:12.906Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://blog.greeghost.com/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo+github教程之三：hexo next主题配置</title>
+    <link href="http://blog.greeghost.com/2016/12/27/hexo-github-3/"/>
+    <id>http://blog.greeghost.com/2016/12/27/hexo-github-3/</id>
+    <published>2016-12-26T18:01:14.000Z</published>
+    <updated>2016-12-26T18:14:56.764Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://blog.greeghost.com/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>hexo+github教程之二：hexo博客发布到github</title>
     <link href="http://blog.greeghost.com/2016/12/26/hexo-github-2/"/>
     <id>http://blog.greeghost.com/2016/12/26/hexo-github-2/</id>
     <published>2016-12-26T15:58:29.000Z</published>
-    <updated>2016-12-26T17:55:38.357Z</updated>
+    <updated>2016-12-26T18:08:21.094Z</updated>
     
     <content type="html"><![CDATA[<p>上一篇教程已经把hexo博客安装好在本地了，但是只能在本地访问，现在我们要将博客部署到github上。</p>
 <h3 id="一、github注册及配置"><a href="#一、github注册及配置" class="headerlink" title="一、github注册及配置"></a>一、github注册及配置</h3><p>1、首先我们先去准备<a href="https://github.com/" target="_blank" rel="external">github</a> ,（点击文字进行跳转）。<br>2、首先在主界面注册github进行！按照步骤进行注册。<br>3、注册成功先不要急！此时我们还需要验证邮箱地址。<br>4、接下来我们需要建立一个仓库。<br>记住建立仓库时所填写的内容！是你的帐号.github.io（这是因为github规定的格式这样才会直接讲当前仓库作为托管站点）比如：Tenke007.github.io(这个是我的仓库)<br>5、到你刚刚创建的Repository下，复制Repository的地址（ssh格式）</p>
@@ -39,6 +75,7 @@
 <p>Okay,我们的博客已经完全搭建起来了，在浏览器访问 <a href="https://tenke007.github.io" target="_blank" rel="external">https://tenke007.github.io</a> 就能看到你的成就了！</p>
 <p>还有一点，有一些用户在hexo deploy之后会有个这个提示<br><img src="http://img0.tuicool.com/amMNJr.png!web" alt="Alt hexo"><br>那么我们要输入我们在git上验证的邮箱<br><img src="http://img2.tuicool.com/Y3e2ai.png!web" alt="Alt hexo"><br>如这样。再次 hexo d 应该就发布上去了。</p>
 <h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>hexo现在支持更加简单的命令格式了，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo g ==  hexo generate</div><div class="line">hexo d ==  hexo deploy</div><div class="line">hexo s ==  hexo server</div><div class="line">hexo n ==  hexo new</div></pre></td></tr></table></figure></p>
+<p><strong>本文图片来源于其他互联网站点，可能显示部分有点不一样，后续我会把图片放到云盘上，例如七牛云盘</strong></p>
 ]]></content>
     
     <summary type="html">
@@ -85,37 +122,6 @@
     
     
       <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://blog.greeghost.com/2016/12/25/hello-world/"/>
-    <id>http://blog.greeghost.com/2016/12/25/hello-world/</id>
-    <published>2016-12-25T11:02:57.408Z</published>
-    <updated>2016-12-25T14:51:12.868Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-    
-    </summary>
-    
-      <category term="blog" scheme="http://blog.greeghost.com/categories/blog/"/>
-    
-    
-      <category term="other" scheme="http://blog.greeghost.com/tags/other/"/>
     
   </entry>
   

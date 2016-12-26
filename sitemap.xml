@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.greeghost.com/2016/12/27/hexo-github-4/</loc>
+    
+    <lastmod>2016-12-26T18:19:12.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.greeghost.com/2016/12/27/hexo-github-3/</loc>
+    
+    <lastmod>2016-12-26T18:14:56.764Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.greeghost.com/2016/12/26/hexo-github-2/</loc>
     
-    <lastmod>2016-12-26T17:55:38.357Z</lastmod>
+    <lastmod>2016-12-26T18:08:21.094Z</lastmod>
     
   </url>
   
@@ -40,13 +54,6 @@
     <loc>http://blog.greeghost.com/404.html</loc>
     
     <lastmod>2016-12-26T09:26:40.140Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.greeghost.com/2016/12/25/hello-world/</loc>
-    
-    <lastmod>2016-12-25T14:51:12.868Z</lastmod>
     
   </url>
   
