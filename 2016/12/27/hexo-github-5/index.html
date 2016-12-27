@@ -86,16 +86,27 @@
 
 
 
-<meta name="description" content="各种宅，各种懒，爱好游戏的码农">
+<meta name="description" content="为了更好的让别人记住博客地址，我们可以购买域名来绑定github。这样就可以更便捷的访问自己的博客，也避免github的域名不稳定导致无法访问博客。
+首先要购买域名推荐到阿里云购买，博主也是在阿里云购买的。域名最好是越短越好，如果想要高大上一点的就用.com，便宜有好用的可以选.top，.me之类的，.top的注册的人比较少，一般不是什么特殊域名都可以注册得到，4块钱一年，简直业界良心。
+域名解析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo+github教程之五：github配置专属域名">
 <meta property="og:url" content="http://blog.greeghost.com/2016/12/27/hexo-github-5/index.html">
 <meta property="og:site_name" content="Tenken blog">
-<meta property="og:description" content="各种宅，各种懒，爱好游戏的码农">
-<meta property="og:updated_time" content="2016-12-27T14:12:05.791Z">
+<meta property="og:description" content="为了更好的让别人记住博客地址，我们可以购买域名来绑定github。这样就可以更便捷的访问自己的博客，也避免github的域名不稳定导致无法访问博客。
+首先要购买域名推荐到阿里云购买，博主也是在阿里云购买的。域名最好是越短越好，如果想要高大上一点的就用.com，便宜有好用的可以选.top，.me之类的，.top的注册的人比较少，一般不是什么特殊域名都可以注册得到，4块钱一年，简直业界良心。
+域名解析">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-5-1.png">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-5-2.png">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-5-3.png">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-5-3.png">
+<meta property="og:updated_time" content="2016-12-27T15:27:43.890Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+github教程之五：github配置专属域名">
-<meta name="twitter:description" content="各种宅，各种懒，爱好游戏的码农">
+<meta name="twitter:description" content="为了更好的让别人记住博客地址，我们可以购买域名来绑定github。这样就可以更便捷的访问自己的博客，也避免github的域名不稳定导致无法访问博客。
+首先要购买域名推荐到阿里云购买，博主也是在阿里云购买的。域名最好是越短越好，如果想要高大上一点的就用.com，便宜有好用的可以选.top，.me之类的，.top的注册的人比较少，一般不是什么特殊域名都可以注册得到，4块钱一年，简直业界良心。
+域名解析">
+<meta name="twitter:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-5-1.png">
 
 
 
@@ -407,7 +418,13 @@
       
 
       
-        
+        <p>为了更好的让别人记住博客地址，我们可以购买域名来绑定github。这样就可以更便捷的访问自己的博客，也避免github的域名不稳定导致无法访问博客。</p>
+<h3 id="首先要购买域名"><a href="#首先要购买域名" class="headerlink" title="首先要购买域名"></a>首先要购买域名</h3><p>推荐到阿里云购买，博主也是在阿里云购买的。域名最好是越短越好，如果想要高大上一点的就用.com，便宜有好用的可以选.top，.me之类的，.top的注册的人比较少，一般不是什么特殊域名都可以注册得到，4块钱一年，简直业界良心。</p>
+<h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>1、先登录到阿里云后台，找到域名解析，新建一个解析（这里是以阿里云DNS解析，其他的应该大同小异）<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-1.png" alt="hexo"><br>2、到存放博客的github仓库，点击Setting<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-2.png" alt="hexo"><br>3、在Setting下面找到GitHub Pages下面Custom domain，添加刚才购买的域名<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-3.png" alt="hexo"><br>4、第三步操作完，github会自动在仓库根目录下创建<code>CNAME</code>文件，然后在我们博客目录<code>D:\Blog\source</code>下，新建一个<code>CNAME</code>文件，内容要跟github仓库根目录下的<code>CNAME</code>文件一样，就是我们解析的域名。（这一步的目的是为了防止以后我们提交github的时候删除点<code>CNAME</code>文件）<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-3.png" alt="hexo"><br>5、打开浏览器测试一下，看看是不是已经能访问了</p>
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><p>我之前也遇到DNS解析问题，网上很多做法是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@        A        192.30.252.153</div><div class="line">@        A        192.30.252.154</div><div class="line">www      CNAME    username.github.io.</div></pre></td></tr></table></figure></p>
+<p>但是我测试是有问题的，去除两个A记录就可以正常了，只需要一个CNAME解析就可以了。</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>搞hexo博客花了两天时间，写这几篇教程也花了两天，不过终于写完了。。。。</p>
+
       
     </div>
 
@@ -547,8 +564,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -629,6 +655,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先要购买域名"><span class="nav-number">1.</span> <span class="nav-text">首先要购买域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域名解析"><span class="nav-number">2.</span> <span class="nav-text">域名解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他问题"><span class="nav-number">3.</span> <span class="nav-text">其他问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>

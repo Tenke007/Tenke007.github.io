@@ -12,7 +12,7 @@
     <entry>
       <title><![CDATA[hexo+github教程之五：github配置专属域名]]></title>
       <url>%2F2016%2F12%2F27%2Fhexo-github-5%2F</url>
-      <content type="text"></content>
+      <content type="text"><![CDATA[为了更好的让别人记住博客地址，我们可以购买域名来绑定github。这样就可以更便捷的访问自己的博客，也避免github的域名不稳定导致无法访问博客。 首先要购买域名推荐到阿里云购买，博主也是在阿里云购买的。域名最好是越短越好，如果想要高大上一点的就用.com，便宜有好用的可以选.top，.me之类的，.top的注册的人比较少，一般不是什么特殊域名都可以注册得到，4块钱一年，简直业界良心。 域名解析1、先登录到阿里云后台，找到域名解析，新建一个解析（这里是以阿里云DNS解析，其他的应该大同小异）2、到存放博客的github仓库，点击Setting3、在Setting下面找到GitHub Pages下面Custom domain，添加刚才购买的域名4、第三步操作完，github会自动在仓库根目录下创建CNAME文件，然后在我们博客目录D:\Blog\source下，新建一个CNAME文件，内容要跟github仓库根目录下的CNAME文件一样，就是我们解析的域名。（这一步的目的是为了防止以后我们提交github的时候删除点CNAME文件）5、打开浏览器测试一下，看看是不是已经能访问了 其他问题我之前也遇到DNS解析问题，网上很多做法是：123@ A 192.30.252.153@ A 192.30.252.154www CNAME username.github.io. 但是我测试是有问题的，去除两个A记录就可以正常了，只需要一个CNAME解析就可以了。 结语搞hexo博客花了两天时间，写这几篇教程也花了两天，不过终于写完了。。。。]]></content>
     </entry>
 
     
