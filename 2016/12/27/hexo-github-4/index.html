@@ -87,18 +87,24 @@
 
 
 <meta name="description" content="到了这一步，基本上已经拥有了一个很perfect的博客了，但是还是缺少一点第三方插件，还不算太完美。本文主要讲解几个重要的第三方插件：多说，搜索，404页面，用户访问记录，RSS和sitemap。
-多说评论博文搜索配置404页面用户访问记录RSS和sitemap">
+多说评论1、打开多说网站，登陆多说（微博或qq快捷登录），创建站点。2、按下图进行输入创建评论站点。站点名称可以随便填，站点域名就填写博客域名，多说域名填写blog名，这个主题配置哪里会用到（多说的sh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo+github教程之四：配置hexo next主题第三方插件">
 <meta property="og:url" content="http://blog.greeghost.com/2016/12/27/hexo-github-4/index.html">
 <meta property="og:site_name" content="Tenken blog">
 <meta property="og:description" content="到了这一步，基本上已经拥有了一个很perfect的博客了，但是还是缺少一点第三方插件，还不算太完美。本文主要讲解几个重要的第三方插件：多说，搜索，404页面，用户访问记录，RSS和sitemap。
-多说评论博文搜索配置404页面用户访问记录RSS和sitemap">
-<meta property="og:updated_time" content="2016-12-27T09:52:18.399Z">
+多说评论1、打开多说网站，登陆多说（微博或qq快捷登录），创建站点。2、按下图进行输入创建评论站点。站点名称可以随便填，站点域名就填写博客域名，多说域名填写blog名，这个主题配置哪里会用到（多说的sh">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-1.png">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-2.png">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-3.png">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-4.png">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-5.png">
+<meta property="og:updated_time" content="2016-12-27T14:07:58.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo+github教程之四：配置hexo next主题第三方插件">
 <meta name="twitter:description" content="到了这一步，基本上已经拥有了一个很perfect的博客了，但是还是缺少一点第三方插件，还不算太完美。本文主要讲解几个重要的第三方插件：多说，搜索，404页面，用户访问记录，RSS和sitemap。
-多说评论博文搜索配置404页面用户访问记录RSS和sitemap">
+多说评论1、打开多说网站，登陆多说（微博或qq快捷登录），创建站点。2、按下图进行输入创建评论站点。站点名称可以随便填，站点域名就填写博客域名，多说域名填写blog名，这个主题配置哪里会用到（多说的sh">
+<meta name="twitter:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-1.png">
 
 
 
@@ -411,7 +417,28 @@
 
       
         <p>到了这一步，基本上已经拥有了一个很perfect的博客了，但是还是缺少一点第三方插件，还不算太完美。本文主要讲解几个重要的第三方插件：多说，搜索，404页面，用户访问记录，RSS和sitemap。</p>
-<h3 id="多说评论"><a href="#多说评论" class="headerlink" title="多说评论"></a>多说评论</h3><h3 id="博文搜索"><a href="#博文搜索" class="headerlink" title="博文搜索"></a>博文搜索</h3><h3 id="配置404页面"><a href="#配置404页面" class="headerlink" title="配置404页面"></a>配置404页面</h3><h3 id="用户访问记录"><a href="#用户访问记录" class="headerlink" title="用户访问记录"></a>用户访问记录</h3><h3 id="RSS和sitemap"><a href="#RSS和sitemap" class="headerlink" title="RSS和sitemap"></a>RSS和sitemap</h3>
+<h3 id="多说评论"><a href="#多说评论" class="headerlink" title="多说评论"></a>多说评论</h3><p>1、打开<a href="http://duoshuo.com/" target="_blank" rel="external">多说网站</a>，登陆多说（微博或qq快捷登录），创建站点。<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-4-1.png" alt="hexo"><br>2、按下图进行输入创建评论站点。<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-4-2.png" alt="hexo"><br><strong>站点名称</strong>可以随便填，<strong>站点域名</strong>就填写博客域名，<strong>多说域名</strong>填写blog名，这个主题配置哪里会用到（多说的short_name）<br>3、创建完以后进入管理后台，在左侧菜单栏里找到工具，右侧代码里看到<code>short_name</code>，也就是刚才输入的多说域名。<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-4-3.png" alt="hexo"><br>4、打开 <strong>主题配置文件</strong>（themes\next_config.yml），找到 duoshuo_shortname，写到后面。不同主题可能名字不一样，操作都是一样的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">duoshuo_shortname: tenke</div></pre></td></tr></table></figure></p>
+<p>5、设置多说评论显示UA以及博主，在<strong>主题配置文件</strong>找到以下配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">duoshuo_info:</div><div class="line">  ua_enable: <span class="literal">true</span>  <span class="comment">#是否显示ua</span></div><div class="line">  admin_enable: <span class="literal">true</span> <span class="comment">#是否显示博主</span></div><div class="line">  user_id: 123456789  <span class="comment">#多说用户id</span></div><div class="line">  admin_nickname: Tenken <span class="comment">#博主昵称自定义</span></div></pre></td></tr></table></figure></p>
+<p>多说的用户id其实就是用户秘钥，如图：<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-4-4.png" alt="hexo"><br>如果想要开启多说分享的，可以找到以下配置:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">duoshuo_share: <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p>好，多说评论配置完了，可以在本地查看一下是否已经生效了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo s -g</div></pre></td></tr></table></figure></p>
+<h3 id="博文搜索"><a href="#博文搜索" class="headerlink" title="博文搜索"></a>博文搜索</h3><p>hexo next主题有很多第三方搜索：Swiftype,微搜索,Local Search,Algolia这四种，这里我选择Local Search，至于原因就是这个比较简单，其他的都要申请账号什么的，麻烦。<br>1、安装 <code>hexo-generator-searchdb</code>，在站点的根目录下执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-generator-searchdb --save</div></pre></td></tr></table></figure></p>
+<p>2、编辑 <strong>站点配置文件</strong>，新增以下内容到任意位置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">search:</div><div class="line">  path: search.xml</div><div class="line">  field: post</div><div class="line">  format: html</div><div class="line">  <span class="built_in">limit</span>: 10000</div></pre></td></tr></table></figure></p>
+<p>配置好，重新启动一下hexo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo s -g</div></pre></td></tr></table></figure></p>
+<p>应该会看到:<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-4-5.png" alt="hexo"></p>
+<h3 id="配置404页面"><a href="#配置404页面" class="headerlink" title="配置404页面"></a>配置404页面</h3><p>404页面，我们选择腾讯公益404页面。在 <code>hexo/source</code> 文件夹下新建404.html。<br>编辑404.html页面，输入以下代码，保存。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta http-equiv=<span class="string">"content-type"</span> content=<span class="string">"text/html;charset=utf-8;"</span>/&gt;</div><div class="line">  &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge,chrome=1"</span> /&gt;</div><div class="line">  &lt;meta name=<span class="string">"robots"</span> content=<span class="string">"all"</span> /&gt;</div><div class="line">  &lt;meta name=<span class="string">"robots"</span> content=<span class="string">"index,follow"</span>/&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"http://www.qq.com/404/search_children.js"</span></div><div class="line">        charset=<span class="string">"utf-8"</span> homePageUrl=<span class="string">"your site url "</span></div><div class="line">        homePageName=<span class="string">"回到我的主页"</span>&gt;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>还要在<strong>站点配置文件</strong>开启404页面配置才能在博客页面看见404入口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">menu: <span class="comment">#菜单路径设置 如果hexo在二级目录放置要去掉/</span></div><div class="line">  home: /</div><div class="line">  categories: /categories <span class="comment">#分类</span></div><div class="line">  tags: /tags <span class="comment">#标签</span></div><div class="line">  archives: /archives <span class="comment">#归档</span></div><div class="line">  about: /about <span class="comment"># 关于我</span></div><div class="line">  <span class="comment">#sitemap: /sitemap.xml #这个可以不用开启，给搜索引擎用的，需要安装插件</span></div><div class="line">  commonweal: /404.html <span class="comment">#公益404</span></div></pre></td></tr></table></figure></p>
+<p>记得每次修改<strong>站点配置文件</strong>需要重启hexo服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo s -g</div></pre></td></tr></table></figure></p>
+<h3 id="用户访问记录"><a href="#用户访问记录" class="headerlink" title="用户访问记录"></a>用户访问记录</h3><p>next主题有两个用户访问记录的插件，leancloud_visitors和busuanzi_count，leancloud_visitors这个需要到<a href="https://leancloud.cn" title="leancloud.cn" target="_blank" rel="external">https://leancloud.cn</a>注册获取AppID and AppKey，那么我们就选择busuanzi_count这个插件。<br>打开<strong>主题配置文件</strong>，找到以下配置，设置为true就可以了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">busuanzi_count: <span class="comment">#第三方用户访问插件，直接开启</span></div><div class="line">  <span class="comment"># count values only if the other configs are false</span></div><div class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></div><div class="line">  <span class="comment"># custom uv span for the whole site</span></div><div class="line">  site_uv: <span class="literal">true</span></div><div class="line">  site_uv_header: &lt;i class=<span class="string">"fa fa-user"</span>&gt;&lt;/i&gt;</div><div class="line">  site_uv_footer:</div><div class="line">  <span class="comment"># custom pv span for the whole site</span></div><div class="line">  site_pv: <span class="literal">true</span></div><div class="line">  site_pv_header: &lt;i class=<span class="string">"fa fa-eye"</span>&gt;&lt;/i&gt;</div><div class="line">  site_pv_footer:</div><div class="line">  <span class="comment"># custom pv span for one page only</span></div><div class="line">  page_pv: <span class="literal">true</span></div><div class="line">  page_pv_header: &lt;i class=<span class="string">"fa fa-file-o"</span>&gt;&lt;/i&gt;&amp;nbsp&amp;nbsp阅读数</div><div class="line">  page_pv_footer:</div></pre></td></tr></table></figure></p>
+<h3 id="RSS和sitemap"><a href="#RSS和sitemap" class="headerlink" title="RSS和sitemap"></a>RSS和sitemap</h3><p>1、安装RSS和sitemap插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed --save</div><div class="line">npm install hexo-generator-sitemap --save</div></pre></td></tr></table></figure></p>
+<p>2、开启RSS和sitemap功能，编辑站点配置文件 <code>hexo/_config.yml</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">feed: </div><div class="line">  <span class="built_in">type</span>: atom  <span class="comment">#feed 类型 </span></div><div class="line">  path: atom.xml  <span class="comment">#rss 路径 </span></div><div class="line">  <span class="built_in">limit</span>: 20  <span class="comment">#在 rss 中最多生成的文章数(0显示所有)</span></div></pre></td></tr></table></figure></p>
+<p>NexT 中 RSS 有三个设置选项，满足特定的使用场景。 更改 主题配置文件，设定 rss 字段的值：</p>
+<ul>
+<li>false：禁用 RSS，不在页面上显示 RSS 连接。</li>
+<li>留空：使用 Hexo 生成的 Feed 链接。</li>
+<li>具体的链接地址：适用于已经烧制过 Feed 的情形。</li>
+</ul>
+<p>这里我们留空就行了。</p>
+<h4 id="到此，next的第三方插件就配置完了，如果还想要其他插件的请参考next配置文档"><a href="#到此，next的第三方插件就配置完了，如果还想要其他插件的请参考next配置文档" class="headerlink" title="到此，next的第三方插件就配置完了，如果还想要其他插件的请参考next配置文档"></a>到此，next的第三方插件就配置完了，如果还想要其他插件的请参考<a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">next配置文档</a></h4><h4 id="下一步开始配置github域名···"><a href="#下一步开始配置github域名···" class="headerlink" title="下一步开始配置github域名···"></a>下一步开始配置github域名···</h4>
       
     </div>
 
@@ -469,8 +496,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/27/hexo-github-3/" rel="next" title="hexo+github教程之三：hexo next主题配置">
-                <i class="fa fa-chevron-left"></i> hexo+github教程之三：hexo next主题配置
+              <a href="/2016/12/27/hexo-github-5/" rel="next" title="hexo+github教程之五：github配置专属域名">
+                <i class="fa fa-chevron-left"></i> hexo+github教程之五：github配置专属域名
               </a>
             
           </div>
@@ -570,7 +597,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -648,7 +675,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多说评论"><span class="nav-number">1.</span> <span class="nav-text">多说评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#博文搜索"><span class="nav-number">2.</span> <span class="nav-text">博文搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置404页面"><span class="nav-number">3.</span> <span class="nav-text">配置404页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户访问记录"><span class="nav-number">4.</span> <span class="nav-text">用户访问记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RSS和sitemap"><span class="nav-number">5.</span> <span class="nav-text">RSS和sitemap</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多说评论"><span class="nav-number">1.</span> <span class="nav-text">多说评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#博文搜索"><span class="nav-number">2.</span> <span class="nav-text">博文搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置404页面"><span class="nav-number">3.</span> <span class="nav-text">配置404页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户访问记录"><span class="nav-number">4.</span> <span class="nav-text">用户访问记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RSS和sitemap"><span class="nav-number">5.</span> <span class="nav-text">RSS和sitemap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#到此，next的第三方插件就配置完了，如果还想要其他插件的请参考next配置文档"><span class="nav-number">5.1.</span> <span class="nav-text">到此，next的第三方插件就配置完了，如果还想要其他插件的请参考next配置文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下一步开始配置github域名···"><span class="nav-number">5.2.</span> <span class="nav-text">下一步开始配置github域名···</span></a></li></ol></li></ol></div>
             
 
           </div>
