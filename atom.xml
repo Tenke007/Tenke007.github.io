@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.greeghost.com/"/>
-  <updated>2016-12-27T14:07:58.097Z</updated>
+  <updated>2016-12-27T15:52:26.046Z</updated>
   <id>http://blog.greeghost.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo+github教程之五：github配置专属域名</title>
+    <link href="http://blog.greeghost.com/2016/12/27/hexo-github-5/"/>
+    <id>http://blog.greeghost.com/2016/12/27/hexo-github-5/</id>
+    <published>2016-12-26T18:40:17.000Z</published>
+    <updated>2016-12-27T15:52:26.046Z</updated>
+    
+    <content type="html"><![CDATA[<p>为了更好的让别人记住博客地址，我们可以购买域名来绑定github。这样就可以更便捷的访问自己的博客，也避免github的域名不稳定导致无法访问博客。</p>
+<h3 id="首先要购买域名"><a href="#首先要购买域名" class="headerlink" title="首先要购买域名"></a>首先要购买域名</h3><p>推荐到阿里云购买，博主也是在阿里云购买的。域名最好是越短越好，如果想要高大上一点的就用.com，便宜有好用的可以选.top，.me之类的，.top的注册的人比较少，一般不是什么特殊域名都可以注册得到，4块钱一年，简直业界良心。</p>
+<h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>1、先登录到阿里云后台，找到域名解析，新建一个解析（这里是以阿里云DNS解析，其他的应该大同小异）<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-1.png" alt="hexo"><br>2、到存放博客的github仓库，点击Setting<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-2.png" alt="hexo"><br>3、在Setting下面找到GitHub Pages下面Custom domain，添加刚才购买的域名<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-3.png" alt="hexo"><br>4、第三步操作完，github会自动在仓库根目录下创建<code>CNAME</code>文件，然后在我们博客目录<code>D:\Blog\source</code>下，新建一个<code>CNAME</code>文件，内容要跟github仓库根目录下的<code>CNAME</code>文件一样，就是我们解析的域名。（这一步的目的是为了防止以后我们提交github的时候删除点<code>CNAME</code>文件）<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-3.png" alt="hexo"><br>5、打开浏览器测试一下，看看是不是已经能访问了</p>
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><p>我之前也遇到DNS解析问题，网上很多做法是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@        A        192.30.252.153</div><div class="line">@        A        192.30.252.154</div><div class="line">www      CNAME    username.github.io.</div></pre></td></tr></table></figure></p>
+<p>但是我测试是有问题的，去除两个A记录就可以正常了，只需要一个CNAME解析就可以了。</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>搞hexo博客花了两天时间，写这几篇教程也花了两天，不过终于写完了。。。。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为了更好的让别人记住博客地址，我们可以购买域名来绑定github。这样就可以更便捷的访问自己的博客，也避免github的域名不稳定导致无法访问博客。&lt;/p&gt;
+&lt;h3 id=&quot;首先要购买域名&quot;&gt;&lt;a href=&quot;#首先要购买域名&quot; class=&quot;headerlink&quot; tit
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://blog.greeghost.com/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo+github教程之四：配置hexo next主题第三方插件</title>
@@ -50,35 +79,6 @@
     
       &lt;p&gt;到了这一步，基本上已经拥有了一个很perfect的博客了，但是还是缺少一点第三方插件，还不算太完美。本文主要讲解几个重要的第三方插件：多说，搜索，404页面，用户访问记录，RSS和sitemap。&lt;/p&gt;
 &lt;h3 id=&quot;多说评论&quot;&gt;&lt;a href=&quot;#多说评论&quot; clas
-    
-    </summary>
-    
-      <category term="hexo" scheme="http://blog.greeghost.com/categories/hexo/"/>
-    
-    
-      <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo+github教程之五：github配置专属域名</title>
-    <link href="http://blog.greeghost.com/2016/12/27/hexo-github-5/"/>
-    <id>http://blog.greeghost.com/2016/12/27/hexo-github-5/</id>
-    <published>2016-12-26T18:15:17.000Z</published>
-    <updated>2016-12-27T15:27:43.890Z</updated>
-    
-    <content type="html"><![CDATA[<p>为了更好的让别人记住博客地址，我们可以购买域名来绑定github。这样就可以更便捷的访问自己的博客，也避免github的域名不稳定导致无法访问博客。</p>
-<h3 id="首先要购买域名"><a href="#首先要购买域名" class="headerlink" title="首先要购买域名"></a>首先要购买域名</h3><p>推荐到阿里云购买，博主也是在阿里云购买的。域名最好是越短越好，如果想要高大上一点的就用.com，便宜有好用的可以选.top，.me之类的，.top的注册的人比较少，一般不是什么特殊域名都可以注册得到，4块钱一年，简直业界良心。</p>
-<h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><p>1、先登录到阿里云后台，找到域名解析，新建一个解析（这里是以阿里云DNS解析，其他的应该大同小异）<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-1.png" alt="hexo"><br>2、到存放博客的github仓库，点击Setting<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-2.png" alt="hexo"><br>3、在Setting下面找到GitHub Pages下面Custom domain，添加刚才购买的域名<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-3.png" alt="hexo"><br>4、第三步操作完，github会自动在仓库根目录下创建<code>CNAME</code>文件，然后在我们博客目录<code>D:\Blog\source</code>下，新建一个<code>CNAME</code>文件，内容要跟github仓库根目录下的<code>CNAME</code>文件一样，就是我们解析的域名。（这一步的目的是为了防止以后我们提交github的时候删除点<code>CNAME</code>文件）<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-5-3.png" alt="hexo"><br>5、打开浏览器测试一下，看看是不是已经能访问了</p>
-<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><p>我之前也遇到DNS解析问题，网上很多做法是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@        A        192.30.252.153</div><div class="line">@        A        192.30.252.154</div><div class="line">www      CNAME    username.github.io.</div></pre></td></tr></table></figure></p>
-<p>但是我测试是有问题的，去除两个A记录就可以正常了，只需要一个CNAME解析就可以了。</p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>搞hexo博客花了两天时间，写这几篇教程也花了两天，不过终于写完了。。。。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;为了更好的让别人记住博客地址，我们可以购买域名来绑定github。这样就可以更便捷的访问自己的博客，也避免github的域名不稳定导致无法访问博客。&lt;/p&gt;
-&lt;h3 id=&quot;首先要购买域名&quot;&gt;&lt;a href=&quot;#首先要购买域名&quot; class=&quot;headerlink&quot; tit
     
     </summary>
     
