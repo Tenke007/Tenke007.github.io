@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[hexo+github教程之Markdown工具-MarkdownPad]]></title>
+      <url>%2F2016%2F12%2F28%2Fhexo-github-6%2F</url>
+      <content type="text"><![CDATA[前面五个hexo+github教程，我们已经把hexo博客的搭建，主题优化，还有第三方插件的安装都撸过一遍了，相信看过教程的应该都能搭建出一个满意的hexo博客了。好了，言归正传，这一篇博文是介绍Markdown工具–MarkdownPad2 简介MarkdownPad是Windows下的一个多功能Markdown编辑器。可以边编辑边预览（再也不用各种切换到浏览器上查看样式了），有可视化工具栏，有快捷键，可以很方便快捷的写出自己想要的博文。据说是windows平台上最好用的Markdown工具，没有之一。 安装点击MarkdownPad下载安装。MarkdownPad有免费版和专业版（好像没感觉出来免费版和专业版有什么区别），专业版需要激活码。这里附上网上可用的激活码：1234邮箱：Soar360@live.com授权秘钥：GBPduHjWfJU1mZqcPM3BikjYKF6xKhlKIys3i1MU2eJHqWGImDHzWdD6xhMNLGVpbP2M5SN6bnxn2kSE8qHqNY5QaaRxmO3YSMHxlv2EYpjdwLcPwfeTG7kUdnhKE0vVy4RidP6Y2wZ0q74f47fzsZo45JE2hfQBFi2O9Jldjp1mW8HUpTtLA2a5/sQytXJUQl/QKO0jUQY4pa5CCx20sV1ClOTZtAGngSOJtIOFXK599sBr5aIEFyH0K7H4BoNMiiDMnxt1rD8Vb/ikJdhGMMQr0R4B+L3nWU97eaVPTRKfWGDE8/eAgKzpGwrQQoDh+nzX1xoVQ8NAuH+s4UcSeQ== 安装到最后会有提示选择版本的，如果选free则不要输入激活码。 可能会出现的问题MarkdownPad2在windows10系统下会出现无法预览的问题，需要安装官方提供的补丁， Awesomium 1.6.6 SDKwindows7系统没有这个问题，可以不用安装补丁。MarkdownPad编辑器很简洁，上手很快，基本上没有难度，也不用看什么教程，也不用配置什么，默认配置就可以了，如果还想挖掘MarkdownPad还有什么实用功能可以自己一个试一下，说不定会有什么发现。 MarkdownPad快捷键12345678910111213Bold(加粗) Ctrl+BEmphasize(斜体) Ctrl+IBlockquote(引用) Ctrl+QCode(代码) Ctrl+KH1(h1标题) Ctrl+1H2(h2标题) Ctrl+2H3(h3标题) Ctrl+3Link(链接) Ctrl+LImage(图片) Ctrl+GUnordered List(无序) Ctrl+UOrdered List(有序) Ctrl+Shift+OTimestamp(时间) Ctrl+THorizontal Rule(分割线) Ctrl+R 熟悉这些快捷键的话，基本上不用到鼠标了，可以专注码字了。好了，MarkdownPad就介绍到这里。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[hexo+github教程之五：github配置专属域名]]></title>
       <url>%2F2016%2F12%2F27%2Fhexo-github-5%2F</url>
       <content type="text"><![CDATA[为了更好的让别人记住博客地址，我们可以购买域名来绑定github。这样就可以更便捷的访问自己的博客，也避免github的域名不稳定导致无法访问博客。 首先要购买域名推荐到阿里云购买，博主也是在阿里云购买的。域名最好是越短越好，如果想要高大上一点的就用.com，便宜有好用的可以选.top，.me之类的，.top的注册的人比较少，一般不是什么特殊域名都可以注册得到，4块钱一年，简直业界良心。 域名解析1、先登录到阿里云后台，找到域名解析，新建一个解析（这里是以阿里云DNS解析，其他的应该大同小异）2、到存放博客的github仓库，点击Setting3、在Setting下面找到GitHub Pages下面Custom domain，添加刚才购买的域名4、第三步操作完，github会自动在仓库根目录下创建CNAME文件，然后在我们博客目录D:\Blog\source下，新建一个CNAME文件，内容要跟github仓库根目录下的CNAME文件一样，就是我们解析的域名。（这一步的目的是为了防止以后我们提交github的时候删除点CNAME文件）5、打开浏览器测试一下，看看是不是已经能访问了 其他问题我之前也遇到DNS解析问题，网上很多做法是：123@ A 192.30.252.153@ A 192.30.252.154www CNAME username.github.io. 但是我测试是有问题的，去除两个A记录就可以正常了，只需要一个CNAME解析就可以了。 结语搞hexo博客花了两天时间，写这几篇教程也花了两天，不过终于写完了。。。。]]></content>
