@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="php,zip," />
 
 
 
@@ -86,37 +86,22 @@
 
 
 
-<meta name="description" content="上一篇教程已经把hexo博客安装好在本地了，但是只能在本地访问，现在我们要将博客部署到github上。
-一、github注册及配置1、首先我们先去准备github ,（点击文字进行跳转）。2、首先在主界面注册github进行！按照步骤进行注册。3、注册成功先不要急！此时我们还需要验证邮箱地址。4、接下来我们需要建立一个仓库。记住建立仓库时所填写的内容！是你的帐号.github.io（这是因为git">
+<meta name="description" content="这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是一下几个zip函数。
+zip_open()123zip_open(filename)zip_open() 函数打开 ZIP 文件以供读取。如果成功，则返回 zip 文件档案资源。如果失败，则返回 false
+zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo+github教程之二：hexo博客发布到github">
-<meta property="og:url" content="http://blog.greeghost.com/2016/12/26/hexo-github-2/index.html">
+<meta property="og:title" content="php zip文件类操作实例">
+<meta property="og:url" content="http://blog.greeghost.com/2017/02/22/php-zip/index.html">
 <meta property="og:site_name" content="Tenken blog">
-<meta property="og:description" content="上一篇教程已经把hexo博客安装好在本地了，但是只能在本地访问，现在我们要将博客部署到github上。
-一、github注册及配置1、首先我们先去准备github ,（点击文字进行跳转）。2、首先在主界面注册github进行！按照步骤进行注册。3、注册成功先不要急！此时我们还需要验证邮箱地址。4、接下来我们需要建立一个仓库。记住建立仓库时所填写的内容！是你的帐号.github.io（这是因为git">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-01.png">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-02.png">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-1.png">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-2.png">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-3.png">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-4.jpg">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-5.jpg">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-6.jpg">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-7.jpg">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-8.png">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-9.png">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-10.png">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-11.png">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-12.png">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-13.jpg">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-14.png">
-<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-15.png">
-<meta property="og:updated_time" content="2016-12-27T11:17:56.789Z">
+<meta property="og:description" content="这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是一下几个zip函数。
+zip_open()123zip_open(filename)zip_open() 函数打开 ZIP 文件以供读取。如果成功，则返回 zip 文件档案资源。如果失败，则返回 false
+zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
+<meta property="og:updated_time" content="2017-02-21T17:27:15.014Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo+github教程之二：hexo博客发布到github">
-<meta name="twitter:description" content="上一篇教程已经把hexo博客安装好在本地了，但是只能在本地访问，现在我们要将博客部署到github上。
-一、github注册及配置1、首先我们先去准备github ,（点击文字进行跳转）。2、首先在主界面注册github进行！按照步骤进行注册。3、注册成功先不要急！此时我们还需要验证邮箱地址。4、接下来我们需要建立一个仓库。记住建立仓库时所填写的内容！是你的帐号.github.io（这是因为git">
-<meta name="twitter:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-2-01.png">
+<meta name="twitter:title" content="php zip文件类操作实例">
+<meta name="twitter:description" content="这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是一下几个zip函数。
+zip_open()123zip_open(filename)zip_open() 函数打开 ZIP 文件以供读取。如果成功，则返回 zip 文件档案资源。如果失败，则返回 false
+zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
 
 
 
@@ -144,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.greeghost.com/2016/12/26/hexo-github-2/"/>
+  <link rel="canonical" href="http://blog.greeghost.com/2017/02/22/php-zip/"/>
 
 
 
 
 
-  <title> hexo+github教程之二：hexo博客发布到github | Tenken blog </title>
+  <title> php zip文件类操作实例 | Tenken blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -316,7 +301,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://blog.greeghost.com/2016/12/26/hexo-github-2/">
+  <link itemprop="mainEntityOfPage" href="http://blog.greeghost.com/2017/02/22/php-zip/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Tenken">
@@ -340,7 +325,7 @@
             
             
               
-                hexo+github教程之二：hexo博客发布到github
+                php zip文件类操作实例
               
             
           </h1>
@@ -355,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-26T23:58:29+08:00">
-                2016-12-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-22T00:52:28+08:00">
+                2017-02-22
               </time>
             
 
@@ -378,8 +363,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/php/" itemprop="url" rel="index">
+                    <span itemprop="name">php</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/php/zip/" itemprop="url" rel="index">
+                    <span itemprop="name">zip</span>
                   </a>
                 </span>
 
@@ -396,8 +392,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/12/26/hexo-github-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/26/hexo-github-2/" itemprop="commentCount"></span>
+                <a href="/2017/02/22/php-zip/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/22/php-zip/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -428,24 +424,17 @@
       
 
       
-        <p>上一篇教程已经把hexo博客安装好在本地了，但是只能在本地访问，现在我们要将博客部署到github上。</p>
-<h3 id="一、github注册及配置"><a href="#一、github注册及配置" class="headerlink" title="一、github注册及配置"></a>一、github注册及配置</h3><p>1、首先我们先去准备<a href="https://github.com/" target="_blank" rel="external">github</a> ,（点击文字进行跳转）。<br>2、首先在主界面注册github进行！按照步骤进行注册。<br>3、注册成功先不要急！此时我们还需要验证邮箱地址。<br>4、接下来我们需要建立一个仓库。<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-01.png" alt="Alt hexo"><br>记住建立仓库时所填写的内容！是你的帐号.github.io（这是因为github规定的格式这样才会直接讲当前仓库作为托管站点）比如：Tenke007.github.io(这个是我的仓库)<br>5、到你刚刚创建的Repository下，复制Repository的地址（ssh格式）<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-02.png" alt="Alt hexo"></p>
-<h3 id="二、修改hexo的配置文件"><a href="#二、修改hexo的配置文件" class="headerlink" title="二、修改hexo的配置文件"></a>二、修改hexo的配置文件</h3><p>1、打开_config.yml文件（在博客目录下）<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-1.png" alt="Alt hexo"><br>2、修改文件里面的deploy。其中的repository就改成你刚刚复制的地址。保存这个文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repository: git@github.com:Tenke007/Tenke007.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<p><strong>注意：repository改成你刚刚复制的地址</strong></p>
-<h3 id="三、设置SSH-keys"><a href="#三、设置SSH-keys" class="headerlink" title="三、设置SSH keys"></a>三、设置SSH keys</h3><p>1、在Git Bash输入以下指令（任意位置点击鼠标右键），检查是否已经存在了SSH keys。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -al ~/.ssh</div></pre></td></tr></table></figure></p>
-<p>2、如果不存在就没有关系，如果存在的话，直接删除.ssh文件夹里面所有文件：<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-2.png" alt="Alt hexo"><br>3、输入以下指令（邮箱就是你注册Github时候的邮箱）后，回车：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C <span class="string">"angelen10@163.com"</span></div></pre></td></tr></table></figure></p>
-<p><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-3.png" alt="Alt hexo"><br>4、然后它会提示要你输入passphrase（如上图，我没有输入直接回车，如果你输入的话，要记得，到时候会用到）。之后，如果出现类似下图：<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-4.jpg" alt="Alt hexo"><br>5、然后键入以下指令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-agent <span class="_">-s</span></div></pre></td></tr></table></figure></p>
-<p><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-5.jpg" alt="Alt hexo"><br>6、继续输入指令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-add ~/.ssh/id_rsa</div></pre></td></tr></table></figure></p>
-<p>7、输入之后，在我这里是出错了，不知道你的有没有出错。<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-6.jpg" alt="Alt hexo"><br>8、如果你的也是这样子出错了的话，就输入以下指令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">eval</span> `ssh-agent <span class="_">-s</span>`</div><div class="line">ssh-add</div></pre></td></tr></table></figure></p>
-<p><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-7.jpg" alt="Alt hexo"><br>9、到了这一步，就可以添加SSH key到你的Github账户了。键入以下指令，拷贝Key（先拷贝了，等一下可以直接粘贴）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clip &lt; ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure></p>
-<p>10、然后到Github里面，点击右上角的设置图标：<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-8.png" alt="Alt hexo"><br>在Settings sidebar那里，点击SSH keys：<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-9.png" alt="Alt hexo"><br>点击Add SSH key：<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-10.png" alt="Alt hexo"><br>11、输入Title，作为这个key的描述吧（你可以输入Personal MacBook Air，瞬间高大上）<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-11.png" alt="Alt hexo"><br>然后这个Key就是刚刚拷贝的，你直接粘贴就好（也可以文本打开以下文件）：<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-12.png" alt="Alt hexo"><br>点击Add Key<br>12、输入你的Github密码即可完成SSH Key的添加。嗯，最后还是测试一下吧，键入以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -T git@github.com</div></pre></td></tr></table></figure></p>
-<p><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-13.jpg" alt="Alt hexo"><br>你可能会看到有警告，没事，输入“yes”就好。</p>
-<h3 id="三、开始部署"><a href="#三、开始部署" class="headerlink" title="三、开始部署"></a>三、开始部署</h3><p>输入以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure></p>
-<p>如果出现error deployer not found:github错误，执行以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<p>Okay,我们的博客已经完全搭建起来了，在浏览器访问 <a href="https://tenke007.github.io" target="_blank" rel="external">https://tenke007.github.io</a> 就能看到你的成就了！</p>
-<p>还有一点，有一些用户在hexo deploy之后会有个这个提示<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-14.png" alt="Alt hexo"><br>那么我们要输入我们在git上验证的邮箱<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-2-15.png" alt="Alt hexo"><br>如这样。再次 hexo deploy<br>如出现以下这种提示应该就发布上去了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">The file will have its original line endings <span class="keyword">in</span> your working directory.</div><div class="line">Branch master <span class="built_in">set</span> up to track remote branch master from git@github.com:Tenke007/Tenke007.github.io.git.</div><div class="line">To git@github.com:Tenke007/Tenke007.github.io.git</div><div class="line">   8cfeb05..b8bd0f3  HEAD -&gt; master</div><div class="line">INFO  Deploy <span class="keyword">done</span>: git</div></pre></td></tr></table></figure></p>
-<h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>hexo现在支持更加简单的命令格式了，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hexo g ==  hexo generate</div><div class="line">hexo d ==  hexo deploy</div><div class="line">hexo s ==  hexo server</div><div class="line">hexo n ==  hexo new</div></pre></td></tr></table></figure></p>
-<p><strong>本文图片来源于其他互联网站点，可能显示部分有点不一样，后续我会把图片放到云盘上，例如七牛云盘</strong></p>
+        <p>这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是一下几个zip函数。</p>
+<h3 id="zip-open"><a href="#zip-open" class="headerlink" title="zip_open()"></a>zip_open()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zip_open(filename)</div><div class="line">zip_open() 函数打开 ZIP 文件以供读取。</div><div class="line">如果成功，则返回 zip 文件档案资源。如果失败，则返回 false</div></pre></td></tr></table></figure>
+<h3 id="zip-read"><a href="#zip-read" class="headerlink" title="zip_read()"></a>zip_read()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zip_read(zip)</div><div class="line">zip_read() 函数读取打开的 zip 档案中的下一个文件。</div><div class="line">如果成功，则返回包含 zip 档案中一个文件的资源。如果没有更多的项目可供读取，则返回 false。</div></pre></td></tr></table></figure>
+<h3 id="zip-entry-open"><a href="#zip-entry-open" class="headerlink" title="zip_entry_open()"></a>zip_entry_open()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zip_entry_open(zip,zip_entry,mode)</div><div class="line">zip_entry_open() 函数打开一个 ZIP 档案项目以供读取。</div></pre></td></tr></table></figure>
+<h3 id="zip-entry-read"><a href="#zip-entry-read" class="headerlink" title="zip_entry_read()"></a>zip_entry_read()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zip_entry_read(zip_entry,length)</div><div class="line">zip_entry_read() 函数从打开的 zip 档案项目中获取内容。</div><div class="line">如果成功，则返回项目的内容。如果失败，则返回 false。</div></pre></td></tr></table></figure>
+<h3 id="zip-entry-name"><a href="#zip-entry-name" class="headerlink" title="zip_entry_name()"></a>zip_entry_name()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zip_entry_name(zip_entry)</div><div class="line">zip_entry_name() 函数返回 zip 档案项目的名称。</div></pre></td></tr></table></figure>
+<h3 id="zip-entry-filesize"><a href="#zip-entry-filesize" class="headerlink" title="zip_entry_filesize()"></a>zip_entry_filesize()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zip_entry_filesize(zip_entry)</div><div class="line">zip_entry_filesize() 函数返回 zip 档案项目的原始大小（在压缩之前）。</div></pre></td></tr></table></figure>
+<h3 id="zip-entry-close"><a href="#zip-entry-close" class="headerlink" title="zip_entry_close()"></a>zip_entry_close()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zip_entry_close(zip_entry)</div><div class="line">zip_entry_close() 函数关闭由 zip_entry_open() 函数打开的 zip 档案文件。</div></pre></td></tr></table></figure>
+<h3 id="zip-close"><a href="#zip-close" class="headerlink" title="zip_close()"></a>zip_close()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zip_close(zip)</div><div class="line">zip_close() 函数关闭由 zip_open() 函数打开的 zip 档案文件。</div></pre></td></tr></table></figure>
+<h3 id="下面是zip的封装函数实例"><a href="#下面是zip的封装函数实例" class="headerlink" title="下面是zip的封装函数实例"></a>下面是zip的封装函数实例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">class zip&#123;</div><div class="line"></div><div class="line">  private <span class="variable">$zip</span>;</div><div class="line"></div><div class="line">  private <span class="variable">$savepath</span>;</div><div class="line"></div><div class="line">  public <span class="keyword">function</span> __construct(<span class="variable">$zipname</span> = null) &#123;</div><div class="line">    <span class="variable">$zipname</span> &amp;&amp; <span class="variable">$this</span>-&gt;open(<span class="variable">$zipname</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  public <span class="keyword">function</span> open(<span class="variable">$zipname</span>)&#123;</div><div class="line">    <span class="keyword">if</span>(!is_file(<span class="variable">$zipname</span>))&#123;</div><div class="line">      <span class="built_in">exit</span>(<span class="string">'this zip file no exit'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="variable">$this</span>-&gt;zip = zip_open(<span class="variable">$zipname</span>);</div><div class="line">    <span class="keyword">if</span>(!<span class="variable">$this</span>-&gt;zip)&#123;</div><div class="line">      <span class="built_in">exit</span>(<span class="string">'this zip file is not valid'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> <span class="variable">$this</span>;</div><div class="line">  &#125;</div><div class="line">	</div><div class="line">  //<span class="variable">$savepath</span>默认是当前根目录</div><div class="line">  public <span class="keyword">function</span> save(<span class="variable">$savepath</span> = <span class="string">'./'</span>)&#123;</div><div class="line">    <span class="keyword">if</span>(!<span class="variable">$this</span>-&gt;zip)&#123;</div><div class="line">      <span class="built_in">exit</span>(<span class="string">'this zip file is unopen'</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(<span class="variable">$savepath</span>)&#123;</div><div class="line">      <span class="variable">$this</span>-&gt;savepath = <span class="variable">$savepath</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (<span class="variable">$zip_entry</span> = zip_read(<span class="variable">$this</span>-&gt;zip))&#123;</div><div class="line">      <span class="variable">$name</span> = <span class="variable">$this</span>-&gt;mkdirs(zip_entry_name(<span class="variable">$zip_entry</span>));</div><div class="line">      <span class="keyword">if</span> (<span class="variable">$name</span> &amp;&amp; zip_entry_open(<span class="variable">$this</span>-&gt;zip, <span class="variable">$zip_entry</span>))&#123;</div><div class="line">        <span class="variable">$contents</span> = zip_entry_read(<span class="variable">$zip_entry</span>, zip_entry_filesize(<span class="variable">$zip_entry</span>));</div><div class="line">        <span class="keyword">if</span>(<span class="variable">$contents</span>)&#123;</div><div class="line">          file_put_contents(<span class="variable">$name</span>, <span class="variable">$contents</span>);</div><div class="line">        &#125;</div><div class="line">        zip_entry_close(<span class="variable">$zip_entry</span>);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    zip_close(<span class="variable">$this</span>-&gt;zip);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  public <span class="keyword">function</span> mkdirs(<span class="variable">$path</span>)&#123;</div><div class="line">      <span class="variable">$dir</span> = <span class="variable">$this</span>-&gt;savepath .<span class="string">'/'</span>. dirname(<span class="variable">$path</span>);</div><div class="line">      <span class="keyword">if</span>(is_dir(<span class="variable">$dir</span>))&#123;</div><div class="line">          <span class="built_in">return</span> <span class="variable">$this</span>-&gt;savepath .<span class="string">'/'</span>. <span class="variable">$path</span>;</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">if</span>(mkdir(<span class="variable">$dir</span>, 0777, <span class="literal">true</span>))&#123;</div><div class="line">          <span class="built_in">return</span> <span class="variable">$this</span>-&gt;savepath .<span class="string">'/'</span>. <span class="variable">$path</span>;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">          <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="variable">$zip</span> = new zip();</div><div class="line">//打开一个test.zip文件，解压到当前目录</div><div class="line"><span class="variable">$zip</span>-&gt;open(<span class="string">'test.zip'</span>)-&gt;save();</div><div class="line">//打开一个test.zip文件，解压到当前目录下的zip目录</div><div class="line"><span class="variable">$zip</span>-&gt;open(<span class="string">'test.zip'</span>)-&gt;save(<span class="string">'./zip/'</span>);</div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>php操作zip文件还是挺简单的，需要用到的函数也不是很多。如要有需要的话直接拿来用接可以了，简单方便，如果有时间的话再弄一个在线解压小程序。</p>
 
       
     </div>
@@ -495,7 +484,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+            <a href="/tags/zip/" rel="tag"># zip</a>
           
         </div>
       
@@ -504,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/26/hexo-github-1/" rel="next" title="hexo+github教程之一：搭建hexo博客">
-                <i class="fa fa-chevron-left"></i> hexo+github教程之一：搭建hexo博客
+              <a href="/2016/12/28/hexo-github-6/" rel="next" title="hexo+github教程之Markdown工具-MarkdownPad">
+                <i class="fa fa-chevron-left"></i> hexo+github教程之Markdown工具-MarkdownPad
               </a>
             
           </div>
@@ -513,10 +504,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/27/hexo-github-3/" rel="prev" title="hexo+github教程之三：hexo next主题配置">
-                hexo+github教程之三：hexo next主题配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -531,10 +518,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/26/hexo-github-2/"
-     data-title="hexo+github教程之二：hexo博客发布到github"
+        <div class="ds-share flat" data-thread-key="2017/02/22/php-zip/"
+     data-title="php zip文件类操作实例"
      data-content=""
-     data-url="http://blog.greeghost.com/2016/12/26/hexo-github-2/">
+     data-url="http://blog.greeghost.com/2017/02/22/php-zip/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -561,8 +548,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/26/hexo-github-2/"
-           data-title="hexo+github教程之二：hexo博客发布到github" data-url="http://blog.greeghost.com/2016/12/26/hexo-github-2/">
+      <div class="ds-thread" data-thread-key="2017/02/22/php-zip/"
+           data-title="php zip文件类操作实例" data-url="http://blog.greeghost.com/2017/02/22/php-zip/">
       </div>
     
   </div>
@@ -687,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、github注册及配置"><span class="nav-number">1.</span> <span class="nav-text">一、github注册及配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、修改hexo的配置文件"><span class="nav-number">2.</span> <span class="nav-text">二、修改hexo的配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、设置SSH-keys"><span class="nav-number">3.</span> <span class="nav-text">三、设置SSH keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、开始部署"><span class="nav-number">4.</span> <span class="nav-text">三、开始部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tips"><span class="nav-number">4.1.</span> <span class="nav-text">tips</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#zip-open"><span class="nav-number">1.</span> <span class="nav-text">zip_open()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip-read"><span class="nav-number">2.</span> <span class="nav-text">zip_read()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip-entry-open"><span class="nav-number">3.</span> <span class="nav-text">zip_entry_open()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip-entry-read"><span class="nav-number">4.</span> <span class="nav-text">zip_entry_read()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip-entry-name"><span class="nav-number">5.</span> <span class="nav-text">zip_entry_name()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip-entry-filesize"><span class="nav-number">6.</span> <span class="nav-text">zip_entry_filesize()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip-entry-close"><span class="nav-number">7.</span> <span class="nav-text">zip_entry_close()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zip-close"><span class="nav-number">8.</span> <span class="nav-text">zip_close()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下面是zip的封装函数实例"><span class="nav-number">9.</span> <span class="nav-text">下面是zip的封装函数实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

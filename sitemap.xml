@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.greeghost.com/2017/02/22/php-zip/</loc>
+    
+    <lastmod>2017-02-21T17:27:15.014Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.greeghost.com/2016/12/28/hexo-github-6/</loc>
     
     <lastmod>2016-12-29T04:43:34.744Z</lastmod>
