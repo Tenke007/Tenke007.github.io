@@ -86,20 +86,20 @@
 
 
 
-<meta name="description" content="这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是一下几个zip函数。
+<meta name="description" content="这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是以下几个zip函数。
 zip_open()123zip_open(filename)zip_open() 函数打开 ZIP 文件以供读取。如果成功，则返回 zip 文件档案资源。如果失败，则返回 false
 zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php zip文件类操作实例">
 <meta property="og:url" content="http://blog.greeghost.com/2017/02/22/php-zip/index.html">
 <meta property="og:site_name" content="Tenken blog">
-<meta property="og:description" content="这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是一下几个zip函数。
+<meta property="og:description" content="这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是以下几个zip函数。
 zip_open()123zip_open(filename)zip_open() 函数打开 ZIP 文件以供读取。如果成功，则返回 zip 文件档案资源。如果失败，则返回 false
 zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
-<meta property="og:updated_time" content="2017-02-21T17:27:15.014Z">
+<meta property="og:updated_time" content="2017-02-21T17:33:06.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="php zip文件类操作实例">
-<meta name="twitter:description" content="这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是一下几个zip函数。
+<meta name="twitter:description" content="这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是以下几个zip函数。
 zip_open()123zip_open(filename)zip_open() 函数打开 ZIP 文件以供读取。如果成功，则返回 zip 文件档案资源。如果失败，则返回 false
 zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
 
@@ -424,7 +424,7 @@ zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
       
 
       
-        <p>这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是一下几个zip函数。</p>
+        <p>这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是以下几个zip函数。</p>
 <h3 id="zip-open"><a href="#zip-open" class="headerlink" title="zip_open()"></a>zip_open()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zip_open(filename)</div><div class="line">zip_open() 函数打开 ZIP 文件以供读取。</div><div class="line">如果成功，则返回 zip 文件档案资源。如果失败，则返回 false</div></pre></td></tr></table></figure>
 <h3 id="zip-read"><a href="#zip-read" class="headerlink" title="zip_read()"></a>zip_read()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zip_read(zip)</div><div class="line">zip_read() 函数读取打开的 zip 档案中的下一个文件。</div><div class="line">如果成功，则返回包含 zip 档案中一个文件的资源。如果没有更多的项目可供读取，则返回 false。</div></pre></td></tr></table></figure>
 <h3 id="zip-entry-open"><a href="#zip-entry-open" class="headerlink" title="zip_entry_open()"></a>zip_entry_open()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zip_entry_open(zip,zip_entry,mode)</div><div class="line">zip_entry_open() 函数打开一个 ZIP 档案项目以供读取。</div></pre></td></tr></table></figure>
@@ -442,11 +442,6 @@ zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
     <div>
       
         
-<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/wechat.png" alt="Tenken wechat" style="width: 200px; max-width: 100%;"/>
-    <div>扫一扫添加微信好友</div>
-</div>
-
 
       
     </div>
@@ -504,6 +499,10 @@ zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/25/php-other/" rel="prev" title="__FILE__与__DIR__与 getcwd()与$_SERVER['SCRIPT_FILENAME']之间的区别">
+                __FILE__与__DIR__与 getcwd()与$_SERVER['SCRIPT_FILENAME']之间的区别 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -596,7 +595,7 @@ zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -605,7 +604,7 @@ zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -614,7 +613,7 @@ zip_read()123zip_read(zip)zip_read() 函数读取打开的 zip">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

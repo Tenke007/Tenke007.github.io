@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.greeghost.com/"/>
-  <updated>2017-02-21T17:27:15.014Z</updated>
+  <updated>2017-02-25T11:40:13.772Z</updated>
   <id>http://blog.greeghost.com/</id>
   
   <author>
@@ -16,13 +16,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>__FILE__与__DIR__与 getcwd()与$_SERVER[&#39;SCRIPT_FILENAME&#39;]之间的区别</title>
+    <link href="http://blog.greeghost.com/2017/02/25/php-other/"/>
+    <id>http://blog.greeghost.com/2017/02/25/php-other/</id>
+    <published>2017-02-25T11:30:47.000Z</published>
+    <updated>2017-02-25T11:40:13.772Z</updated>
+    
+    <content type="html"><![CDATA[<p>要获取当前php脚本所在目录的绝对路径，可以下面通过四个方法：<br><strong>1、 __FILE__<br>2、 __DIR__<br>3、getcwd()<br>4、$_SERVER[‘SCRIPT_FILENAME’]</strong><br>下面通过实例来说明之间的区别：<br>脚本路径：D:\Soft\xampp\htdocs\test\test.php，代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">//PHP获取绝对路径方法比较</div><div class="line">//__FILE__ vs __DIR__ vs getcwd() vs <span class="variable">$_SERVER</span>[<span class="string">'SCRIPT_FILENAME'</span>]</div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">'===============当前执行脚本=================&lt;br/&gt;'</span>;</div><div class="line"></div><div class="line"><span class="variable">$a</span> = __FILE__;</div><div class="line"><span class="variable">$b</span> = __DIR__;</div><div class="line"><span class="variable">$c</span> = getcwd();</div><div class="line"><span class="variable">$d</span> = <span class="variable">$_SERVER</span>[<span class="string">'SCRIPT_FILENAME'</span>];</div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">'__FILE__='</span>.<span class="variable">$a</span>.<span class="string">'&lt;br/&gt;'</span>;</div><div class="line"><span class="built_in">echo</span> <span class="string">'__DIR__='</span>.<span class="variable">$b</span>.<span class="string">'&lt;br/&gt;'</span>;</div><div class="line"><span class="built_in">echo</span> <span class="string">'getcwd()='</span>.<span class="variable">$c</span>.<span class="string">'&lt;br/&gt;'</span>;</div><div class="line"><span class="built_in">echo</span> <span class="string">'$_SERVER["SCRIPT_FILENAME"]='</span>.<span class="variable">$d</span>.<span class="string">'&lt;br/&gt;'</span>;</div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">'===============被包含文件===================&lt;br/&gt;'</span>;</div><div class="line"></div><div class="line">include <span class="string">'include/inc.php'</span>;</div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>脚本路径：D:\Soft\xampp\htdocs\test\include\inc.php，代码如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">//PHP获取绝对路径方法比较</div><div class="line">//__FILE__ vs __DIR__ vs getcwd() vs <span class="variable">$_SERVER</span>[<span class="string">'SCRIPT_FILENAME'</span>]</div><div class="line"></div><div class="line"><span class="variable">$a</span> = __FILE__;</div><div class="line"><span class="variable">$b</span> = __DIR__;</div><div class="line"><span class="variable">$c</span> = getcwd();</div><div class="line"><span class="variable">$d</span> = <span class="variable">$_SERVER</span>[<span class="string">'SCRIPT_FILENAME'</span>];</div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">'__FILE__='</span>.<span class="variable">$a</span>.<span class="string">'&lt;br/&gt;'</span>;</div><div class="line"><span class="built_in">echo</span> <span class="string">'__DIR__='</span>.<span class="variable">$b</span>.<span class="string">'&lt;br/&gt;'</span>;</div><div class="line"><span class="built_in">echo</span> <span class="string">'getcwd()='</span>.<span class="variable">$c</span>.<span class="string">'&lt;br/&gt;'</span>;</div><div class="line"><span class="built_in">echo</span> <span class="string">'$_SERVER["SCRIPT_FILENAME"]='</span>.<span class="variable">$d</span>;</div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>运行结果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">===============当前执行脚本=================</div><div class="line">__FILE__=D:\Soft\xampp\htdocs\<span class="built_in">test</span>\test.php</div><div class="line">__DIR__=D:\Soft\xampp\htdocs\<span class="built_in">test</span></div><div class="line">getcwd()=D:\Soft\xampp\htdocs\<span class="built_in">test</span></div><div class="line"><span class="variable">$_SERVER</span>[<span class="string">"SCRIPT_FILENAME"</span>]=D:/Soft/xampp/htdocs/<span class="built_in">test</span>/test.php</div><div class="line">===============被包含文件===================</div><div class="line">__FILE__=D:\Soft\xampp\htdocs\<span class="built_in">test</span>\include\inc.php</div><div class="line">__DIR__=D:\Soft\xampp\htdocs\<span class="built_in">test</span>\include</div><div class="line">getcwd()=D:\Soft\xampp\htdocs\<span class="built_in">test</span></div><div class="line"><span class="variable">$_SERVER</span>[<span class="string">"SCRIPT_FILENAME"</span>]=D:/Soft/xampp/htdocs/<span class="built_in">test</span>/test.php</div><div class="line">复制代码</div></pre></td></tr></table></figure></p>
+<p><strong>结论：</strong><br>getcwd()获取的是当前运行脚本的目录，不管getcwd()是在被包含的文件里面还是在当前执行脚本文件里面，运行的结果不会发生任何变化。<br>__FILE__获取的是文件名称，如果用在被包含文件中，则返回被包含的文件名，如果直接用在当前运行脚本里面，则返回运行脚本的文件名称。<br>__DIR__获取的是文件名称目录，如果用在被包含文件中，则返回被包含的文件名目录，如果直接用在当前运行脚本里面，则返回运行脚本的文件名称目录。</p>
+<p>$_SERVER[‘SCRIPT_FILENAME’]获取的是当前运行脚本名称，不管$_SERVER[‘SCRIPT_FILENAME’]是在被包含的文件里面还是在当前执行脚本文件里面，运行的结果不会发生任何变化。</p>
+<p>区别：<br>dirname($_SERVER[‘SCRIPT_FILENAME’])与getcwd()效果一样，是获取当前运行脚本的目录。</p>
+<p>dirname(__FILE__)与__DIR__效果一样，获取的是文件名称目录，如果用在被包含文件中，则返回被包含的文件名目录，如果直接用在当前运行脚本里面，则返回运行脚本的文件名称目录。__DIR__是php5.3.0之后新增的，dirname与__FILE__是php4.0.2开始启用，效率上来说__DIR__比dirname(__FILE__)更高，如果php版本是5.3以上的，建议使用__DIR__，否则还是使用dirname(__FILE__)合适，避免程序出错。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;要获取当前php脚本所在目录的绝对路径，可以下面通过四个方法：&lt;br&gt;&lt;strong&gt;1、 __FILE__&lt;br&gt;2、 __DIR__&lt;br&gt;3、getcwd()&lt;br&gt;4、$_SERVER[‘SCRIPT_FILENAME’]&lt;/strong&gt;&lt;br&gt;下面通过实例来说明
+    
+    </summary>
+    
+      <category term="php" scheme="http://blog.greeghost.com/categories/php/"/>
+    
+      <category term="other" scheme="http://blog.greeghost.com/categories/php/other/"/>
+    
+    
+      <category term="php" scheme="http://blog.greeghost.com/tags/php/"/>
+    
+      <category term="other" scheme="http://blog.greeghost.com/tags/other/"/>
+    
+  </entry>
+  
+  <entry>
     <title>php zip文件类操作实例</title>
     <link href="http://blog.greeghost.com/2017/02/22/php-zip/"/>
     <id>http://blog.greeghost.com/2017/02/22/php-zip/</id>
     <published>2017-02-21T16:52:28.000Z</published>
-    <updated>2017-02-21T17:27:15.014Z</updated>
+    <updated>2017-02-21T17:33:06.480Z</updated>
     
-    <content type="html"><![CDATA[<p>这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是一下几个zip函数。</p>
+    <content type="html"><![CDATA[<p>这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是以下几个zip函数。</p>
 <h3 id="zip-open"><a href="#zip-open" class="headerlink" title="zip_open()"></a>zip_open()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zip_open(filename)</div><div class="line">zip_open() 函数打开 ZIP 文件以供读取。</div><div class="line">如果成功，则返回 zip 文件档案资源。如果失败，则返回 false</div></pre></td></tr></table></figure>
 <h3 id="zip-read"><a href="#zip-read" class="headerlink" title="zip_read()"></a>zip_read()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">zip_read(zip)</div><div class="line">zip_read() 函数读取打开的 zip 档案中的下一个文件。</div><div class="line">如果成功，则返回包含 zip 档案中一个文件的资源。如果没有更多的项目可供读取，则返回 false。</div></pre></td></tr></table></figure>
 <h3 id="zip-entry-open"><a href="#zip-entry-open" class="headerlink" title="zip_entry_open()"></a>zip_entry_open()</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zip_entry_open(zip,zip_entry,mode)</div><div class="line">zip_entry_open() 函数打开一个 ZIP 档案项目以供读取。</div></pre></td></tr></table></figure>
@@ -37,7 +70,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是一下几个zip函数。&lt;/p&gt;
+      &lt;p&gt;这些天闲着无聊搞一下php解压zip文件，自己动手写了一个zip封装程序。这里涉及到的知识主要是以下几个zip函数。&lt;/p&gt;
 &lt;h3 id=&quot;zip-open&quot;&gt;&lt;a href=&quot;#zip-open&quot; class=&quot;headerlink&quot; title=&quot;zip_open()
     
     </summary>
