@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.greeghost.com/"/>
-  <updated>2017-02-25T11:40:13.772Z</updated>
+  <updated>2017-03-04T06:28:00.798Z</updated>
   <id>http://blog.greeghost.com/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何安装Composer</title>
+    <link href="http://blog.greeghost.com/2017/03/04/php-composer/"/>
+    <id>http://blog.greeghost.com/2017/03/04/php-composer/</id>
+    <published>2017-03-04T05:29:44.394Z</published>
+    <updated>2017-03-04T06:28:00.798Z</updated>
+    
+    <content type="html"><![CDATA[<p>Composer 是 PHP5以上的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。比如：Laravel框架，yii框架都必须安装composer才能使用，下面说说composer如何安装。</p>
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>安装前请务必确保已经正确安装了 PHP。打开命令行窗口并执行 php -v 查看是否正确输出版本号。<br><img src="http://oitxstie2.bkt.clouddn.com/php-composer-1.png" alt=""></p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>打开命令行并执行下列命令安装最新版本的 Composer (以下指令摘自 <a href="https://getcomposer.org/download/" target="_blank" rel="external">https://getcomposer.org/download/</a> ，请前往查看最新的安装指令)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">php -r <span class="string">"readfile('https://getcomposer.org/installer');"</span> &gt; composer-setup.php</div><div class="line">php composer-setup.php</div><div class="line">php -r <span class="string">"unlink('composer-setup.php');"</span></div></pre></td></tr></table></figure></p>
+<p>执行第一条命令下载下来的 composer-setup.php 脚本将简单的检测 php.ini 中的参数设置，如果某些参数未正确设置则会给出警告；然后下载最新版本的 composer.phar 文件到当前目录。<br>上述 3 条命令的作用依次是：<br>下载安装脚本 － composer-setup.php － 到当前目录。<br>执行安装过程。<br>删除安装脚本。</p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><h4 id="局部安装"><a href="#局部安装" class="headerlink" title="局部安装"></a>局部安装</h4><p>上述下载 Composer 的过程正确执行完毕后，可以将 composer.phar 文件复制到任意目录（比如项目根目录下），然后通过 php composer.phar 指令即可使用 Composer 了！</p>
+<h4 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h4><p>全局安装是将 Composer 安装到系统环境变量 PATH 所包含的路径下面，然后就能够在命令行窗口中直接执行 composer 命令了。</p>
+<h5 id="Mac-或-Linux-系统："><a href="#Mac-或-Linux-系统：" class="headerlink" title="Mac 或 Linux 系统："></a>Mac 或 Linux 系统：</h5><p>打开命令行窗口并执行如下命令将前面下载的 composer.phar 文件移动到 /usr/local/bin/ 目录下面：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mv composer.phar /usr/<span class="built_in">local</span>/bin/composer</div></pre></td></tr></table></figure></p>
+<h5 id="Windows-系统："><a href="#Windows-系统：" class="headerlink" title="Windows 系统："></a>Windows 系统：</h5><p>找到并进入 PHP 的安装目录（和你在命令行中执行的 php 指令应该是同一套 PHP）。<br>将 composer.phar 复制到 PHP 的安装目录下面，也就是和 php.exe 在同一级目录。<br>在 PHP 安装目录下新建一个 composer.bat 文件，并将下列代码保存到此文件中。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@php <span class="string">"%~dp0composer.phar"</span> %*</div></pre></td></tr></table></figure></p>
+<p>最后重新打开一个命令行窗口试一试执行 composer –version 看看是否正确输出版本号。<br><img src="http://oitxstie2.bkt.clouddn.com/php-composer-2.png" alt=""></p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>提示：不要忘了经常执行 composer selfupdate 以保持 Composer 一直是最新版本哦！</p>
+<h3 id="如果觉得命令行安装麻烦可以用下面的傻瓜式安装（windows平台）"><a href="#如果觉得命令行安装麻烦可以用下面的傻瓜式安装（windows平台）" class="headerlink" title="如果觉得命令行安装麻烦可以用下面的傻瓜式安装（windows平台）"></a>如果觉得命令行安装麻烦可以用下面的傻瓜式安装（windows平台）</h3><p>下载并且运行 <a href="https://getcomposer.org/Composer-Setup.exe" target="_blank" rel="external">Composer-Setup.exe</a>，它将安装最新版本的 Composer ，并设置好系统的环境变量，因此你可以在任何目录下直接使用 composer 命令。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Composer 是 PHP5以上的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。比如：Laravel框架，yii框架都必须安装composer才能使用，下面说说composer如何安装。&lt;/p&gt;
+&lt;h3 id=&quot;第一步&quot;&gt;&lt;a href=
+    
+    </summary>
+    
+      <category term="php" scheme="http://blog.greeghost.com/categories/php/"/>
+    
+      <category term="composer" scheme="http://blog.greeghost.com/categories/php/composer/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>__FILE__与__DIR__与 getcwd()与$_SERVER[&#39;SCRIPT_FILENAME&#39;]之间的区别</title>
