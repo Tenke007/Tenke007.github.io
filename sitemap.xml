@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.greeghost.com/2017/03/06/Sorting/</loc>
+    
+    <lastmod>2017-03-05T16:36:47.899Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.greeghost.com/2017/03/04/php-composer/</loc>
     
     <lastmod>2017-03-04T08:11:14.013Z</lastmod>
