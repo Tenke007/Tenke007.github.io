@@ -1,0 +1,1007 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="hexo," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tenken blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="到了这一步，基本上已经拥有了一个很perfect的博客了，但是还是缺少一点第三方插件，还不算太完美。本文主要讲解几个重要的第三方插件：多说，搜索，404页面，用户访问记录，RSS和sitemap。
+多说评论1、打开多说网站，登陆多说（微博或qq快捷登录），创建站点。2、按下图进行输入创建评论站点。站点名称可以随便填，站点域名就填写博客域名，多说域名填写blog名，这个主题配置到时会用到（多说的sh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo+github教程之四：配置hexo next主题第三方插件">
+<meta property="og:url" content="http://blog.greeghost.com/2016/12/27/hexo-github-4/index.html">
+<meta property="og:site_name" content="Tenken blog">
+<meta property="og:description" content="到了这一步，基本上已经拥有了一个很perfect的博客了，但是还是缺少一点第三方插件，还不算太完美。本文主要讲解几个重要的第三方插件：多说，搜索，404页面，用户访问记录，RSS和sitemap。
+多说评论1、打开多说网站，登陆多说（微博或qq快捷登录），创建站点。2、按下图进行输入创建评论站点。站点名称可以随便填，站点域名就填写博客域名，多说域名填写blog名，这个主题配置到时会用到（多说的sh">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-1.png">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-2.png">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-3.png">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-4.png">
+<meta property="og:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-5.png">
+<meta property="og:updated_time" content="2016-12-27T16:09:40.199Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo+github教程之四：配置hexo next主题第三方插件">
+<meta name="twitter:description" content="到了这一步，基本上已经拥有了一个很perfect的博客了，但是还是缺少一点第三方插件，还不算太完美。本文主要讲解几个重要的第三方插件：多说，搜索，404页面，用户访问记录，RSS和sitemap。
+多说评论1、打开多说网站，登陆多说（微博或qq快捷登录），创建站点。2、按下图进行输入创建评论站点。站点名称可以随便填，站点域名就填写博客域名，多说域名填写blog名，这个主题配置到时会用到（多说的sh">
+<meta name="twitter:image" content="http://oitxstie2.bkt.clouddn.com/hexo-github-4-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '9bf23d4041c9f0ca85f1d3508d97c331',
+      author: 'Tenken'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.greeghost.com/2016/12/27/hexo-github-4/"/>
+
+
+
+
+
+  <title> hexo+github教程之四：配置hexo next主题第三方插件 | Tenken blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Tenken blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">爱好游戏的码农</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.greeghost.com/2016/12/27/hexo-github-4/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Tenken">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Tenken blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Tenken blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                hexo+github教程之四：配置hexo next主题第三方插件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-27T02:15:17+08:00">
+                2016-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/27/hexo-github-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/27/hexo-github-4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>&nbsp&nbsp阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>到了这一步，基本上已经拥有了一个很perfect的博客了，但是还是缺少一点第三方插件，还不算太完美。本文主要讲解几个重要的第三方插件：多说，搜索，404页面，用户访问记录，RSS和sitemap。</p>
+<h3 id="多说评论"><a href="#多说评论" class="headerlink" title="多说评论"></a>多说评论</h3><p>1、打开<a href="http://duoshuo.com/" target="_blank" rel="external">多说网站</a>，登陆多说（微博或qq快捷登录），创建站点。<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-4-1.png" alt="hexo"><br>2、按下图进行输入创建评论站点。<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-4-2.png" alt="hexo"><br><strong>站点名称</strong>可以随便填，<strong>站点域名</strong>就填写博客域名，<strong>多说域名</strong>填写blog名，这个主题配置到时会用到（多说的short_name）<br>3、创建完以后进入管理后台，在左侧菜单栏里找到工具，右侧代码里看到<code>short_name</code>，也就是刚才输入的多说域名。<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-4-3.png" alt="hexo"><br>4、打开 <strong>主题配置文件</strong>（themes\next\_config.yml），找到 duoshuo_shortname，写到后面。不同主题可能名字不一样，操作都是一样的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">duoshuo_shortname: tenke</div></pre></td></tr></table></figure></p>
+<p>5、设置多说评论显示UA以及博主，在<strong>主题配置文件</strong>找到以下配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">duoshuo_info:</div><div class="line">  ua_enable: <span class="literal">true</span>  <span class="comment">#是否显示ua</span></div><div class="line">  admin_enable: <span class="literal">true</span> <span class="comment">#是否显示博主</span></div><div class="line">  user_id: 123456789  <span class="comment">#多说用户id</span></div><div class="line">  admin_nickname: Tenken <span class="comment">#博主昵称自定义</span></div></pre></td></tr></table></figure></p>
+<p>多说的用户id其实就是用户秘钥，如图：<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-4-4.png" alt="hexo"><br>如果想要开启多说分享的，可以找到以下配置:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">duoshuo_share: <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p>好，多说评论配置完了，可以在本地查看一下是否已经生效了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo s -g</div></pre></td></tr></table></figure></p>
+<h3 id="博文搜索"><a href="#博文搜索" class="headerlink" title="博文搜索"></a>博文搜索</h3><p>hexo next主题有很多第三方搜索：Swiftype,微搜索,Local Search,Algolia这四种，这里我选择Local Search，至于原因就是这个比较简单，其他的都要申请账号什么的，麻烦。<br>1、安装 <code>hexo-generator-searchdb</code>，在站点的根目录下执行以下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-generator-searchdb --save</div></pre></td></tr></table></figure></p>
+<p>2、编辑 <strong>站点配置文件</strong>，新增以下内容到任意位置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">search:</div><div class="line">  path: search.xml</div><div class="line">  field: post</div><div class="line">  format: html</div><div class="line">  <span class="built_in">limit</span>: 10000</div></pre></td></tr></table></figure></p>
+<p>配置好，重新启动一下hexo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo s -g</div></pre></td></tr></table></figure></p>
+<p>应该会看到:<br><img src="http://oitxstie2.bkt.clouddn.com/hexo-github-4-5.png" alt="hexo"></p>
+<h3 id="配置404页面"><a href="#配置404页面" class="headerlink" title="配置404页面"></a>配置404页面</h3><p>404页面，我们选择腾讯公益404页面。在 <code>hexo/source</code> 文件夹下新建404.html。<br>编辑404.html页面，输入以下代码，保存。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta http-equiv=<span class="string">"content-type"</span> content=<span class="string">"text/html;charset=utf-8;"</span>/&gt;</div><div class="line">  &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge,chrome=1"</span> /&gt;</div><div class="line">  &lt;meta name=<span class="string">"robots"</span> content=<span class="string">"all"</span> /&gt;</div><div class="line">  &lt;meta name=<span class="string">"robots"</span> content=<span class="string">"index,follow"</span>/&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"http://www.qq.com/404/search_children.js"</span></div><div class="line">        charset=<span class="string">"utf-8"</span> homePageUrl=<span class="string">"your site url "</span></div><div class="line">        homePageName=<span class="string">"回到我的主页"</span>&gt;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>还要在<strong>站点配置文件</strong>开启404页面配置才能在博客页面看见404入口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">menu: <span class="comment">#菜单路径设置 如果hexo在二级目录放置要去掉/</span></div><div class="line">  home: /</div><div class="line">  categories: /categories <span class="comment">#分类</span></div><div class="line">  tags: /tags <span class="comment">#标签</span></div><div class="line">  archives: /archives <span class="comment">#归档</span></div><div class="line">  about: /about <span class="comment"># 关于我</span></div><div class="line">  <span class="comment">#sitemap: /sitemap.xml #这个可以不用开启，给搜索引擎用的，需要安装插件</span></div><div class="line">  commonweal: /404.html <span class="comment">#公益404</span></div></pre></td></tr></table></figure></p>
+<p>记得每次修改<strong>站点配置文件</strong>需要重启hexo服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ hexo s -g</div></pre></td></tr></table></figure></p>
+<h3 id="用户访问记录"><a href="#用户访问记录" class="headerlink" title="用户访问记录"></a>用户访问记录</h3><p>next主题有两个用户访问记录的插件，leancloud_visitors和busuanzi_count，leancloud_visitors这个需要到<a href="https://leancloud.cn" title="leancloud.cn" target="_blank" rel="external">https://leancloud.cn</a>注册获取AppID and AppKey，那么我们就选择busuanzi_count这个插件。<br>打开<strong>主题配置文件</strong>，找到以下配置，设置为true就可以了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">busuanzi_count: <span class="comment">#第三方用户访问插件，直接开启</span></div><div class="line">  <span class="comment"># count values only if the other configs are false</span></div><div class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></div><div class="line">  <span class="comment"># custom uv span for the whole site</span></div><div class="line">  site_uv: <span class="literal">true</span></div><div class="line">  site_uv_header: &lt;i class=<span class="string">"fa fa-user"</span>&gt;&lt;/i&gt;</div><div class="line">  site_uv_footer:</div><div class="line">  <span class="comment"># custom pv span for the whole site</span></div><div class="line">  site_pv: <span class="literal">true</span></div><div class="line">  site_pv_header: &lt;i class=<span class="string">"fa fa-eye"</span>&gt;&lt;/i&gt;</div><div class="line">  site_pv_footer:</div><div class="line">  <span class="comment"># custom pv span for one page only</span></div><div class="line">  page_pv: <span class="literal">true</span></div><div class="line">  page_pv_header: &lt;i class=<span class="string">"fa fa-file-o"</span>&gt;&lt;/i&gt;&amp;nbsp&amp;nbsp阅读数</div><div class="line">  page_pv_footer:</div></pre></td></tr></table></figure></p>
+<h3 id="RSS和sitemap"><a href="#RSS和sitemap" class="headerlink" title="RSS和sitemap"></a>RSS和sitemap</h3><p>1、安装RSS和sitemap插件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed --save</div><div class="line">npm install hexo-generator-sitemap --save</div></pre></td></tr></table></figure></p>
+<p>2、开启RSS和sitemap功能，编辑站点配置文件 <code>hexo/_config.yml</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">feed: </div><div class="line">  <span class="built_in">type</span>: atom  <span class="comment">#feed 类型 </span></div><div class="line">  path: atom.xml  <span class="comment">#rss 路径 </span></div><div class="line">  <span class="built_in">limit</span>: 20  <span class="comment">#在 rss 中最多生成的文章数(0显示所有)</span></div></pre></td></tr></table></figure></p>
+<p>NexT 中 RSS 有三个设置选项，满足特定的使用场景。 更改 主题配置文件，设定 rss 字段的值：</p>
+<ul>
+<li>false：禁用 RSS，不在页面上显示 RSS 连接。</li>
+<li>留空：使用 Hexo 生成的 Feed 链接。</li>
+<li>具体的链接地址：适用于已经烧制过 Feed 的情形。</li>
+</ul>
+<p>这里我们留空就行了。</p>
+<h4 id="到此，next的第三方插件就配置完了，如果还想要其他插件的请参考next配置文档"><a href="#到此，next的第三方插件就配置完了，如果还想要其他插件的请参考next配置文档" class="headerlink" title="到此，next的第三方插件就配置完了，如果还想要其他插件的请参考next配置文档"></a>到此，next的第三方插件就配置完了，如果还想要其他插件的请参考<a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">next配置文档</a></h4><h4 id="下一步开始配置github域名···"><a href="#下一步开始配置github域名···" class="headerlink" title="下一步开始配置github域名···"></a>下一步开始配置github域名···</h4>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我吃辣条吧~~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wxpay.png" alt="Tenken WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="Tenken Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"># hexo</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/27/hexo-github-3/" rel="next" title="hexo+github教程之三：hexo next主题配置">
+                <i class="fa fa-chevron-left"></i> hexo+github教程之三：hexo next主题配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/27/hexo-github-5/" rel="prev" title="hexo+github教程之五：github配置专属域名">
+                hexo+github教程之五：github配置专属域名 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/12/27/hexo-github-4/"
+     data-title="hexo+github教程之四：配置hexo next主题第三方插件"
+     data-content=""
+     data-url="http://blog.greeghost.com/2016/12/27/hexo-github-4/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/27/hexo-github-4/"
+           data-title="hexo+github教程之四：配置hexo next主题第三方插件" data-url="http://blog.greeghost.com/2016/12/27/hexo-github-4/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Tenken" />
+          <p class="site-author-name" itemprop="name">Tenken</p>
+          <p class="site-description motion-element" itemprop="description">各种宅，各种懒，爱好游戏的码农</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.greeghost.com" title="极客幽灵" target="_blank">极客幽灵</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://addon.discuz.com/?@24443.developer" title="discuz开发者" target="_blank">discuz开发者</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多说评论"><span class="nav-number">1.</span> <span class="nav-text">多说评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#博文搜索"><span class="nav-number">2.</span> <span class="nav-text">博文搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置404页面"><span class="nav-number">3.</span> <span class="nav-text">配置404页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户访问记录"><span class="nav-number">4.</span> <span class="nav-text">用户访问记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RSS和sitemap"><span class="nav-number">5.</span> <span class="nav-text">RSS和sitemap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#到此，next的第三方插件就配置完了，如果还想要其他插件的请参考next配置文档"><span class="nav-number">5.1.</span> <span class="nav-text">到此，next的第三方插件就配置完了，如果还想要其他插件的请参考next配置文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下一步开始配置github域名···"><span class="nav-number">5.2.</span> <span class="nav-text">下一步开始配置github域名···</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tenken</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"tenke"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+</body>
+</html>
