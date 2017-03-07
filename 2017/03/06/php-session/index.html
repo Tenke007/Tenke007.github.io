@@ -86,16 +86,16 @@
 
 
 
-<meta name="description" content="● session.cookie_lifetime=0。 0 表示特殊含义，它告知浏览器不要持久化存储 cookie 数据。 也即，关闭浏览器的时候，会话 ID cookie 会被立即删除。 如果将此项设置为非 0 的值，可能会导致会话 ID 被其他用户使用。 大部分应用应该把此项设置为“0”。 如果应用中有自动登录的功能，请自行实现一种更加安全的方式，而不要使用会话 ID 来完成自动登录。">
+<meta name="description" content="php.ini中关于Session安全部分的说明  ● session.cookie_lifetime=0。 0 表示特殊含义，它告知浏览器不要持久化存储 cookie 数据。 也即，关闭浏览器的时候，会话 ID cookie 会被立即删除。 如果将此项设置为非 0 的值，可能会导致会话 ID 被其他用户使用。 大部分应用应该把此项设置为“0”。 如果应用中有自动登录的功能，请自行实现一种更加安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP Session会话和安全">
 <meta property="og:url" content="http://blog.greeghost.com/2017/03/06/php-session/index.html">
 <meta property="og:site_name" content="Tenken blog">
-<meta property="og:description" content="● session.cookie_lifetime=0。 0 表示特殊含义，它告知浏览器不要持久化存储 cookie 数据。 也即，关闭浏览器的时候，会话 ID cookie 会被立即删除。 如果将此项设置为非 0 的值，可能会导致会话 ID 被其他用户使用。 大部分应用应该把此项设置为“0”。 如果应用中有自动登录的功能，请自行实现一种更加安全的方式，而不要使用会话 ID 来完成自动登录。">
-<meta property="og:updated_time" content="2017-03-06T13:39:12.534Z">
+<meta property="og:description" content="php.ini中关于Session安全部分的说明  ● session.cookie_lifetime=0。 0 表示特殊含义，它告知浏览器不要持久化存储 cookie 数据。 也即，关闭浏览器的时候，会话 ID cookie 会被立即删除。 如果将此项设置为非 0 的值，可能会导致会话 ID 被其他用户使用。 大部分应用应该把此项设置为“0”。 如果应用中有自动登录的功能，请自行实现一种更加安全">
+<meta property="og:updated_time" content="2017-03-06T13:45:58.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP Session会话和安全">
-<meta name="twitter:description" content="● session.cookie_lifetime=0。 0 表示特殊含义，它告知浏览器不要持久化存储 cookie 数据。 也即，关闭浏览器的时候，会话 ID cookie 会被立即删除。 如果将此项设置为非 0 的值，可能会导致会话 ID 被其他用户使用。 大部分应用应该把此项设置为“0”。 如果应用中有自动登录的功能，请自行实现一种更加安全的方式，而不要使用会话 ID 来完成自动登录。">
+<meta name="twitter:description" content="php.ini中关于Session安全部分的说明  ● session.cookie_lifetime=0。 0 表示特殊含义，它告知浏览器不要持久化存储 cookie 数据。 也即，关闭浏览器的时候，会话 ID cookie 会被立即删除。 如果将此项设置为非 0 的值，可能会导致会话 ID 被其他用户使用。 大部分应用应该把此项设置为“0”。 如果应用中有自动登录的功能，请自行实现一种更加安全">
 
 
 
@@ -418,7 +418,7 @@
       
 
       
-        <p>  ● session.cookie_lifetime=0。 0 表示特殊含义，它告知浏览器不要持久化存储 cookie 数据。 也即，关闭浏览器的时候，会话 ID cookie 会被立即删除。 如果将此项设置为非 0 的值，可能会导致会话 ID 被其他用户使用。 大部分应用应该把此项设置为“0”。 如果应用中有自动登录的功能，请自行实现一种更加安全的方式，而不要使用会话 ID 来完成自动登录。</p>
+        <h3 id="php-ini中关于Session安全部分的说明"><a href="#php-ini中关于Session安全部分的说明" class="headerlink" title="php.ini中关于Session安全部分的说明"></a>php.ini中关于Session安全部分的说明</h3><p>  ● session.cookie_lifetime=0。 0 表示特殊含义，它告知浏览器不要持久化存储 cookie 数据。 也即，关闭浏览器的时候，会话 ID cookie 会被立即删除。 如果将此项设置为非 0 的值，可能会导致会话 ID 被其他用户使用。 大部分应用应该把此项设置为“0”。 如果应用中有自动登录的功能，请自行实现一种更加安全的方式，而不要使用会话 ID 来完成自动登录。</p>
 <p>  ● session.use_cookies=On 并且 session.use_only_cookies=On。 虽然 HTTP cookie 存在一些问题， 但是它确实是实现会话 ID 管理的优选方案。 尽可能的仅使用 cookie 来进行会话 ID 管理， 而且大部分应用也确实是只使用 cookie 来记录会话 ID 的。</p>
 <p>  ● session.use_strict_mode=On。 此设置防止会话模块使用未初始化的会话 ID。 也就是说， 会话模块仅接受由它自己创建的有效的会话 ID， 而拒绝由用户自己提供的会话 ID。 使用 JavaScript 对 cookie 进行注入 就可以实现对会话 ID 的注入， 甚至可以在 URL 的查询字符串中或者表单参数中实现会话 ID 的注入。 大部分应用没理由也不应该接受由用户提供的未经初始化的会话 ID。</p>
 <p>  ● session.cookie_httponly=On。 禁止 JavaScript 访问会话 cookie。 此设置项可以保护 cookie 不被 JavaScript 窃取。 虽然可以使用会话 ID 来作为防范跨站请求伪造（CSRF）的关键数据， 但是不建议你这么做。 例如，攻击者可以把 HTML 源代码保存下来并且发送给其他用户。 为了安全起见， 开发者不应该在 web 页面中显示会话 ID。 几乎所有的应用都应该对会话 ID cookie 设置 httponly 为 On。</p>
@@ -571,8 +571,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -653,6 +662,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#php-ini中关于Session安全部分的说明"><span class="nav-number">1.</span> <span class="nav-text">php.ini中关于Session安全部分的说明</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
