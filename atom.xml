@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.greeghost.com/"/>
-  <updated>2017-03-07T05:34:55.428Z</updated>
+  <updated>2017-03-08T10:15:26.371Z</updated>
   <id>http://blog.greeghost.com/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信扫码登录第三方网站的两种实现思路</title>
+    <link href="http://blog.greeghost.com/2017/03/08/wechat-scan-login/"/>
+    <id>http://blog.greeghost.com/2017/03/08/wechat-scan-login/</id>
+    <published>2017-03-08T09:59:34.000Z</published>
+    <updated>2017-03-08T10:15:26.371Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="一、利用微信公众服务号带参数二维码功能实现微信扫码登录。（mp-weixin-qq-com）"><a href="#一、利用微信公众服务号带参数二维码功能实现微信扫码登录。（mp-weixin-qq-com）" class="headerlink" title="一、利用微信公众服务号带参数二维码功能实现微信扫码登录。（mp.weixin.qq.com）"></a>一、利用微信公众服务号带参数二维码功能实现微信扫码登录。（mp.weixin.qq.com）</h3><p>原理思路：<br><img src="http://oitxstie2.bkt.clouddn.com/wechat-login-1.png" alt=""><br>1、通过调用公众号带参数二维码接口产生二维码，同时在数据表中保存scene_id(场景值)<br>2、用户扫描带参数二维码进入微信公众号，未关注则显示关注，已关注则直接进入公众号<br>3、微信公众号后台接收微信推送关注事件或者扫码事件，获取用户的openid以及scene_id(场景值)，然后保存openid到对应的scene_id记录表中。<br>4、前端通过ajax长轮循方式去找scene_id记录表中的openid，如果有openid则进行下一步判断：注册（通过openid调用接口来获取用户信息）、登录或者是绑定账号，如果没有openid则间隔一段时间又重新发起请求。</p>
+<h3 id="二、微信开放平台下网站应用的一种接口实现的功能。（open-weixin-qq-com）"><a href="#二、微信开放平台下网站应用的一种接口实现的功能。（open-weixin-qq-com）" class="headerlink" title="二、微信开放平台下网站应用的一种接口实现的功能。（open.weixin.qq.com）"></a>二、微信开放平台下网站应用的一种接口实现的功能。（open.weixin.qq.com）</h3><p>原理思路：<br><img src="http://oitxstie2.bkt.clouddn.com/wechat-login-2.png" alt=""><br>1、在微信开放平台注册开发者帐号，并拥有一个已审核通过的网站应用，并获得相应的AppID和AppSecret，申请微信登录且通过审核后，可开始接入流程。<br>2、在微信用户授权登录已接入微信OAuth2.0的第三方应用后，第三方可以获取到用户的接口调用凭证（access_token），通过access_token可以进行微信开放平台授权关系接口调用，从而可实现获取微信用户基本开放信息和帮助用户实现基础开放功能等。<br>微信OAuth2.0授权登录目前支持authorization_code模式，适用于拥有server端的应用授权。该模式整体流程为：<br>（1）第三方发起微信授权登录请求，微信用户允许授权第三方应用后，微信会拉起应用或重定向到第三方网站，并且带上授权临时票据code参数；<br>（2）通过code参数加上AppID和AppSecret等，通过API换取access_token；<br>（3）通过access_token进行接口调用，获取用户基本数据资源或帮助用户实现基本操作。</p>
+<h3 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h3><p>第一种方式是微信的开放平台的接口还没出来之前的一种实现逻辑思路，技术点实现起来麻烦，网站要跟公众号后台对接实现数据更新，还需要轮询判断用户有没有扫码。</p>
+<p>第二种方式显然简单方便，只需要微信开放平台开发者帐号，开发流程和公众号网页授权原理一样，用户授权，就可以直接调接口获取用户的信息来完成注册或者登录。开发者只需要写好回调接口，不需要判断用户有没有扫码。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;一、利用微信公众服务号带参数二维码功能实现微信扫码登录。（mp-weixin-qq-com）&quot;&gt;&lt;a href=&quot;#一、利用微信公众服务号带参数二维码功能实现微信扫码登录。（mp-weixin-qq-com）&quot; class=&quot;headerlink&quot; title=&quot;
+    
+    </summary>
+    
+      <category term="weixin" scheme="http://blog.greeghost.com/categories/weixin/"/>
+    
+      <category term="登录" scheme="http://blog.greeghost.com/categories/weixin/%E7%99%BB%E5%BD%95/"/>
+    
+    
+      <category term="weixin" scheme="http://blog.greeghost.com/tags/weixin/"/>
+    
+      <category term="登录" scheme="http://blog.greeghost.com/tags/%E7%99%BB%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP Session会话和安全</title>
