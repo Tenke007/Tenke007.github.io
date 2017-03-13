@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.greeghost.com/"/>
-  <updated>2017-03-13T06:05:59.643Z</updated>
+  <updated>2017-03-13T06:20:21.938Z</updated>
   <id>http://blog.greeghost.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://blog.greeghost.com/2017/03/13/miaosha/"/>
     <id>http://blog.greeghost.com/2017/03/13/miaosha/</id>
     <published>2017-03-13T05:54:21.000Z</published>
-    <updated>2017-03-13T06:05:59.643Z</updated>
+    <updated>2017-03-13T06:20:21.938Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://oitxstie2.bkt.clouddn.com/miaosha.png" alt=""></p>
 <h3 id="秒杀系统说明"><a href="#秒杀系统说明" class="headerlink" title="秒杀系统说明"></a>秒杀系统说明</h3><ol>
@@ -30,6 +30,7 @@
 <li>秒杀时间一到，就执行定时入库脚步，如果商品还没秒杀完，程序休眠1秒再继续执行入库</li>
 <li>设定支付时间是15分钟或者是30分钟，定时执行取消订单脚步，然后放出库存继续抢购。</li>
 </ol>
+<h3 id="可能出现问题"><a href="#可能出现问题" class="headerlink" title="可能出现问题"></a>可能出现问题</h3><p>1、消息队列系统可能成为性能瓶颈<br>2、商品超拍问题，可能在支付页面会出现直接读DB的现象（这个数量应该会比较少）</p>
 ]]></content>
     
     <summary type="html">
