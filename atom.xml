@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.greeghost.com/"/>
-  <updated>2017-03-13T06:23:35.796Z</updated>
+  <updated>2017-03-30T13:29:39.654Z</updated>
   <id>http://blog.greeghost.com/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>php文字水印过长自动换行算法</title>
+    <link href="http://blog.greeghost.com/2017/03/30/php-gd-font/"/>
+    <id>http://blog.greeghost.com/2017/03/30/php-gd-font/</id>
+    <published>2017-03-30T12:48:29.000Z</published>
+    <updated>2017-03-30T13:29:39.654Z</updated>
+    
+    <content type="html"><![CDATA[<p>这几天搞文字水印遇到一个问题，文字过长如何换行。如果文字过长，超出了图片的宽度，文字就无法显示完整，因为文字是不确定的，文字的位置也不是固定的，所以程序上不能写死，必须要通过程序自动计算换行。</p>
+<h3 id="下面说说解决思路："><a href="#下面说说解决思路：" class="headerlink" title="下面说说解决思路："></a>下面说说解决思路：</h3><ol>
+<li>把字符串拆分成一个个文字，然后再一个个拼接计算文字的长度，如果超过指定的长度就换行。</li>
+<li>这里涉及到两个技术点，文字拆分，文字长度计算。</li>
+</ol>
+<h3 id="文字拆分"><a href="#文字拆分" class="headerlink" title="文字拆分"></a>文字拆分</h3><p>文字拆分有很多种方法，可以通过计算ASCII码来拆分文字，原理跟截字一样，也可以通过正则来匹配。这里使用的是正则匹配。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> chararray(<span class="variable">$str</span>,<span class="variable">$charset</span>=<span class="string">"utf-8"</span>)&#123;</div><div class="line">    <span class="variable">$re</span>[<span class="string">'utf-8'</span>]   = <span class="string">"/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]&#123;2&#125;|[\xf0-\xff][\x80-\xbf]&#123;3&#125;/"</span>;</div><div class="line">    <span class="variable">$re</span>[<span class="string">'gb2312'</span>] = <span class="string">"/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/"</span>;</div><div class="line">    <span class="variable">$re</span>[<span class="string">'gbk'</span>]    = <span class="string">"/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/"</span>;</div><div class="line">    <span class="variable">$re</span>[<span class="string">'big5'</span>]   = <span class="string">"/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/"</span>;</div><div class="line">    preg_match_all(<span class="variable">$re</span>[<span class="variable">$charset</span>], <span class="variable">$str</span>, <span class="variable">$match</span>);</div><div class="line">    <span class="built_in">return</span> <span class="variable">$match</span>[0];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="计算文字长度"><a href="#计算文字长度" class="headerlink" title="计算文字长度"></a>计算文字长度</h3><p>计算文字长度可以使用GD函数imagettfbbox，它会返回8个参数，分别是文字的左下角x,y坐标，右下角x,y坐标，右上角x,y坐标，左上角x,y坐标，这样就可以算出文字的长度。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//<span class="variable">$fontsize</span>字体大小 <span class="variable">$fontangle</span>字体角度 <span class="variable">$ttfpath</span>字体路径 <span class="variable">$char</span>字符串</div><div class="line"><span class="keyword">function</span> charwidth(<span class="variable">$fontsize</span>,<span class="variable">$fontangle</span>,<span class="variable">$ttfpath</span>,<span class="variable">$char</span>)&#123;</div><div class="line">    <span class="variable">$box</span> = @imagettfbbox(<span class="variable">$fontsize</span>,<span class="variable">$fontangle</span>,<span class="variable">$ttfpath</span>,<span class="variable">$char</span>);</div><div class="line">    <span class="variable">$width</span> = abs(max(<span class="variable">$box</span>[2], <span class="variable">$box</span>[4]) - min(<span class="variable">$box</span>[0], <span class="variable">$box</span>[6]));</div><div class="line">    <span class="built_in">return</span> <span class="variable">$width</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="两个算法合并成最终目的"><a href="#两个算法合并成最终目的" class="headerlink" title="两个算法合并成最终目的"></a>两个算法合并成最终目的</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//<span class="variable">$fontsize</span>字体大小 <span class="variable">$fontangle</span>字体角度 <span class="variable">$ttfpath</span>字体路径 <span class="variable">$str</span>字符串 <span class="variable">$width</span>指定宽度</div><div class="line"><span class="keyword">function</span> autowrap(<span class="variable">$fontsize</span>,<span class="variable">$fontangle</span>,<span class="variable">$ttfpath</span>,<span class="variable">$str</span>,<span class="variable">$width</span>,<span class="variable">$charset</span>=<span class="string">'utf-8'</span>)&#123;</div><div class="line">    <span class="variable">$_string</span> = <span class="string">""</span>;</div><div class="line">    <span class="variable">$_temp</span> = <span class="string">""</span>;</div><div class="line">    <span class="variable">$strArr</span> = chararray(<span class="variable">$str</span>);</div><div class="line">    foreach (<span class="variable">$strArr</span> as <span class="variable">$k</span>=&gt;<span class="variable">$v</span>)&#123;</div><div class="line">    	<span class="variable">$_temp</span> .= <span class="variable">$v</span>;</div><div class="line">        <span class="variable">$w</span> = charwidth(<span class="variable">$fontsize</span>,<span class="variable">$fontangle</span>,<span class="variable">$ttfpath</span>,<span class="variable">$_temp</span>);</div><div class="line">        <span class="keyword">if</span> ((<span class="variable">$w</span> &gt;= <span class="variable">$width</span>) &amp;&amp; (<span class="variable">$v</span> !== <span class="string">""</span>))&#123;</div><div class="line">            <span class="variable">$_string</span> .= <span class="string">"\n"</span>;</div><div class="line">            <span class="variable">$_temp</span> = <span class="string">""</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="variable">$_string</span> .= <span class="variable">$v</span>;</div><div class="line">        <span class="variable">$w</span> = 0;</div><div class="line">    &#125;</div><div class="line">    <span class="variable">$_string</span> = mb_convert_encoding(<span class="variable">$_string</span>, <span class="string">"html-entities"</span>,<span class="string">"utf-8"</span> );</div><div class="line">    <span class="built_in">return</span> <span class="variable">$_string</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">使用方法：</div><div class="line"><span class="variable">$str</span> = autowrap(10,0,<span class="string">'./msyh.ttf'</span>,<span class="string">'这是一个测试这是一个测试这是一个测试'</span>,50);</div></pre></td></tr></table></figure>
+<p>这里要注意一下：如果把字符串拆分出来一个个文字来计算长度，再相加得到的最后长度与实际一行文字的长度不一致，所以上面的算法是一个个拼接上来计算，而不是一个个文字计算再相加。为了让实际效果更好一些，指定的宽度$width要比图片的宽度要小10px可能会好一点。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这几天搞文字水印遇到一个问题，文字过长如何换行。如果文字过长，超出了图片的宽度，文字就无法显示完整，因为文字是不确定的，文字的位置也不是固定的，所以程序上不能写死，必须要通过程序自动计算换行。&lt;/p&gt;
+&lt;h3 id=&quot;下面说说解决思路：&quot;&gt;&lt;a href=&quot;#下面说说解决思
+    
+    </summary>
+    
+      <category term="php" scheme="http://blog.greeghost.com/categories/php/"/>
+    
+      <category term="gd" scheme="http://blog.greeghost.com/categories/php/gd/"/>
+    
+    
+      <category term="php" scheme="http://blog.greeghost.com/tags/php/"/>
+    
+      <category term="gd" scheme="http://blog.greeghost.com/tags/gd/"/>
+    
+  </entry>
   
   <entry>
     <title>如何设计秒杀系统</title>

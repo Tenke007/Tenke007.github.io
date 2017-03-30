@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[php文字水印过长自动换行算法]]></title>
+      <url>%2F2017%2F03%2F30%2Fphp-gd-font%2F</url>
+      <content type="text"><![CDATA[这几天搞文字水印遇到一个问题，文字过长如何换行。如果文字过长，超出了图片的宽度，文字就无法显示完整，因为文字是不确定的，文字的位置也不是固定的，所以程序上不能写死，必须要通过程序自动计算换行。 下面说说解决思路： 把字符串拆分成一个个文字，然后再一个个拼接计算文字的长度，如果超过指定的长度就换行。 这里涉及到两个技术点，文字拆分，文字长度计算。 文字拆分文字拆分有很多种方法，可以通过计算ASCII码来拆分文字，原理跟截字一样，也可以通过正则来匹配。这里使用的是正则匹配。12345678function chararray($str,$charset="utf-8")&#123; $re['utf-8'] = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]&#123;2&#125;|[\xf0-\xff][\x80-\xbf]&#123;3&#125;/"; $re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/"; $re['gbk'] = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/"; $re['big5'] = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/"; preg_match_all($re[$charset], $str, $match); return $match[0];&#125; 计算文字长度计算文字长度可以使用GD函数imagettfbbox，它会返回8个参数，分别是文字的左下角x,y坐标，右下角x,y坐标，右上角x,y坐标，左上角x,y坐标，这样就可以算出文字的长度。123456//$fontsize字体大小 $fontangle字体角度 $ttfpath字体路径 $char字符串function charwidth($fontsize,$fontangle,$ttfpath,$char)&#123; $box = @imagettfbbox($fontsize,$fontangle,$ttfpath,$char); $width = abs(max($box[2], $box[4]) - min($box[0], $box[6])); return $width;&#125; 两个算法合并成最终目的123456789101112131415161718192021//$fontsize字体大小 $fontangle字体角度 $ttfpath字体路径 $str字符串 $width指定宽度function autowrap($fontsize,$fontangle,$ttfpath,$str,$width,$charset='utf-8')&#123; $_string = ""; $_temp = ""; $strArr = chararray($str); foreach ($strArr as $k=&gt;$v)&#123; $_temp .= $v; $w = charwidth($fontsize,$fontangle,$ttfpath,$_temp); if (($w &gt;= $width) &amp;&amp; ($v !== ""))&#123; $_string .= "\n"; $_temp = ""; &#125; $_string .= $v; $w = 0; &#125; $_string = mb_convert_encoding($_string, "html-entities","utf-8" ); return $_string;&#125;使用方法：$str = autowrap(10,0,'./msyh.ttf','这是一个测试这是一个测试这是一个测试',50); 这里要注意一下：如果把字符串拆分出来一个个文字来计算长度，再相加得到的最后长度与实际一行文字的长度不一致，所以上面的算法是一个个拼接上来计算，而不是一个个文字计算再相加。为了让实际效果更好一些，指定的宽度$width要比图片的宽度要小10px可能会好一点。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[如何设计秒杀系统]]></title>
       <url>%2F2017%2F03%2F13%2Fmiaosha%2F</url>
       <content type="text"><![CDATA[秒杀系统说明 抢购页面到点才能进入，并且需要输入验证码 点击抢购按钮，AJAX异步请求后台，通过计数器判断商品是否已经超拍，如果没有超拍，则入队列，并且以KV形式保存用户抢购信息，延迟几秒跳转到支付页面，如果超拍，则直接返回显示商品已经秒杀完 为了防止并发超拍，支付页面需要判断消息队列长度是否超拍，并且读取KV保存的信息，如果没有超拍则直接让用户支付，如果超拍，则需要进一步读取数据库，如果数据库有记录，则直接让用户支付，如果数据库没记录，则应该是超拍，弹窗提示商品已经秒杀完。 秒杀时间一到，就执行定时入库脚步，如果商品还没秒杀完，程序休眠1秒再继续执行入库 设定支付时间是15分钟或者是30分钟，定时执行取消订单脚步，然后放出库存继续抢购。 可能出现问题 消息队列系统可能成为性能瓶颈 商品超拍问题，可能在支付页面会出现直接读DB的现象（这个数量应该会比较少）]]></content>
