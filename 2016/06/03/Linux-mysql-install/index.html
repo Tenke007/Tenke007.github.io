@@ -1,0 +1,970 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux,mysql," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tenken blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Linux环境下安装MySQL有很多方式，例如：源码编译安装，glibc版的二进制包安装，还有yum方式安装。yum方式安装最为方便，但是版本一般比较老，源码编译安装相对来讲比较麻烦，要想安装好依赖库，缺少一个都可能编译出错，glibc版本相对比较方便，只要指定对应的位置一般都不会出错。本文主要就是讲glibc版本的安装。
+准备工作1、下载好mysql-5.7.15-linux-glibc2.5-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux安装glibc版mysql-5.7.15">
+<meta property="og:url" content="http://blog.greeghost.com/2016/06/03/Linux-mysql-install/index.html">
+<meta property="og:site_name" content="Tenken blog">
+<meta property="og:description" content="Linux环境下安装MySQL有很多方式，例如：源码编译安装，glibc版的二进制包安装，还有yum方式安装。yum方式安装最为方便，但是版本一般比较老，源码编译安装相对来讲比较麻烦，要想安装好依赖库，缺少一个都可能编译出错，glibc版本相对比较方便，只要指定对应的位置一般都不会出错。本文主要就是讲glibc版本的安装。
+准备工作1、下载好mysql-5.7.15-linux-glibc2.5-">
+<meta property="og:updated_time" content="2017-04-03T18:19:12.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux安装glibc版mysql-5.7.15">
+<meta name="twitter:description" content="Linux环境下安装MySQL有很多方式，例如：源码编译安装，glibc版的二进制包安装，还有yum方式安装。yum方式安装最为方便，但是版本一般比较老，源码编译安装相对来讲比较麻烦，要想安装好依赖库，缺少一个都可能编译出错，glibc版本相对比较方便，只要指定对应的位置一般都不会出错。本文主要就是讲glibc版本的安装。
+准备工作1、下载好mysql-5.7.15-linux-glibc2.5-">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.greeghost.com/2016/06/03/Linux-mysql-install/"/>
+
+
+
+
+
+  <title> Linux安装glibc版mysql-5.7.15 | Tenken blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Tenken blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">技术-不进则退</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.greeghost.com/2016/06/03/Linux-mysql-install/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Tenken">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Tenken blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Tenken blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux安装glibc版mysql-5.7.15
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-03T01:02:15+08:00">
+                2016-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2016/06/03/Linux-mysql-install/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>&nbsp&nbsp阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Linux环境下安装MySQL有很多方式，例如：源码编译安装，glibc版的二进制包安装，还有yum方式安装。yum方式安装最为方便，但是版本一般比较老，源码编译安装相对来讲比较麻烦，要想安装好依赖库，缺少一个都可能编译出错，glibc版本相对比较方便，只要指定对应的位置一般都不会出错。本文主要就是讲glibc版本的安装。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>1、下载好mysql-5.7.15-linux-glibc2.5-i686.tar.gz安装包，下载地址可以是MySQL官网，也可以是国内的镜像地址，如：<a href="http://mirrors.sohu.com/mysql/" target="_blank" rel="external">http://mirrors.sohu.com/mysql/</a>,下载最新版即可。<br>2、将mysql的安装包上传到服务器，路径：/usr/local/</p>
+<h3 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">##进入安装目录</span></div><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</div><div class="line"><span class="comment">##解压安装包</span></div><div class="line">tar -xvf mysql-5.7.15-linux-glibc2.5-i686.tar.gz</div><div class="line"><span class="comment">##将安装包命名为MySQL</span></div><div class="line">mv mysql-5.7.15-linux-glibc2.5 mysql</div><div class="line"><span class="comment">##创建MySQL用户组</span></div><div class="line">groupadd mysql</div><div class="line"><span class="comment">##创建MySQL用户</span></div><div class="line">useradd -g mysql mysql <span class="_">-s</span> /bin/<span class="literal">false</span></div><div class="line"><span class="comment">##创建MySQL的data目录（这个可以自定义）</span></div><div class="line">mkdir -p /opt/mysql/data</div><div class="line"><span class="comment">##改变目录的所有者</span></div><div class="line">chown -R mysql:mysql /opt/mysql/</div><div class="line"><span class="comment">##进入MySQL目录开始安装</span></div><div class="line"><span class="built_in">cd</span> mysql</div><div class="line">./bin/mysqld --user=mysql --basedir=/usr/<span class="built_in">local</span>/mysql --datadir=/opt/mysql/data --initialize</div><div class="line"></div><div class="line"><span class="comment">##会出现下面提示，记住root账号的初始密码：i&lt;VzkKS)P9dH，修改密码是要用到</span></div><div class="line">2016-06-2T02:18:23.437852Z 0 [Warning] InnoDB: New <span class="built_in">log</span> files created, LSN=45790</div><div class="line">2016-06-2T02:18:23.718104Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.</div><div class="line">2016-06-2T02:18:23.866501Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this</div><div class="line">     server has been started. Generating a new UUID: 9731b834-3<span class="built_in">cd</span>6-11e6-8654-fcaa14e34b30.</div><div class="line">2016-06-2T02:18:23.896540Z 0 [Warning] Gtid table is not ready to be used. Table <span class="string">'mysql.gtid_executed'</span> cannot be opened.</div><div class="line">2016-06-2T02:18:23.898416Z 1 [Note] A temporary password is generated <span class="keyword">for</span> root@localhost: i&lt;VzkKS)P9dH</div><div class="line"></div><div class="line"><span class="comment">##到了这里已经成功了一半</span></div><div class="line"><span class="comment">##为了避免启动出错，需要修改一下启动文件</span></div><div class="line">vi support-files/mysql.server</div><div class="line"><span class="comment">##找到basedir和datadir,修改为安装目录和指定的data目录</span></div><div class="line">basedir=/usr/<span class="built_in">local</span>/mysql</div><div class="line">datadir=/opt/mysql/data</div><div class="line"><span class="comment">##保存退出</span></div><div class="line"><span class="comment">##拷贝配置文件到/etc/下</span></div><div class="line">cp support-files/my-default.cnf /etc/my.cnf</div><div class="line"><span class="comment">##编辑my.cnf</span></div><div class="line">vi /etc/my.cnf</div><div class="line"><span class="comment">##添加下面内容</span></div><div class="line">[mysqld]</div><div class="line">basedir=/usr/<span class="built_in">local</span>/mysql</div><div class="line">datadir=/opt/mysql/data</div><div class="line">user=mysql</div><div class="line">port=3306</div><div class="line"><span class="comment">##把sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES这一句去掉（避免启动出错）</span></div><div class="line"><span class="comment">##保存退出</span></div><div class="line"><span class="comment">##拷贝启动文件到/etc/init.d/</span></div><div class="line">cp support-files/mysql.server /etc/init.d/mysql</div><div class="line"><span class="comment">##添加执行权限</span></div><div class="line">chmod +x /etc/init.d/mysql</div><div class="line"><span class="comment">##添加开启启动MySQL</span></div><div class="line">chkconfig --add mysql</div><div class="line">chkconfig mysql on</div><div class="line"><span class="comment">##启动MySQL测试一下</span></div><div class="line">service mysql start</div><div class="line"><span class="comment">##看到这一句，代表MySQL已经成功启动：Starting MySQL. SUCCESS!</span></div></pre></td></tr></table></figure>
+<h3 id="修改MySQL初始密码"><a href="#修改MySQL初始密码" class="headerlink" title="修改MySQL初始密码"></a>修改MySQL初始密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="comment">##创建一个软连接</span></div><div class="line">ln <span class="_">-s</span> /usr/<span class="built_in">local</span>/mysql/bin/mysql /usr/bin/mysql</div><div class="line"><span class="comment">##用初始密码登录MySQL</span></div><div class="line">/usr/<span class="built_in">local</span>/mysql/bin/mysql_secure_installation -p</div><div class="line"><span class="comment">##出现以下提示</span></div><div class="line">mysql_secure_installation: [Warning] Using a password on the <span class="built_in">command</span> line interface can be insecure.</div><div class="line"></div><div class="line">Securing the MySQL server deployment.</div><div class="line"></div><div class="line">Enter password <span class="keyword">for</span> user root:     <span class="comment">##输入初始密码</span></div><div class="line"></div><div class="line">The existing password <span class="keyword">for</span> the user account root has expired. Please <span class="built_in">set</span> a new password.</div><div class="line"></div><div class="line">New password:     <span class="comment">##输入新密码</span></div><div class="line"></div><div class="line">Re-enter new password:      <span class="comment">##输入新密码</span></div><div class="line"></div><div class="line">VALIDATE PASSWORD PLUGIN can be used to <span class="built_in">test</span> passwords</div><div class="line">and improve security. It checks the strength of password</div><div class="line">and allows the users to <span class="built_in">set</span> only those passwords <span class="built_in">which</span> are</div><div class="line">secure enough. Would you like to setup VALIDATE PASSWORD plugin?</div><div class="line"></div><div class="line">Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No: y   <span class="comment">###是否校验密码插件</span></div><div class="line"></div><div class="line">There are three levels of password validation policy:</div><div class="line"></div><div class="line">LOW    Length &gt;= 8 </div><div class="line">MEDIUM Length &gt;= 8, numeric, mixed <span class="keyword">case</span>, and special characters</div><div class="line">STRONG Length &gt;= 8, numeric, mixed <span class="keyword">case</span>, special characters and dictionary file</div><div class="line"></div><div class="line"><span class="comment">###密码设定有三种，LOW：密码长度大于等于8位；</span></div><div class="line"><span class="comment">###MEDIUM：密码长度大于等于8位，并且要有数字，大小写字母和特殊符号；</span></div><div class="line"><span class="comment">###STRONG：是MEDIUM基础上加上dictionary file（指定密码验证的文件路径）</span></div><div class="line">Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1  <span class="comment">###设定密码策略等级，这里选择1</span></div><div class="line">Using existing password <span class="keyword">for</span> root.</div><div class="line"></div><div class="line">Estimated strength of the password: 100 </div><div class="line">Change the password <span class="keyword">for</span> root ? ((Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No) : NO    <span class="comment">##暂时不修改root密码</span></div><div class="line"> ... skipping.</div><div class="line">By default, a MySQL installation has an anonymous user,</div><div class="line">allowing anyone to <span class="built_in">log</span> into MySQL without having to have</div><div class="line">a user account created <span class="keyword">for</span> them. This is intended only <span class="keyword">for</span></div><div class="line">testing, and to make the installation go a bit smoother.</div><div class="line">You should remove them before moving into a production</div><div class="line">environment.</div><div class="line"></div><div class="line">Remove anonymous users? (Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No) : y  <span class="comment">###是否移除匿名用户</span></div><div class="line">Success.</div><div class="line"></div><div class="line">Normally, root should only be allowed to connect from</div><div class="line"><span class="string">'localhost'</span>. This ensures that someone cannot guess at</div><div class="line">the root password from the network.</div><div class="line"></div><div class="line">Disallow root login remotely? (Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No) : y  <span class="comment">###是否关闭root远程登陆功能</span></div><div class="line">Success.</div><div class="line"></div><div class="line">By default, MySQL comes with a database named <span class="string">'test'</span> that</div><div class="line">anyone can access. This is also intended only <span class="keyword">for</span> testing,</div><div class="line">and should be removed before moving into a production</div><div class="line">environment.</div><div class="line"></div><div class="line">Remove <span class="built_in">test</span> database and access to it? (Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No) : y  <span class="comment">###是否移除测试数据库</span></div><div class="line"> - Dropping <span class="built_in">test</span> database... </div><div class="line">Success.</div><div class="line"></div><div class="line"> - Removing privileges on <span class="built_in">test</span> database...</div><div class="line">Success.</div><div class="line"></div><div class="line">Reloading the privilege tables will ensure that all changes</div><div class="line">made so far will take effect immediately.</div><div class="line"></div><div class="line">Reload privilege tables now? (Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No) : y  <span class="comment">###是否立即生效权限表</span></div><div class="line">Success.</div><div class="line"></div><div class="line">All <span class="keyword">done</span>!</div><div class="line"><span class="comment">###修改完成，测试一下</span></div><div class="line">mysql -uroot -p</div></pre></td></tr></table></figure>
+<h3 id="添加MySQL其他用户"><a href="#添加MySQL其他用户" class="headerlink" title="添加MySQL其他用户"></a>添加MySQL其他用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">##登录MySQL</span></div><div class="line">[root@Tenken bin]<span class="comment"># mysql -uroot -p</span></div><div class="line">Enter password: </div><div class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</div><div class="line">Your MySQL connection id is 4</div><div class="line">Server version: 5.7.15-log MySQL Community Server (GPL)</div><div class="line"></div><div class="line">Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.</div><div class="line"></div><div class="line">Oracle is a registered trademark of Oracle Corporation and/or its</div><div class="line">affiliates. Other names may be trademarks of their respective</div><div class="line">owners.</div><div class="line"></div><div class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> help. Type <span class="string">'\c'</span> to clear the current input statement.</div><div class="line"></div><div class="line"><span class="comment">###添加一个test用户并且不指定地址</span></div><div class="line">mysql&gt; create user <span class="string">'test'</span>@<span class="string">'%'</span>  identified by <span class="string">'Aa123456&amp;*'</span>;</div><div class="line">Query OK, 0 rows affected (0.01 sec)</div><div class="line"><span class="comment">##授权test用户</span></div><div class="line">grant all privileges on *.* to <span class="string">'test'</span>@<span class="string">'%'</span> identified by <span class="string">'Aa123456&amp;*'</span>;</div><div class="line">Query OK, 0 rows affected (0.01 sec)</div><div class="line"><span class="comment">##刷下一下权限表</span></div><div class="line">mysql&gt;flush privileges;</div><div class="line">Query OK, 0 rows affected (0.01 sec)</div><div class="line"><span class="comment">###现在可以用数据库工具来测试test账号了</span></div></pre></td></tr></table></figure>
+<h3 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h3><p>可能会出现的问题：<br>1、–datadir指定目录不能有其他文件，否则会报错，同时要修改目录的权限，否则写入文件失败，同样会报错。<br>2、启动文件：support-files/mysql.server的basedir和datadir要修改为安装时的配置参数，否则同样会报错</p>
+<p>附上修改后的my.cnf文件，仅供参考<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">[client]</div><div class="line">port = 3306</div><div class="line">socket = /tmp/mysql.sock</div><div class="line">default-character-set = utf8mb4</div><div class="line">[mysqld]</div><div class="line">port = 3306</div><div class="line">socket = /tmp/mysql.sock</div><div class="line">basedir = /usr/<span class="built_in">local</span>/mysql</div><div class="line">datadir = /opt/mysql/data</div><div class="line">pid-file = /opt/mysql/data/mysql.pid</div><div class="line">user = mysql</div><div class="line"><span class="built_in">bind</span>-address = 0.0.0.0</div><div class="line">server-id = 1</div><div class="line">init-connect = <span class="string">'SET NAMES utf8mb4'</span></div><div class="line">character-set-server = utf8mb4</div><div class="line"><span class="comment">#skip-name-resolve</span></div><div class="line"><span class="comment">#skip-networking</span></div><div class="line">back_log = 300</div><div class="line">max_connections = 1000</div><div class="line">max_connect_errors = 6000</div><div class="line">open_files_limit = 65535</div><div class="line">table_open_cache = 128</div><div class="line">max_allowed_packet = 4M</div><div class="line">binlog_cache_size = 1M</div><div class="line">max_heap_table_size = 8M</div><div class="line">tmp_table_size = 16M</div><div class="line">read_buffer_size = 2M</div><div class="line">read_rnd_buffer_size = 8M</div><div class="line">sort_buffer_size = 8M</div><div class="line">join_buffer_size = 8M</div><div class="line">key_buffer_size = 4M</div><div class="line">thread_cache_size = 8</div><div class="line">query_cache_type = 1</div><div class="line">query_cache_size = 8M</div><div class="line">query_cache_limit = 2M</div><div class="line">ft_min_word_len = 4</div><div class="line">log_bin = mysql-bin</div><div class="line">binlog_format = mixed</div><div class="line">expire_logs_days = 30</div><div class="line">log_error = /opt/mysql/<span class="built_in">log</span>/mysql-error.log</div><div class="line">slow_query_log = 1</div><div class="line">long_query_time = 1</div><div class="line">slow_query_log_file = /opt/mysql/<span class="built_in">log</span>/mysql-slow.log</div><div class="line">performance_schema = 0</div><div class="line">explicit_defaults_for_timestamp</div><div class="line"><span class="comment">#lower_case_table_names = 1</span></div><div class="line">skip-external-locking</div><div class="line">default_storage_engine = InnoDB</div><div class="line"><span class="comment">#default-storage-engine = MyISAM</span></div><div class="line">innodb_file_per_table = 1</div><div class="line">innodb_open_files = 500</div><div class="line">innodb_buffer_pool_size = 64M</div><div class="line">innodb_write_io_threads = 4</div><div class="line">innodb_read_io_threads = 4</div><div class="line">innodb_thread_concurrency = 0</div><div class="line">innodb_purge_threads = 1</div><div class="line">innodb_flush_log_at_trx_commit = 2</div><div class="line">innodb_log_buffer_size = 2M</div><div class="line">innodb_log_file_size = 32M</div><div class="line">innodb_log_files_in_group = 3</div><div class="line">innodb_max_dirty_pages_pct = 90</div><div class="line">innodb_lock_wait_timeout = 120</div><div class="line">bulk_insert_buffer_size = 8M</div><div class="line">myisam_sort_buffer_size = 8M</div><div class="line">myisam_max_sort_file_size = 10G</div><div class="line">myisam_repair_threads = 1</div><div class="line">interactive_timeout = 28800</div><div class="line">wait_timeout = 28800</div><div class="line">[mysqldump]</div><div class="line">quick</div><div class="line">max_allowed_packet = 16M</div><div class="line">[myisamchk]</div><div class="line">key_buffer_size = 8M</div><div class="line">sort_buffer_size = 8M</div><div class="line">read_buffer = 4M</div><div class="line">write_buffer = 4M</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我吃辣条吧~~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wxpay.png" alt="Tenken WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="Tenken Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/02/Linux-php-install/" rel="next" title="Linux源码编译安装PHP">
+                <i class="fa fa-chevron-left"></i> Linux源码编译安装PHP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/26/hexo-github-1/" rel="prev" title="hexo+github教程之一：搭建hexo博客">
+                hexo+github教程之一：搭建hexo博客 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Tenken" />
+          <p class="site-author-name" itemprop="name">Tenken</p>
+          <p class="site-description motion-element" itemprop="description">假装看起来很努力的样子</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.greeghost.com" title="极客幽灵" target="_blank">极客幽灵</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://addon.discuz.com/?@24443.developer" title="discuz开发者" target="_blank">discuz开发者</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装MySQL"><span class="nav-number">2.</span> <span class="nav-text">安装MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改MySQL初始密码"><span class="nav-number">3.</span> <span class="nav-text">修改MySQL初始密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加MySQL其他用户"><span class="nav-number">4.</span> <span class="nav-text">添加MySQL其他用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#末尾"><span class="nav-number">5.</span> <span class="nav-text">末尾</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tenken</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "c45ae2f847594ad7a634324a295dd696",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+</body>
+</html>
