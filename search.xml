@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[php.ini参数安全设置]]></title>
+      <url>%2F2017%2F04%2F10%2Fphp-ini%2F</url>
+      <content type="text"><![CDATA[相信很多开发者都会用PHP，但是很多PHP开发者对php.ini的安全设置不重视，或者说不了解。下面罗列出php.ini一些参数安全设置，供大家学习交流！ 禁用的函数1disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket,phpinfo 避免暴露PHP信息1expose_php = off 屏蔽错误信息1display_errors = off 禁止dl文件1enable_dl = off 禁止远程加载文件1allow_url_include = off 设定上传目录1upload_tmp_dir = /tmp 指定用户可访问文件路径1open_basedir = ./:/tmp:/home/wwwroot/ 关闭注册全局变量1register_globals = Off 不持久化存储 cookie 数据1session.cookie_lifetime=0 用cookie保存sesion id1session.use_cookies=On 禁止 JavaScript 访问会话 cookie1session.cookie_httponly=On 防止会话模块使用未初始化的会话 ID1session.use_strict_mode=On 禁用透明会话 ID1session.use_trans_sid=Off 不缓存会话内容1session.cache_limiter=nocache 末尾上面是我收集到的php.ini的常见的安全参数设置，有一些已经的高版本的PHP中默认已经关闭掉了。如果还有更多的参数设置，欢迎留言一起讨论学习。]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[php文字水印过长自动换行算法]]></title>
       <url>%2F2017%2F03%2F30%2Fphp-gd-font%2F</url>
       <content type="text"><![CDATA[这几天搞文字水印遇到一个问题，文字过长如何换行。如果文字过长，超出了图片的宽度，文字就无法显示完整，因为文字是不确定的，文字的位置也不是固定的，所以程序上不能写死，必须要通过程序自动计算换行。 下面说说解决思路： 把字符串拆分成一个个文字，然后再一个个拼接计算文字的长度，如果超过指定的长度就换行。 这里涉及到两个技术点，文字拆分，文字长度计算。 文字拆分文字拆分有很多种方法，可以通过计算ASCII码来拆分文字，原理跟截字一样，也可以通过正则来匹配。这里使用的是正则匹配。12345678function chararray($str,$charset="utf-8")&#123; $re['utf-8'] = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]&#123;2&#125;|[\xf0-\xff][\x80-\xbf]&#123;3&#125;/"; $re['gb2312'] = "/[\x01-\x7f]|[\xb0-\xf7][\xa0-\xfe]/"; $re['gbk'] = "/[\x01-\x7f]|[\x81-\xfe][\x40-\xfe]/"; $re['big5'] = "/[\x01-\x7f]|[\x81-\xfe]([\x40-\x7e]|\xa1-\xfe])/"; preg_match_all($re[$charset], $str, $match); return $match[0];&#125; 计算文字长度计算文字长度可以使用GD函数imagettfbbox，它会返回8个参数，分别是文字的左下角x,y坐标，右下角x,y坐标，右上角x,y坐标，左上角x,y坐标，这样就可以算出文字的长度。123456//$fontsize字体大小 $fontangle字体角度 $ttfpath字体路径 $char字符串function charwidth($fontsize,$fontangle,$ttfpath,$char)&#123; $box = @imagettfbbox($fontsize,$fontangle,$ttfpath,$char); $width = abs(max($box[2], $box[4]) - min($box[0], $box[6])); return $width;&#125; 两个算法合并成最终目的123456789101112131415161718192021//$fontsize字体大小 $fontangle字体角度 $ttfpath字体路径 $str字符串 $width指定宽度function autowrap($fontsize,$fontangle,$ttfpath,$str,$width,$charset='utf-8')&#123; $_string = ""; $_temp = ""; $strArr = chararray($str); foreach ($strArr as $k=&gt;$v)&#123; $_temp .= $v; $w = charwidth($fontsize,$fontangle,$ttfpath,$_temp); if (($w &gt;= $width) &amp;&amp; ($v !== ""))&#123; $_string .= "\n"; $_temp = ""; &#125; $_string .= $v; $w = 0; &#125; $_string = mb_convert_encoding($_string, "html-entities","utf-8" ); return $_string;&#125;使用方法：$str = autowrap(10,0,'./msyh.ttf','这是一个测试这是一个测试这是一个测试',50); 这里要注意一下：如果把字符串拆分出来一个个文字来计算长度，再相加得到的最后长度与实际一行文字的长度不一致，所以上面的算法是一个个拼接上来计算，而不是一个个文字计算再相加。为了让实际效果更好一些，指定的宽度$width要比图片的宽度要小10px可能会好一点。]]></content>
@@ -97,6 +104,13 @@
       <title><![CDATA[hexo+github教程之一：搭建hexo博客]]></title>
       <url>%2F2016%2F12%2F26%2Fhexo-github-1%2F</url>
       <content type="text"><![CDATA[前言本人几年前就想搭建一个属于自己的博客，刚好前段时间看见很多大神都用hexo搭建自己的个人博客，于是乎自己也动手折腾了一番，搞了两天终于弄出一个还过得去的博客。废话不多说，下面开始动手！ 第一步1、git下载与安装git的下载安装应该没什么难度，不知道git怎么下载的请自行度娘，反正安装的时候一直默认配置就行了，一直next。安装好后，鼠标右键任意地方应该会出现如图，就说明已经安装成功了。 2、安装node.jsnode.js的官网好像被墙了，反正我是费了好大劲才下载好。node.js地址，选择最新版本。然后也是一路next就行了。 第二步（开始正题）1、鼠标右键任意地方，选择Git Bash ，使用以下命令安装hexo(ps：以下命令中的$符号只为了让教程和实际看起来一致，实际输入命令只需输入$后面的命令即可)1$ npm install -g hexo 执行完命令应该会有C:\Users\Administrator\AppData\Roaming\npm这个目录。 2、创建一个或者选择一个目录来放博客文件，如我的目录：D:\Blog，名字和地方可以自由选择，当然最好不要放在中文路径下。然后在博客文件夹鼠标右键，选择Git Bash，执行以下命令，Hexo会自动在该文件夹下下载搭建网站所需的所有文件。1$ hexo init 接着安装依赖包1$ npm install 执行完看看博客目录，应该有文件生成了。 3、执行下面命令就可以在本地看到hexo博客了12$ hexo g$ hexo s 然后用浏览器访问http://localhost:4000/，此时，你应该看到了一个漂亮的博客了，当然这个博客只是在本地的，别人是看不到的，hexo3.0使用的默认主题是landscape。轻轻松松就看到了一点成果，是不是很激动，这就是hexo的强大之处，这个本地预览的功能，我真是爱不释手。自己可以发一篇新的文章12$ hexo new 'test'$ hexo s -g 你会发现多了一篇叫‘test’的文章，在D:/Blog/source/_posts下会有test.md文件（需要学习markdown语法） 到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。附上我的blog: 放在github上的whatcode.cn,放在阿里云的blog.greeghost.com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Linux源码编译安装apache2.4]]></title>
+      <url>%2F2016%2F10%2F05%2FLinux-apache-install%2F</url>
+      <content type="text"></content>
     </entry>
 
     
