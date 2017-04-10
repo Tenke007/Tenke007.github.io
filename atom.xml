@@ -64,7 +64,7 @@
     <link href="http://blog.greeghost.com/2017/04/10/php-ini/"/>
     <id>http://blog.greeghost.com/2017/04/10/php-ini/</id>
     <published>2017-04-10T05:44:38.000Z</published>
-    <updated>2017-04-10T07:14:15.436Z</updated>
+    <updated>2017-04-10T13:22:39.232Z</updated>
     
     <content type="html"><![CDATA[<p>相信很多开发者都会用PHP，但是很多PHP开发者对php.ini的安全设置不重视，或者说不了解。下面罗列出php.ini一些参数安全设置，供大家学习交流！</p>
 <h4 id="禁用的函数"><a href="#禁用的函数" class="headerlink" title="禁用的函数"></a>禁用的函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket,phpinfo</div></pre></td></tr></table></figure>
@@ -81,7 +81,7 @@
 <h4 id="防止会话模块使用未初始化的会话-ID"><a href="#防止会话模块使用未初始化的会话-ID" class="headerlink" title="防止会话模块使用未初始化的会话 ID"></a>防止会话模块使用未初始化的会话 ID</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">session.use_strict_mode=On</div></pre></td></tr></table></figure>
 <h4 id="禁用透明会话-ID"><a href="#禁用透明会话-ID" class="headerlink" title="禁用透明会话 ID"></a>禁用透明会话 ID</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">session.use_trans_sid=Off</div></pre></td></tr></table></figure>
 <h4 id="不缓存会话内容"><a href="#不缓存会话内容" class="headerlink" title="不缓存会话内容"></a>不缓存会话内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">session.cache_limiter=nocache</div></pre></td></tr></table></figure>
-<h3 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h3><p>上面是我收集到的php.ini的常见的安全参数设置，有一些已经的高版本的PHP中默认已经关闭掉了。如果还有更多的参数设置，欢迎留言一起讨论学习。</p>
+<h4 id="末尾"><a href="#末尾" class="headerlink" title="末尾"></a>末尾</h4><p>上面是我收集到的php.ini的常见的安全参数设置，有一些已经的高版本的PHP中默认已经关闭掉了。如果还有更多的参数设置，欢迎留言一起讨论学习。</p>
 ]]></content>
     
     <summary type="html">

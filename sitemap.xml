@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.greeghost.com/2017/04/10/php-ini/</loc>
+    
+    <lastmod>2017-04-10T13:22:39.232Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.greeghost.com/2017/04/10/php-website-safe/</loc>
     
     <lastmod>2017-04-10T12:43:22.651Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://blog.greeghost.com/2016/10/05/Linux-apache-install/</loc>
     
     <lastmod>2017-04-10T10:56:55.028Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.greeghost.com/2017/04/10/php-ini/</loc>
-    
-    <lastmod>2017-04-10T07:14:15.436Z</lastmod>
     
   </url>
   
