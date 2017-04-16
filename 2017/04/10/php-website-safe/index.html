@@ -94,7 +94,7 @@ PHP安全配置php.ini参数设置1234567891011121314151617181920212223242526272
 <meta property="og:site_name" content="Tenken blog">
 <meta property="og:description" content="现在越来越多的网站采用LAMP模式开发，但是网络安全问题也越来越多，其中的一些安全设置必须要知道。本文总结了PHP网站在Linux服务器上一些安全设置，如果有什么更好的设置，请留言交流，大家一起讨论学习。
 PHP安全配置php.ini参数设置12345678910111213141516171819202122232425262728293031323334353637383940414243##">
-<meta property="og:updated_time" content="2017-04-10T12:43:22.651Z">
+<meta property="og:updated_time" content="2017-04-16T16:44:17.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP网站在Linux服务器上安全设置方案">
 <meta name="twitter:description" content="现在越来越多的网站采用LAMP模式开发，但是网络安全问题也越来越多，其中的一些安全设置必须要知道。本文总结了PHP网站在Linux服务器上一些安全设置，如果有什么更好的设置，请留言交流，大家一起讨论学习。
@@ -437,7 +437,6 @@ PHP安全配置php.ini参数设置1234567891011121314151617181920212223242526272
 <p>注：/home/wwwroot/是放置所有虚拟主机的web路径<br>黑客可以利用任何一个站点的webshell进入到/home/wwwroot/目录下的任何地方，这样对各个虚拟主机的危害就很大<br>例如： /data/www/wwwroot目录下有2个虚拟主机<br>修改php.ini<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open_basedir = ./:/tmp:/home/wwwroot/aaa.com:/home/wwwroot/bbb.com</div></pre></td></tr></table></figure></p>
 <p>这样用户上传webshell就无法跨目录访问了。<br>（2）Apache的实现方法，控制跨目录访问<br>在虚拟机主机配置文件中加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;VirtuanHost *:80&gt;</div><div class="line">php_admin_value open_basedir &quot;/tmp:/home/wwwroot/aaa.com&quot;</div><div class="line">&lt;/VirtuanHost&gt;</div></pre></td></tr></table></figure></p>
 <p>3、修改ssh的端口及禁止root账号ssh登录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vi /etc/ssh/sshd_confing</div><div class="line">##修改端口为8888（这个可以自定义）</div><div class="line">Port 8888</div><div class="line">##禁止以root账号登录</div><div class="line">PermitRootLogin no</div></pre></td></tr></table></figure></p>
-<p>本文参考：<br><a href="http://www.php100.com/html/webkaifa/PHP/PHPyingyong/2013/0731/13709.html" target="_blank" rel="external">http://www.php100.com/html/webkaifa/PHP/PHPyingyong/2013/0731/13709.html</a></p>
 
       
     </div>
@@ -493,8 +492,8 @@ PHP安全配置php.ini参数设置1234567891011121314151617181920212223242526272
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/10/php-ini/" rel="next" title="php.ini参数安全设置">
-                <i class="fa fa-chevron-left"></i> php.ini参数安全设置
+              <a href="/2017/03/30/php-gd-font/" rel="next" title="php文字水印过长自动换行算法">
+                <i class="fa fa-chevron-left"></i> php文字水印过长自动换行算法
               </a>
             
           </div>
@@ -503,8 +502,8 @@ PHP安全配置php.ini参数设置1234567891011121314151617181920212223242526272
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/16/Linux-log/" rel="prev" title="Linux环境下nginx+php+mysql日志分割">
-                Linux环境下nginx+php+mysql日志分割 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/10/php-ini/" rel="prev" title="php.ini参数安全设置">
+                php.ini参数安全设置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
