@@ -1,0 +1,966 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux,apache," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tenken blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Apache是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。当前Apache版本为2.4，本文主要描述基于CentOS 6.5以源码方式安装Apache。
+准备工作1、下载apache2.4源码包：httpd-2.4.23.tar.gz，可以到apache官网下载，或者到国内镜像地址下载，比如：ht">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux源码编译安装apache2.4">
+<meta property="og:url" content="http://blog.greeghost.com/2016/05/10/Linux-apache-install/index.html">
+<meta property="og:site_name" content="Tenken blog">
+<meta property="og:description" content="Apache是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。当前Apache版本为2.4，本文主要描述基于CentOS 6.5以源码方式安装Apache。
+准备工作1、下载apache2.4源码包：httpd-2.4.23.tar.gz，可以到apache官网下载，或者到国内镜像地址下载，比如：ht">
+<meta property="og:updated_time" content="2017-04-16T14:40:11.697Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux源码编译安装apache2.4">
+<meta name="twitter:description" content="Apache是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。当前Apache版本为2.4，本文主要描述基于CentOS 6.5以源码方式安装Apache。
+准备工作1、下载apache2.4源码包：httpd-2.4.23.tar.gz，可以到apache官网下载，或者到国内镜像地址下载，比如：ht">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.greeghost.com/2016/05/10/Linux-apache-install/"/>
+
+
+
+
+
+  <title> Linux源码编译安装apache2.4 | Tenken blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Tenken blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">技术-不进则退</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://blog.greeghost.com/2016/05/10/Linux-apache-install/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Tenken">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Tenken blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Tenken blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linux源码编译安装apache2.4
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-10T13:03:15+08:00">
+                2016-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/apache/" itemprop="url" rel="index">
+                    <span itemprop="name">apache</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2016/05/10/Linux-apache-install/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>&nbsp&nbsp阅读数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Apache是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。当前Apache版本为2.4，本文主要描述基于CentOS 6.5以源码方式安装Apache。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>1、下载apache2.4源码包：httpd-2.4.23.tar.gz，可以到apache官网下载，或者到国内镜像地址下载，比如：<a href="http://mirrors.sohu.com/apache/" target="_blank" rel="external">http://mirrors.sohu.com/apache/</a><br>2、下载apache依赖库：apr, apr-util, 下载地址：<a href="http://apr.apache.org/" target="_blank" rel="external">http://apr.apache.org/</a><br>3、安装apache其他依赖库工具<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y install gcc gcc-c++ make automake autoconf openssl openssl-devel pcre-devel zlib zlib-devel</div></pre></td></tr></table></figure></p>
+<h3 id="安装apr、apr-util"><a href="#安装apr、apr-util" class="headerlink" title="安装apr、apr-util"></a>安装apr、apr-util</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">###解压apr包</span></div><div class="line">tar -xvf apr-1.5.2.tar.gz</div><div class="line"><span class="built_in">cd</span> apr-1.5.2</div><div class="line"><span class="comment">###配置、编译安装</span></div><div class="line">./configure --prefix=/usr/<span class="built_in">local</span>/apr</div><div class="line">make &amp;&amp; make install</div><div class="line"><span class="comment">###解压apr-util包</span></div><div class="line">tar -xvf apr-util-1.5.4.tar.gz</div><div class="line"><span class="built_in">cd</span> apr-util-1.5.4</div><div class="line"><span class="comment">###配置、编译安装</span></div><div class="line">./configure --prefix=/usr/<span class="built_in">local</span>/apr-util --with-apr=/usr/<span class="built_in">local</span>/apr</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<h3 id="安装apache2-4"><a href="#安装apache2-4" class="headerlink" title="安装apache2.4"></a>安装apache2.4</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">###解压apache包</span></div><div class="line">tar -xvf httpd-2.4.23.tar.gz</div><div class="line"><span class="built_in">cd</span> httpd-2.4.23</div><div class="line"><span class="comment">###配置</span></div><div class="line">./configure \</div><div class="line">--prefix=/usr/<span class="built_in">local</span>/apache \</div><div class="line">--sysconfdir=/usr/<span class="built_in">local</span>/apache/conf \</div><div class="line">--enable-so \</div><div class="line">--enable-ssl \</div><div class="line">--enable-cgi \</div><div class="line">--enable-rewrite \</div><div class="line">--enable-deflate \</div><div class="line">--with-zlib \</div><div class="line">--with-pcre \</div><div class="line">--with-apr=/usr/<span class="built_in">local</span>/apr \</div><div class="line">--with-apr-util=/usr/<span class="built_in">local</span>/apr-util \</div><div class="line">--enable-modules=most \</div><div class="line">--enable-mpms-shared=all \</div><div class="line">--with-mpm=prefork</div><div class="line"><span class="comment">###编译安装</span></div><div class="line">make &amp;&amp; make install</div><div class="line"><span class="comment">###测试apache</span></div><div class="line">/usr/<span class="built_in">local</span>/apache/bin/httpd -v</div></pre></td></tr></table></figure>
+<h3 id="修改apache配置文件"><a href="#修改apache配置文件" class="headerlink" title="修改apache配置文件"></a>修改apache配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">###添加apache用户组</span></div><div class="line">groupadd apache</div><div class="line">useradd -g apache apache <span class="_">-s</span> /bin/<span class="literal">false</span></div><div class="line"><span class="comment">###编辑httpd.conf</span></div><div class="line">vi /usr/<span class="built_in">local</span>/apache/conf/httpd.conf</div><div class="line"><span class="comment">###找到ServerName，去除前面的注释#号</span></div><div class="line">ServerName localhost:80（这个可以用IP或者域名）</div><div class="line"><span class="comment">###找到User Group,修改为apache</span></div><div class="line">User apache</div><div class="line">Group apache</div><div class="line"><span class="comment">###找到Options Indexes FollowSymLinks，修改为Options FollowSymLinks</span></div><div class="line">Options FollowSymLinks（禁止列出目录）</div><div class="line"><span class="comment">###找到DirectoryIndex，添加index.php</span></div><div class="line">&lt;IfModule dir_module&gt;</div><div class="line">    DirectoryIndex index.html index.php</div><div class="line">&lt;/IfModule&gt;</div><div class="line"><span class="comment">###如果需要搞虚拟机，去除Include conf/extra/httpd-vhosts.conf前面注释</span></div><div class="line">Include conf/extra/httpd-vhosts.conf</div><div class="line"><span class="comment">###直接在httpd-vhosts.conf里面对照修改即可</span></div></pre></td></tr></table></figure>
+<h3 id="配置httpd启动脚本"><a href="#配置httpd启动脚本" class="headerlink" title="配置httpd启动脚本"></a>配置httpd启动脚本</h3><p>vi /etc/init.d/httpd<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># httpd		Startup script for the Apache HTTP Server</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># chkconfig: - 85 15</span></div><div class="line"><span class="comment"># description: Apache is a World Wide Web server.  It is used to serve \</span></div><div class="line"><span class="comment">#		HTML files and CGI.</span></div><div class="line"><span class="comment"># processname: httpd</span></div><div class="line"><span class="comment"># config: /etc/httpd/conf/httpd.conf</span></div><div class="line"><span class="comment"># config: /etc/sysconfig/httpd</span></div><div class="line"><span class="comment"># pidfile: /var/run/httpd.pid</span></div><div class="line"><span class="comment"># Source function library.</span></div><div class="line">. /etc/rc.d/init.d/<span class="built_in">functions</span></div><div class="line"><span class="keyword">if</span> [ <span class="_">-f</span> /etc/sysconfig/httpd ]; <span class="keyword">then</span></div><div class="line">		. /etc/sysconfig/httpd</div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="comment"># Start httpd in the C locale by default.</span></div><div class="line">HTTPD_LANG=<span class="variable">$&#123;HTTPD_LANG-"C"&#125;</span></div><div class="line"><span class="comment"># This will prevent initlog from swallowing up a pass-phrase prompt if</span></div><div class="line"><span class="comment"># mod_ssl needs a pass-phrase from the user.</span></div><div class="line">INITLOG_ARGS=<span class="string">""</span></div><div class="line"><span class="comment"># Set HTTPD=/usr/sbin/httpd.worker in /etc/sysconfig/httpd to use a server</span></div><div class="line"><span class="comment"># with the thread-based "worker" MPM; BE WARNED that some modules may not</span></div><div class="line"><span class="comment"># work correctly with a thread-based MPM; notably PHP will refuse to start.</span></div><div class="line"><span class="comment"># Path to the apachectl script, server binary, and short-form for messages.</span></div><div class="line">apachectl=/usr/<span class="built_in">local</span>/apache/bin/apachectl</div><div class="line">httpd=<span class="variable">$&#123;HTTPD-/usr/local/apache/bin/httpd&#125;</span></div><div class="line">prog=httpd</div><div class="line">pidfile=<span class="variable">$&#123;PIDFILE-/usr/local/apache/logs/httpd.pid&#125;</span></div><div class="line">lockfile=<span class="variable">$&#123;LOCKFILE-/var/lock/subsys/httpd&#125;</span></div><div class="line">RETVAL=0</div><div class="line"><span class="function"><span class="title">start</span></span>() &#123;</div><div class="line">	<span class="built_in">echo</span> -n $<span class="string">"Starting <span class="variable">$prog</span>: "</span></div><div class="line">	LANG=<span class="variable">$HTTPD_LANG</span> daemon --pidfile=<span class="variable">$&#123;pidfile&#125;</span> <span class="variable">$httpd</span> <span class="variable">$OPTIONS</span></div><div class="line">	RETVAL=$?</div><div class="line">	<span class="built_in">echo</span></div><div class="line">	[ <span class="variable">$RETVAL</span> = 0 ] &amp;&amp; touch <span class="variable">$&#123;lockfile&#125;</span></div><div class="line">	<span class="built_in">return</span> <span class="variable">$RETVAL</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="title">stop</span></span>() &#123;</div><div class="line">	 <span class="built_in">echo</span> -n $<span class="string">"Stopping <span class="variable">$prog</span>: "</span></div><div class="line">	 killproc -p <span class="variable">$&#123;pidfile&#125;</span> <span class="_">-d</span> 10 <span class="variable">$httpd</span></div><div class="line">	 RETVAL=$?</div><div class="line">	 <span class="built_in">echo</span></div><div class="line">	 [ <span class="variable">$RETVAL</span> = 0 ] &amp;&amp; rm <span class="_">-f</span> <span class="variable">$&#123;lockfile&#125;</span> <span class="variable">$&#123;pidfile&#125;</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="title">reload</span></span>() &#123;</div><div class="line">	<span class="built_in">echo</span> -n $<span class="string">"Reloading <span class="variable">$prog</span>: "</span></div><div class="line">	<span class="keyword">if</span> ! LANG=<span class="variable">$HTTPD_LANG</span> <span class="variable">$httpd</span> <span class="variable">$OPTIONS</span> -t &gt;&amp;/dev/null; <span class="keyword">then</span></div><div class="line">		RETVAL=$?</div><div class="line">		<span class="built_in">echo</span> $<span class="string">"not reloading due to configuration syntax error"</span></div><div class="line">		failure $<span class="string">"not reloading <span class="variable">$httpd</span> due to configuration syntax error"</span></div><div class="line">	<span class="keyword">else</span></div><div class="line">		killproc -p <span class="variable">$&#123;pidfile&#125;</span> <span class="variable">$httpd</span> -HUP</div><div class="line">		RETVAL=$?</div><div class="line">	<span class="keyword">fi</span></div><div class="line">	<span class="built_in">echo</span></div><div class="line">&#125;</div><div class="line"><span class="comment"># See how we were called.</span></div><div class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></div><div class="line">start)</div><div class="line">	start;;</div><div class="line">stop)</div><div class="line">	stop;;</div><div class="line">status)</div><div class="line">	status -p <span class="variable">$&#123;pidfile&#125;</span> <span class="variable">$httpd</span></div><div class="line">	RETVAL=$?;;</div><div class="line">restart)</div><div class="line">	stop</div><div class="line">	start;;</div><div class="line">condrestart)</div><div class="line">	<span class="keyword">if</span> [ <span class="_">-f</span> <span class="variable">$&#123;pidfile&#125;</span> ] ; <span class="keyword">then</span></div><div class="line">		stop</div><div class="line">		start</div><div class="line">	<span class="keyword">fi</span>;;</div><div class="line">reload)</div><div class="line">	reload;;</div><div class="line">graceful|<span class="built_in">help</span>|configtest|fullstatus)</div><div class="line">	<span class="variable">$apachectl</span> <span class="variable">$@</span></div><div class="line">	RETVAL=$?;;</div><div class="line">*)</div><div class="line">	<span class="built_in">echo</span> $<span class="string">"Usage: <span class="variable">$prog</span> &#123;start|stop|restart|condrestart|reload|status|fullstatus|graceful|help|configtest&#125;"</span></div><div class="line">	<span class="built_in">exit</span> 1</div><div class="line"><span class="keyword">esac</span></div><div class="line"><span class="built_in">exit</span> <span class="variable">$RETVAL</span></div></pre></td></tr></table></figure></p>
+<p>添加执行权限,设置开机启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">chmod +x /etc/init.d/httpd</div><div class="line"><span class="comment">###启动apache</span></div><div class="line">service httpd start</div><div class="line"><span class="comment">###停止apache</span></div><div class="line">service httpd stop</div><div class="line"><span class="comment">###查看apache状态</span></div><div class="line">service httpd stop</div><div class="line"><span class="comment">###开机启动</span></div><div class="line">chkconfig --add httpd</div><div class="line">chkconfig httpd on</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>请我吃辣条吧~~</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wxpay.png" alt="Tenken WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="Tenken Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/apache/" rel="tag"># apache</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/01/Linux-nginx-install/" rel="prev" title="Linux源码编译安装Nginx">
+                Linux源码编译安装Nginx <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Tenken" />
+          <p class="site-author-name" itemprop="name">Tenken</p>
+          <p class="site-description motion-element" itemprop="description">假装看起来很努力的样子</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.greeghost.com" title="极客幽灵" target="_blank">极客幽灵</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://addon.discuz.com/?@24443.developer" title="discuz开发者" target="_blank">discuz开发者</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装apr、apr-util"><span class="nav-number">2.</span> <span class="nav-text">安装apr、apr-util</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装apache2-4"><span class="nav-number">3.</span> <span class="nav-text">安装apache2.4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改apache配置文件"><span class="nav-number">4.</span> <span class="nav-text">修改apache配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置httpd启动脚本"><span class="nav-number">5.</span> <span class="nav-text">配置httpd启动脚本</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tenken</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "c45ae2f847594ad7a634324a295dd696",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+</body>
+</html>
