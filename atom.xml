@@ -4,9 +4,9 @@
   <subtitle>技术-不进则退</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://blog.greeghost.com/"/>
+  <link href="http://whatcode.cn/"/>
   <updated>2017-04-21T03:56:43.259Z</updated>
-  <id>http://blog.greeghost.com/</id>
+  <id>http://whatcode.cn/</id>
   
   <author>
     <name>Tenken</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Linux环境下nginx+php+mysql日志分割</title>
-    <link href="http://blog.greeghost.com/2017/04/16/Linux-log/"/>
-    <id>http://blog.greeghost.com/2017/04/16/Linux-log/</id>
+    <link href="http://whatcode.cn/2017/04/16/Linux-log/"/>
+    <id>http://whatcode.cn/2017/04/16/Linux-log/</id>
     <published>2017-04-16T15:51:36.000Z</published>
     <updated>2017-04-21T03:56:43.259Z</updated>
     
@@ -39,64 +39,21 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://blog.greeghost.com/categories/Linux/"/>
+      <category term="Linux" scheme="http://whatcode.cn/categories/Linux/"/>
     
-      <category term="log" scheme="http://blog.greeghost.com/categories/Linux/log/"/>
-    
-    
-      <category term="Linux" scheme="http://blog.greeghost.com/tags/Linux/"/>
-    
-      <category term="log" scheme="http://blog.greeghost.com/tags/log/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP网站在Linux服务器上安全设置方案</title>
-    <link href="http://blog.greeghost.com/2017/04/10/php-website-safe/"/>
-    <id>http://blog.greeghost.com/2017/04/10/php-website-safe/</id>
-    <published>2017-04-10T05:44:38.000Z</published>
-    <updated>2017-04-16T16:44:17.570Z</updated>
-    
-    <content type="html"><![CDATA[<p>现在越来越多的网站采用LAMP模式开发，但是网络安全问题也越来越多，其中的一些安全设置必须要知道。本文总结了PHP网站在Linux服务器上一些安全设置，如果有什么更好的设置，请留言交流，大家一起讨论学习。</p>
-<h3 id="PHP安全配置"><a href="#PHP安全配置" class="headerlink" title="PHP安全配置"></a>PHP安全配置</h3><p>php.ini参数设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">####禁用的函数</span></div><div class="line">disable_functions = passthru,<span class="built_in">exec</span>,system,chroot,chgrp,chown,shell_exec,proc_open,</div><div class="line">proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,</div><div class="line">symlink,popepassthru,stream_socket_server,fsocket,phpinfo</div><div class="line"></div><div class="line"><span class="comment">####避免暴露PHP信息</span></div><div class="line">expose_php = off </div><div class="line"></div><div class="line"><span class="comment">####屏蔽错误信息</span></div><div class="line">display_errors = off</div><div class="line"></div><div class="line"><span class="comment">####禁止dl文件</span></div><div class="line">enable_dl = off</div><div class="line"></div><div class="line"><span class="comment">####禁止远程加载文件</span></div><div class="line">allow_url_include = off</div><div class="line"></div><div class="line"><span class="comment">####设定上传目录</span></div><div class="line">upload_tmp_dir = /tmp</div><div class="line"></div><div class="line"><span class="comment">####指定用户可访问文件路径</span></div><div class="line">open_basedir = ./:/tmp:/home/wwwroot/</div><div class="line"></div><div class="line"><span class="comment">####关闭注册全局变量</span></div><div class="line">register_globals = Off</div><div class="line"></div><div class="line"><span class="comment">####不持久化存储 cookie 数据</span></div><div class="line">session.cookie_lifetime=0</div><div class="line"></div><div class="line"><span class="comment">####用cookie保存sesion id </span></div><div class="line">session.use_cookies=On</div><div class="line"></div><div class="line"><span class="comment">####禁止 JavaScript 访问会话 cookie</span></div><div class="line">session.cookie_httponly=On</div><div class="line"></div><div class="line"><span class="comment">####防止会话模块使用未初始化的会话 ID</span></div><div class="line">session.use_strict_mode=On</div><div class="line"></div><div class="line"><span class="comment">####禁用透明会话 ID </span></div><div class="line">session.use_trans_sid=Off</div><div class="line"></div><div class="line"><span class="comment">####不缓存会话内容</span></div><div class="line">session.cache_limiter=nocache</div></pre></td></tr></table></figure></p>
-<h3 id="MySQL安全设置"><a href="#MySQL安全设置" class="headerlink" title="MySQL安全设置"></a>MySQL安全设置</h3><p>1、MySQL版本的选择<br>在正式生产环境中，禁止使用4.1系列的MySQL数据库。至少需要使用5.1.39或以上版本。<br>2、网络和端口的配置<br>在数据库只需供本机使用的情况下，使用–skip-networking参数禁止监听网络 。<br>修改MySQL默认的端口，比如：3389<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vi /etc/my.cnf</div><div class="line">[client]</div><div class="line">port = 3389</div><div class="line"></div><div class="line">[mysqld]</div><div class="line">port = 3389</div></pre></td></tr></table></figure></p>
-<p>3、确保运行MySQL的用户为一般用户，如mysql，注意存放数据目录权限为mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vi /etc/my.cnf</div><div class="line">user = mysql</div></pre></td></tr></table></figure></p>
-<p>4、开启mysql二进制日志，在误删除数据的情况下，可以通过二进制日志恢复到某个时间点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vi /etc/my.cnf</div><div class="line">log_bin = mysql-bin</div><div class="line">expire_logs_days = 7</div></pre></td></tr></table></figure></p>
-<p>5、认证和授权<br>（1）禁止root账号从网络访问数据库，root账号只允许来自本地主机的登陆。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt;grant all privileges on *.* to root @localhost identified by &apos;password&apos; with grant option;</div><div class="line">mysql&gt;flush priveleges;</div></pre></td></tr></table></figure></p>
-<p>（2）删除匿名账号和空口令账号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql&gt;USE mysql;</div><div class="line">mysql&gt;delete from user where User=;</div><div class="line">mysql&gt;delete from user where Password=;</div><div class="line">mysql&gt;delete from db where User=;</div></pre></td></tr></table></figure></p>
-<h3 id="web服务器安全"><a href="#web服务器安全" class="headerlink" title="web服务器安全"></a>web服务器安全</h3><p>1、确保运行Nginx或者Apache的用户为一般用户，如www，注意存放数据目录权限为www<br>2、防止sql注入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if ( $query_string ~* &quot;.*[\;&apos;\&lt;\&gt;].*&quot; )&#123;</div><div class="line">        return 404;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>3、关闭存放数据上传等目录的PHP解析<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">location ~* ^/(attachments|data)/.*\.(php|php5)$&#123;</div><div class="line">    deny all;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>4、针对Apache：关闭图片目录/上传等目录的PHP解析<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;Files ~ &quot;.php&quot;&gt;</div><div class="line">order allow,deny</div><div class="line">Deny from all</div><div class="line">&lt;/Files&gt;</div></pre></td></tr></table></figure></p>
-<p>5、禁止访问网站.svn文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">###apache</div><div class="line">&lt;Directory ~ &quot;\.svn&quot;&gt;</div><div class="line">Order allow,deny</div><div class="line">Deny from all</div><div class="line">&lt;/Directory&gt;</div><div class="line">###nginx</div><div class="line">location ~* /\.svn &#123;</div><div class="line">    deny  all;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="linux服务器"><a href="#linux服务器" class="headerlink" title="linux服务器"></a>linux服务器</h3><p>1、木马查杀和防范<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">###php木马快速查找命令</div><div class="line">grep -r --include=*.php &apos;[^a-z]eval($_POST&apos; /home/wwwroot/</div><div class="line">grep -r --include=*.php &apos;file_put_contents(.*$_POST\[.*\]);&apos; /home/wwwroot/</div><div class="line"></div><div class="line">###利用find mtime查找最近两天或者发现木马的这几天，有哪些PHP文件被修改</div><div class="line">find -mtime -2 -type f -name \*.php</div><div class="line"></div><div class="line">###改变目录和文件属性</div><div class="line">find -type f -name \*.php -exec chomd 644 &#123;&#125; \;</div><div class="line">find -type d -exec chmod 755 &#123;&#125; \;</div><div class="line">chown -R www.www /home/wwwroot/</div></pre></td></tr></table></figure></p>
-<p>2、为防止跨站感染，需要做虚拟主机目录隔离<br> （1）nginx的简单实现方法<br>利用nginx跑多个虚拟主机，习惯的php.ini的open_basedir配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open_basedir = ./:tmp:/home/wwwroot/</div></pre></td></tr></table></figure></p>
-<p>注：/home/wwwroot/是放置所有虚拟主机的web路径<br>黑客可以利用任何一个站点的webshell进入到/home/wwwroot/目录下的任何地方，这样对各个虚拟主机的危害就很大<br>例如： /data/www/wwwroot目录下有2个虚拟主机<br>修改php.ini<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open_basedir = ./:/tmp:/home/wwwroot/aaa.com:/home/wwwroot/bbb.com</div></pre></td></tr></table></figure></p>
-<p>这样用户上传webshell就无法跨目录访问了。<br>（2）Apache的实现方法，控制跨目录访问<br>在虚拟机主机配置文件中加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;VirtuanHost *:80&gt;</div><div class="line">php_admin_value open_basedir &quot;/tmp:/home/wwwroot/aaa.com&quot;</div><div class="line">&lt;/VirtuanHost&gt;</div></pre></td></tr></table></figure></p>
-<p>3、修改ssh的端口及禁止root账号ssh登录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vi /etc/ssh/sshd_confing</div><div class="line">##修改端口为8888（这个可以自定义）</div><div class="line">Port 8888</div><div class="line">##禁止以root账号登录</div><div class="line">PermitRootLogin no</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;现在越来越多的网站采用LAMP模式开发，但是网络安全问题也越来越多，其中的一些安全设置必须要知道。本文总结了PHP网站在Linux服务器上一些安全设置，如果有什么更好的设置，请留言交流，大家一起讨论学习。&lt;/p&gt;
-&lt;h3 id=&quot;PHP安全配置&quot;&gt;&lt;a href=&quot;#PHP
-    
-    </summary>
-    
-      <category term="php" scheme="http://blog.greeghost.com/categories/php/"/>
-    
-      <category term="other" scheme="http://blog.greeghost.com/categories/php/other/"/>
+      <category term="log" scheme="http://whatcode.cn/categories/Linux/log/"/>
     
     
-      <category term="php" scheme="http://blog.greeghost.com/tags/php/"/>
+      <category term="Linux" scheme="http://whatcode.cn/tags/Linux/"/>
     
-      <category term="other" scheme="http://blog.greeghost.com/tags/other/"/>
+      <category term="log" scheme="http://whatcode.cn/tags/log/"/>
     
   </entry>
   
   <entry>
     <title>php.ini参数安全设置</title>
-    <link href="http://blog.greeghost.com/2017/04/10/php-ini/"/>
-    <id>http://blog.greeghost.com/2017/04/10/php-ini/</id>
+    <link href="http://whatcode.cn/2017/04/10/php-ini/"/>
+    <id>http://whatcode.cn/2017/04/10/php-ini/</id>
     <published>2017-04-10T05:44:38.000Z</published>
     <updated>2017-04-10T13:22:39.232Z</updated>
     
@@ -125,21 +82,64 @@
     
     </summary>
     
-      <category term="php" scheme="http://blog.greeghost.com/categories/php/"/>
+      <category term="php" scheme="http://whatcode.cn/categories/php/"/>
     
-      <category term="php.ini" scheme="http://blog.greeghost.com/categories/php/php-ini/"/>
+      <category term="php.ini" scheme="http://whatcode.cn/categories/php/php-ini/"/>
     
     
-      <category term="php" scheme="http://blog.greeghost.com/tags/php/"/>
+      <category term="php" scheme="http://whatcode.cn/tags/php/"/>
     
-      <category term="php.ini" scheme="http://blog.greeghost.com/tags/php-ini/"/>
+      <category term="php.ini" scheme="http://whatcode.cn/tags/php-ini/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP网站在Linux服务器上安全设置方案</title>
+    <link href="http://whatcode.cn/2017/04/10/php-website-safe/"/>
+    <id>http://whatcode.cn/2017/04/10/php-website-safe/</id>
+    <published>2017-04-10T05:44:38.000Z</published>
+    <updated>2017-04-16T16:44:17.570Z</updated>
+    
+    <content type="html"><![CDATA[<p>现在越来越多的网站采用LAMP模式开发，但是网络安全问题也越来越多，其中的一些安全设置必须要知道。本文总结了PHP网站在Linux服务器上一些安全设置，如果有什么更好的设置，请留言交流，大家一起讨论学习。</p>
+<h3 id="PHP安全配置"><a href="#PHP安全配置" class="headerlink" title="PHP安全配置"></a>PHP安全配置</h3><p>php.ini参数设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment">####禁用的函数</span></div><div class="line">disable_functions = passthru,<span class="built_in">exec</span>,system,chroot,chgrp,chown,shell_exec,proc_open,</div><div class="line">proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,</div><div class="line">symlink,popepassthru,stream_socket_server,fsocket,phpinfo</div><div class="line"></div><div class="line"><span class="comment">####避免暴露PHP信息</span></div><div class="line">expose_php = off </div><div class="line"></div><div class="line"><span class="comment">####屏蔽错误信息</span></div><div class="line">display_errors = off</div><div class="line"></div><div class="line"><span class="comment">####禁止dl文件</span></div><div class="line">enable_dl = off</div><div class="line"></div><div class="line"><span class="comment">####禁止远程加载文件</span></div><div class="line">allow_url_include = off</div><div class="line"></div><div class="line"><span class="comment">####设定上传目录</span></div><div class="line">upload_tmp_dir = /tmp</div><div class="line"></div><div class="line"><span class="comment">####指定用户可访问文件路径</span></div><div class="line">open_basedir = ./:/tmp:/home/wwwroot/</div><div class="line"></div><div class="line"><span class="comment">####关闭注册全局变量</span></div><div class="line">register_globals = Off</div><div class="line"></div><div class="line"><span class="comment">####不持久化存储 cookie 数据</span></div><div class="line">session.cookie_lifetime=0</div><div class="line"></div><div class="line"><span class="comment">####用cookie保存sesion id </span></div><div class="line">session.use_cookies=On</div><div class="line"></div><div class="line"><span class="comment">####禁止 JavaScript 访问会话 cookie</span></div><div class="line">session.cookie_httponly=On</div><div class="line"></div><div class="line"><span class="comment">####防止会话模块使用未初始化的会话 ID</span></div><div class="line">session.use_strict_mode=On</div><div class="line"></div><div class="line"><span class="comment">####禁用透明会话 ID </span></div><div class="line">session.use_trans_sid=Off</div><div class="line"></div><div class="line"><span class="comment">####不缓存会话内容</span></div><div class="line">session.cache_limiter=nocache</div></pre></td></tr></table></figure></p>
+<h3 id="MySQL安全设置"><a href="#MySQL安全设置" class="headerlink" title="MySQL安全设置"></a>MySQL安全设置</h3><p>1、MySQL版本的选择<br>在正式生产环境中，禁止使用4.1系列的MySQL数据库。至少需要使用5.1.39或以上版本。<br>2、网络和端口的配置<br>在数据库只需供本机使用的情况下，使用–skip-networking参数禁止监听网络 。<br>修改MySQL默认的端口，比如：3389<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vi /etc/my.cnf</div><div class="line">[client]</div><div class="line">port = 3389</div><div class="line"></div><div class="line">[mysqld]</div><div class="line">port = 3389</div></pre></td></tr></table></figure></p>
+<p>3、确保运行MySQL的用户为一般用户，如mysql，注意存放数据目录权限为mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vi /etc/my.cnf</div><div class="line">user = mysql</div></pre></td></tr></table></figure></p>
+<p>4、开启mysql二进制日志，在误删除数据的情况下，可以通过二进制日志恢复到某个时间点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vi /etc/my.cnf</div><div class="line">log_bin = mysql-bin</div><div class="line">expire_logs_days = 7</div></pre></td></tr></table></figure></p>
+<p>5、认证和授权<br>（1）禁止root账号从网络访问数据库，root账号只允许来自本地主机的登陆。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql&gt;grant all privileges on *.* to root @localhost identified by &apos;password&apos; with grant option;</div><div class="line">mysql&gt;flush priveleges;</div></pre></td></tr></table></figure></p>
+<p>（2）删除匿名账号和空口令账号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql&gt;USE mysql;</div><div class="line">mysql&gt;delete from user where User=;</div><div class="line">mysql&gt;delete from user where Password=;</div><div class="line">mysql&gt;delete from db where User=;</div></pre></td></tr></table></figure></p>
+<h3 id="web服务器安全"><a href="#web服务器安全" class="headerlink" title="web服务器安全"></a>web服务器安全</h3><p>1、确保运行Nginx或者Apache的用户为一般用户，如www，注意存放数据目录权限为www<br>2、防止sql注入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if ( $query_string ~* &quot;.*[\;&apos;\&lt;\&gt;].*&quot; )&#123;</div><div class="line">        return 404;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3、关闭存放数据上传等目录的PHP解析<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">location ~* ^/(attachments|data)/.*\.(php|php5)$&#123;</div><div class="line">    deny all;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4、针对Apache：关闭图片目录/上传等目录的PHP解析<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;Files ~ &quot;.php&quot;&gt;</div><div class="line">order allow,deny</div><div class="line">Deny from all</div><div class="line">&lt;/Files&gt;</div></pre></td></tr></table></figure></p>
+<p>5、禁止访问网站.svn文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">###apache</div><div class="line">&lt;Directory ~ &quot;\.svn&quot;&gt;</div><div class="line">Order allow,deny</div><div class="line">Deny from all</div><div class="line">&lt;/Directory&gt;</div><div class="line">###nginx</div><div class="line">location ~* /\.svn &#123;</div><div class="line">    deny  all;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="linux服务器"><a href="#linux服务器" class="headerlink" title="linux服务器"></a>linux服务器</h3><p>1、木马查杀和防范<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">###php木马快速查找命令</div><div class="line">grep -r --include=*.php &apos;[^a-z]eval($_POST&apos; /home/wwwroot/</div><div class="line">grep -r --include=*.php &apos;file_put_contents(.*$_POST\[.*\]);&apos; /home/wwwroot/</div><div class="line"></div><div class="line">###利用find mtime查找最近两天或者发现木马的这几天，有哪些PHP文件被修改</div><div class="line">find -mtime -2 -type f -name \*.php</div><div class="line"></div><div class="line">###改变目录和文件属性</div><div class="line">find -type f -name \*.php -exec chomd 644 &#123;&#125; \;</div><div class="line">find -type d -exec chmod 755 &#123;&#125; \;</div><div class="line">chown -R www.www /home/wwwroot/</div></pre></td></tr></table></figure></p>
+<p>2、为防止跨站感染，需要做虚拟主机目录隔离<br> （1）nginx的简单实现方法<br>利用nginx跑多个虚拟主机，习惯的php.ini的open_basedir配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open_basedir = ./:tmp:/home/wwwroot/</div></pre></td></tr></table></figure></p>
+<p>注：/home/wwwroot/是放置所有虚拟主机的web路径<br>黑客可以利用任何一个站点的webshell进入到/home/wwwroot/目录下的任何地方，这样对各个虚拟主机的危害就很大<br>例如： /data/www/wwwroot目录下有2个虚拟主机<br>修改php.ini<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open_basedir = ./:/tmp:/home/wwwroot/aaa.com:/home/wwwroot/bbb.com</div></pre></td></tr></table></figure></p>
+<p>这样用户上传webshell就无法跨目录访问了。<br>（2）Apache的实现方法，控制跨目录访问<br>在虚拟机主机配置文件中加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;VirtuanHost *:80&gt;</div><div class="line">php_admin_value open_basedir &quot;/tmp:/home/wwwroot/aaa.com&quot;</div><div class="line">&lt;/VirtuanHost&gt;</div></pre></td></tr></table></figure></p>
+<p>3、修改ssh的端口及禁止root账号ssh登录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vi /etc/ssh/sshd_confing</div><div class="line">##修改端口为8888（这个可以自定义）</div><div class="line">Port 8888</div><div class="line">##禁止以root账号登录</div><div class="line">PermitRootLogin no</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;现在越来越多的网站采用LAMP模式开发，但是网络安全问题也越来越多，其中的一些安全设置必须要知道。本文总结了PHP网站在Linux服务器上一些安全设置，如果有什么更好的设置，请留言交流，大家一起讨论学习。&lt;/p&gt;
+&lt;h3 id=&quot;PHP安全配置&quot;&gt;&lt;a href=&quot;#PHP
+    
+    </summary>
+    
+      <category term="php" scheme="http://whatcode.cn/categories/php/"/>
+    
+      <category term="other" scheme="http://whatcode.cn/categories/php/other/"/>
+    
+    
+      <category term="php" scheme="http://whatcode.cn/tags/php/"/>
+    
+      <category term="other" scheme="http://whatcode.cn/tags/other/"/>
     
   </entry>
   
   <entry>
     <title>php文字水印过长自动换行算法</title>
-    <link href="http://blog.greeghost.com/2017/03/30/php-gd-font/"/>
-    <id>http://blog.greeghost.com/2017/03/30/php-gd-font/</id>
+    <link href="http://whatcode.cn/2017/03/30/php-gd-font/"/>
+    <id>http://whatcode.cn/2017/03/30/php-gd-font/</id>
     <published>2017-03-30T12:48:29.000Z</published>
     <updated>2017-03-30T13:29:39.654Z</updated>
     
@@ -161,21 +161,21 @@
     
     </summary>
     
-      <category term="php" scheme="http://blog.greeghost.com/categories/php/"/>
+      <category term="php" scheme="http://whatcode.cn/categories/php/"/>
     
-      <category term="gd" scheme="http://blog.greeghost.com/categories/php/gd/"/>
+      <category term="gd" scheme="http://whatcode.cn/categories/php/gd/"/>
     
     
-      <category term="php" scheme="http://blog.greeghost.com/tags/php/"/>
+      <category term="php" scheme="http://whatcode.cn/tags/php/"/>
     
-      <category term="gd" scheme="http://blog.greeghost.com/tags/gd/"/>
+      <category term="gd" scheme="http://whatcode.cn/tags/gd/"/>
     
   </entry>
   
   <entry>
     <title>如何设计秒杀系统</title>
-    <link href="http://blog.greeghost.com/2017/03/13/miaosha/"/>
-    <id>http://blog.greeghost.com/2017/03/13/miaosha/</id>
+    <link href="http://whatcode.cn/2017/03/13/miaosha/"/>
+    <id>http://whatcode.cn/2017/03/13/miaosha/</id>
     <published>2017-03-13T05:54:21.000Z</published>
     <updated>2017-03-13T06:23:35.796Z</updated>
     
@@ -200,17 +200,17 @@
     
     </summary>
     
-      <category term="秒杀系统" scheme="http://blog.greeghost.com/categories/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/"/>
+      <category term="秒杀系统" scheme="http://whatcode.cn/categories/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/"/>
     
     
-      <category term="秒杀系统" scheme="http://blog.greeghost.com/tags/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/"/>
+      <category term="秒杀系统" scheme="http://whatcode.cn/tags/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
   <entry>
     <title>微信扫码登录第三方网站的两种实现思路</title>
-    <link href="http://blog.greeghost.com/2017/03/08/wechat-scan-login/"/>
-    <id>http://blog.greeghost.com/2017/03/08/wechat-scan-login/</id>
+    <link href="http://whatcode.cn/2017/03/08/wechat-scan-login/"/>
+    <id>http://whatcode.cn/2017/03/08/wechat-scan-login/</id>
     <published>2017-03-08T09:59:34.000Z</published>
     <updated>2017-03-08T12:27:24.315Z</updated>
     
@@ -226,21 +226,21 @@
     
     </summary>
     
-      <category term="weixin" scheme="http://blog.greeghost.com/categories/weixin/"/>
+      <category term="weixin" scheme="http://whatcode.cn/categories/weixin/"/>
     
-      <category term="登录" scheme="http://blog.greeghost.com/categories/weixin/%E7%99%BB%E5%BD%95/"/>
+      <category term="登录" scheme="http://whatcode.cn/categories/weixin/%E7%99%BB%E5%BD%95/"/>
     
     
-      <category term="weixin" scheme="http://blog.greeghost.com/tags/weixin/"/>
+      <category term="weixin" scheme="http://whatcode.cn/tags/weixin/"/>
     
-      <category term="登录" scheme="http://blog.greeghost.com/tags/%E7%99%BB%E5%BD%95/"/>
+      <category term="登录" scheme="http://whatcode.cn/tags/%E7%99%BB%E5%BD%95/"/>
     
   </entry>
   
   <entry>
     <title>PHP Session会话和安全</title>
-    <link href="http://blog.greeghost.com/2017/03/06/php-session/"/>
-    <id>http://blog.greeghost.com/2017/03/06/php-session/</id>
+    <link href="http://whatcode.cn/2017/03/06/php-session/"/>
+    <id>http://whatcode.cn/2017/03/06/php-session/</id>
     <published>2017-03-06T13:37:42.000Z</published>
     <updated>2017-03-07T05:34:55.428Z</updated>
     
@@ -272,21 +272,21 @@
     
     </summary>
     
-      <category term="php" scheme="http://blog.greeghost.com/categories/php/"/>
+      <category term="php" scheme="http://whatcode.cn/categories/php/"/>
     
-      <category term="Session" scheme="http://blog.greeghost.com/categories/php/Session/"/>
+      <category term="Session" scheme="http://whatcode.cn/categories/php/Session/"/>
     
     
-      <category term="php" scheme="http://blog.greeghost.com/tags/php/"/>
+      <category term="php" scheme="http://whatcode.cn/tags/php/"/>
     
-      <category term="Session" scheme="http://blog.greeghost.com/tags/Session/"/>
+      <category term="Session" scheme="http://whatcode.cn/tags/Session/"/>
     
   </entry>
   
   <entry>
     <title>冒泡排序、选择排序、插入排序以及二分法查找算法</title>
-    <link href="http://blog.greeghost.com/2017/03/06/Sorting/"/>
-    <id>http://blog.greeghost.com/2017/03/06/Sorting/</id>
+    <link href="http://whatcode.cn/2017/03/06/Sorting/"/>
+    <id>http://whatcode.cn/2017/03/06/Sorting/</id>
     <published>2017-03-05T16:19:47.000Z</published>
     <updated>2017-03-05T16:36:47.899Z</updated>
     
@@ -302,17 +302,17 @@
     
     </summary>
     
-      <category term="排序算法" scheme="http://blog.greeghost.com/categories/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+      <category term="排序算法" scheme="http://whatcode.cn/categories/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="排序算法" scheme="http://blog.greeghost.com/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+      <category term="排序算法" scheme="http://whatcode.cn/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>如何安装Composer</title>
-    <link href="http://blog.greeghost.com/2017/03/04/php-composer/"/>
-    <id>http://blog.greeghost.com/2017/03/04/php-composer/</id>
+    <link href="http://whatcode.cn/2017/03/04/php-composer/"/>
+    <id>http://whatcode.cn/2017/03/04/php-composer/</id>
     <published>2017-03-04T05:32:13.000Z</published>
     <updated>2017-03-04T08:11:14.013Z</updated>
     
@@ -336,21 +336,21 @@
     
     </summary>
     
-      <category term="php" scheme="http://blog.greeghost.com/categories/php/"/>
+      <category term="php" scheme="http://whatcode.cn/categories/php/"/>
     
-      <category term="composer" scheme="http://blog.greeghost.com/categories/php/composer/"/>
+      <category term="composer" scheme="http://whatcode.cn/categories/php/composer/"/>
     
     
-      <category term="php" scheme="http://blog.greeghost.com/tags/php/"/>
+      <category term="php" scheme="http://whatcode.cn/tags/php/"/>
     
-      <category term="composer" scheme="http://blog.greeghost.com/tags/composer/"/>
+      <category term="composer" scheme="http://whatcode.cn/tags/composer/"/>
     
   </entry>
   
   <entry>
     <title>__FILE__与__DIR__与 getcwd()与$_SERVER[&#39;SCRIPT_FILENAME&#39;]之间的区别</title>
-    <link href="http://blog.greeghost.com/2017/02/25/php-other/"/>
-    <id>http://blog.greeghost.com/2017/02/25/php-other/</id>
+    <link href="http://whatcode.cn/2017/02/25/php-other/"/>
+    <id>http://whatcode.cn/2017/02/25/php-other/</id>
     <published>2017-02-25T11:30:47.000Z</published>
     <updated>2017-02-25T11:40:13.772Z</updated>
     
@@ -369,21 +369,21 @@
     
     </summary>
     
-      <category term="php" scheme="http://blog.greeghost.com/categories/php/"/>
+      <category term="php" scheme="http://whatcode.cn/categories/php/"/>
     
-      <category term="other" scheme="http://blog.greeghost.com/categories/php/other/"/>
+      <category term="other" scheme="http://whatcode.cn/categories/php/other/"/>
     
     
-      <category term="php" scheme="http://blog.greeghost.com/tags/php/"/>
+      <category term="php" scheme="http://whatcode.cn/tags/php/"/>
     
-      <category term="other" scheme="http://blog.greeghost.com/tags/other/"/>
+      <category term="other" scheme="http://whatcode.cn/tags/other/"/>
     
   </entry>
   
   <entry>
     <title>php zip文件类操作实例</title>
-    <link href="http://blog.greeghost.com/2017/02/22/php-zip/"/>
-    <id>http://blog.greeghost.com/2017/02/22/php-zip/</id>
+    <link href="http://whatcode.cn/2017/02/22/php-zip/"/>
+    <id>http://whatcode.cn/2017/02/22/php-zip/</id>
     <published>2017-02-21T16:52:28.000Z</published>
     <updated>2017-02-21T17:33:06.480Z</updated>
     
@@ -407,21 +407,21 @@
     
     </summary>
     
-      <category term="php" scheme="http://blog.greeghost.com/categories/php/"/>
+      <category term="php" scheme="http://whatcode.cn/categories/php/"/>
     
-      <category term="zip" scheme="http://blog.greeghost.com/categories/php/zip/"/>
+      <category term="zip" scheme="http://whatcode.cn/categories/php/zip/"/>
     
     
-      <category term="php" scheme="http://blog.greeghost.com/tags/php/"/>
+      <category term="php" scheme="http://whatcode.cn/tags/php/"/>
     
-      <category term="zip" scheme="http://blog.greeghost.com/tags/zip/"/>
+      <category term="zip" scheme="http://whatcode.cn/tags/zip/"/>
     
   </entry>
   
   <entry>
     <title>hexo+github教程之Markdown工具-MarkdownPad</title>
-    <link href="http://blog.greeghost.com/2016/12/28/hexo-github-6/"/>
-    <id>http://blog.greeghost.com/2016/12/28/hexo-github-6/</id>
+    <link href="http://whatcode.cn/2016/12/28/hexo-github-6/"/>
+    <id>http://whatcode.cn/2016/12/28/hexo-github-6/</id>
     <published>2016-12-28T10:37:07.000Z</published>
     <updated>2016-12-29T04:43:34.744Z</updated>
     
@@ -440,17 +440,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://blog.greeghost.com/categories/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>hexo+github教程之五：github配置专属域名</title>
-    <link href="http://blog.greeghost.com/2016/12/27/hexo-github-5/"/>
-    <id>http://blog.greeghost.com/2016/12/27/hexo-github-5/</id>
+    <link href="http://whatcode.cn/2016/12/27/hexo-github-5/"/>
+    <id>http://whatcode.cn/2016/12/27/hexo-github-5/</id>
     <published>2016-12-26T18:40:17.000Z</published>
     <updated>2016-12-27T15:57:04.505Z</updated>
     
@@ -469,17 +469,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://blog.greeghost.com/categories/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>hexo+github教程之四：配置hexo next主题第三方插件</title>
-    <link href="http://blog.greeghost.com/2016/12/27/hexo-github-4/"/>
-    <id>http://blog.greeghost.com/2016/12/27/hexo-github-4/</id>
+    <link href="http://whatcode.cn/2016/12/27/hexo-github-4/"/>
+    <id>http://whatcode.cn/2016/12/27/hexo-github-4/</id>
     <published>2016-12-26T18:15:17.000Z</published>
     <updated>2016-12-27T16:09:40.199Z</updated>
     
@@ -514,17 +514,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://blog.greeghost.com/categories/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>hexo+github教程之三：hexo next主题配置</title>
-    <link href="http://blog.greeghost.com/2016/12/27/hexo-github-3/"/>
-    <id>http://blog.greeghost.com/2016/12/27/hexo-github-3/</id>
+    <link href="http://whatcode.cn/2016/12/27/hexo-github-3/"/>
+    <id>http://whatcode.cn/2016/12/27/hexo-github-3/</id>
     <published>2016-12-26T18:01:14.000Z</published>
     <updated>2016-12-27T14:24:12.561Z</updated>
     
@@ -559,17 +559,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://blog.greeghost.com/categories/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>hexo+github教程之二：hexo博客发布到github</title>
-    <link href="http://blog.greeghost.com/2016/12/26/hexo-github-2/"/>
-    <id>http://blog.greeghost.com/2016/12/26/hexo-github-2/</id>
+    <link href="http://whatcode.cn/2016/12/26/hexo-github-2/"/>
+    <id>http://whatcode.cn/2016/12/26/hexo-github-2/</id>
     <published>2016-12-26T15:58:29.000Z</published>
     <updated>2016-12-27T11:17:56.789Z</updated>
     
@@ -600,17 +600,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://blog.greeghost.com/categories/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>hexo+github教程之一：搭建hexo博客</title>
-    <link href="http://blog.greeghost.com/2016/12/26/hexo-github-1/"/>
-    <id>http://blog.greeghost.com/2016/12/26/hexo-github-1/</id>
+    <link href="http://whatcode.cn/2016/12/26/hexo-github-1/"/>
+    <id>http://whatcode.cn/2016/12/26/hexo-github-1/</id>
     <published>2016-12-26T14:08:10.000Z</published>
     <updated>2016-12-27T11:16:39.061Z</updated>
     
@@ -625,7 +625,7 @@
 <h4 id="3、执行下面命令就可以在本地看到hexo博客了"><a href="#3、执行下面命令就可以在本地看到hexo博客了" class="headerlink" title="3、执行下面命令就可以在本地看到hexo博客了"></a>3、执行下面命令就可以在本地看到hexo博客了</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div><div class="line">$ hexo s</div></pre></td></tr></table></figure>
 <p>然后用浏览器访问<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000/</a>，此时，你应该看到了一个漂亮的博客了，当然这个博客只是在本地的，别人是看不到的，hexo3.0使用的默认主题是landscape。轻轻松松就看到了一点成果，是不是很激动，这就是hexo的强大之处，这个本地预览的功能，我真是爱不释手。<br>自己可以发一篇新的文章<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">'test'</span></div><div class="line">$ hexo s -g</div></pre></td></tr></table></figure></p>
 <p>你会发现多了一篇叫‘test’的文章，在D:/Blog/source/_posts下会有test.md文件（需要学习<a href="http://www.appinn.com/markdown/" target="_blank" rel="external">markdown</a>语法）</p>
-<h4 id="到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。"><a href="#到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。" class="headerlink" title="到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。"></a>到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。</h4><h4 id="附上我的blog-放在github上的whatcode-cn-放在阿里云的blog-greeghost-com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。"><a href="#附上我的blog-放在github上的whatcode-cn-放在阿里云的blog-greeghost-com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。" class="headerlink" title="附上我的blog: 放在github上的whatcode.cn,放在阿里云的blog.greeghost.com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。"></a>附上我的blog: 放在github上的<a href="http://whatcode.cn" target="_blank" rel="external">whatcode.cn</a>,放在阿里云的<a href="http://blog.greeghost.com">blog.greeghost.com</a>。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。</h4>]]></content>
+<h4 id="到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。"><a href="#到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。" class="headerlink" title="到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。"></a>到此，hexo博客算是搭建成功了，但是只能在本地看，下一步，我们把它部署到github上。</h4><h4 id="附上我的blog-放在github上的whatcode-cn-放在阿里云的blog-greeghost-com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。"><a href="#附上我的blog-放在github上的whatcode-cn-放在阿里云的blog-greeghost-com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。" class="headerlink" title="附上我的blog: 放在github上的whatcode.cn,放在阿里云的blog.greeghost.com。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。"></a>附上我的blog: 放在github上的<a href="http://whatcode.cn">whatcode.cn</a>,放在阿里云的<a href="http://blog.greeghost.com" target="_blank" rel="external">blog.greeghost.com</a>。放在github上的相对慢一点，但是作为blog空间还过得去，好处是域名可以不用备案。</h4>]]></content>
     
     <summary type="html">
     
@@ -633,17 +633,17 @@
     
     </summary>
     
-      <category term="hexo" scheme="http://blog.greeghost.com/categories/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://blog.greeghost.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://whatcode.cn/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>Linux源码编译安装mysql-5.7.16</title>
-    <link href="http://blog.greeghost.com/2016/10/04/Linux-mysql-install-2/"/>
-    <id>http://blog.greeghost.com/2016/10/04/Linux-mysql-install-2/</id>
+    <link href="http://whatcode.cn/2016/10/04/Linux-mysql-install-2/"/>
+    <id>http://whatcode.cn/2016/10/04/Linux-mysql-install-2/</id>
     <published>2016-10-03T17:02:15.000Z</published>
     <updated>2017-04-09T19:01:38.691Z</updated>
     
@@ -722,21 +722,21 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://blog.greeghost.com/categories/Linux/"/>
+      <category term="Linux" scheme="http://whatcode.cn/categories/Linux/"/>
     
-      <category term="mysql" scheme="http://blog.greeghost.com/categories/Linux/mysql/"/>
+      <category term="mysql" scheme="http://whatcode.cn/categories/Linux/mysql/"/>
     
     
-      <category term="Linux" scheme="http://blog.greeghost.com/tags/Linux/"/>
+      <category term="Linux" scheme="http://whatcode.cn/tags/Linux/"/>
     
-      <category term="mysql" scheme="http://blog.greeghost.com/tags/mysql/"/>
+      <category term="mysql" scheme="http://whatcode.cn/tags/mysql/"/>
     
   </entry>
   
   <entry>
     <title>Linux安装glibc版mysql-5.7.15</title>
-    <link href="http://blog.greeghost.com/2016/10/03/Linux-mysql-install/"/>
-    <id>http://blog.greeghost.com/2016/10/03/Linux-mysql-install/</id>
+    <link href="http://whatcode.cn/2016/10/03/Linux-mysql-install/"/>
+    <id>http://whatcode.cn/2016/10/03/Linux-mysql-install/</id>
     <published>2016-10-02T17:02:15.000Z</published>
     <updated>2017-04-09T18:58:27.255Z</updated>
     
@@ -806,21 +806,21 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://blog.greeghost.com/categories/Linux/"/>
+      <category term="Linux" scheme="http://whatcode.cn/categories/Linux/"/>
     
-      <category term="mysql" scheme="http://blog.greeghost.com/categories/Linux/mysql/"/>
+      <category term="mysql" scheme="http://whatcode.cn/categories/Linux/mysql/"/>
     
     
-      <category term="Linux" scheme="http://blog.greeghost.com/tags/Linux/"/>
+      <category term="Linux" scheme="http://whatcode.cn/tags/Linux/"/>
     
-      <category term="mysql" scheme="http://blog.greeghost.com/tags/mysql/"/>
+      <category term="mysql" scheme="http://whatcode.cn/tags/mysql/"/>
     
   </entry>
   
   <entry>
     <title>Linux源码编译安装PHP</title>
-    <link href="http://blog.greeghost.com/2016/10/02/Linux-php-install/"/>
-    <id>http://blog.greeghost.com/2016/10/02/Linux-php-install/</id>
+    <link href="http://whatcode.cn/2016/10/02/Linux-php-install/"/>
+    <id>http://whatcode.cn/2016/10/02/Linux-php-install/</id>
     <published>2016-10-01T17:02:15.000Z</published>
     <updated>2017-04-10T11:07:49.600Z</updated>
     
@@ -840,14 +840,14 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://blog.greeghost.com/categories/Linux/"/>
+      <category term="Linux" scheme="http://whatcode.cn/categories/Linux/"/>
     
-      <category term="PHP" scheme="http://blog.greeghost.com/categories/Linux/PHP/"/>
+      <category term="PHP" scheme="http://whatcode.cn/categories/Linux/PHP/"/>
     
     
-      <category term="Linux" scheme="http://blog.greeghost.com/tags/Linux/"/>
+      <category term="Linux" scheme="http://whatcode.cn/tags/Linux/"/>
     
-      <category term="PHP" scheme="http://blog.greeghost.com/tags/PHP/"/>
+      <category term="PHP" scheme="http://whatcode.cn/tags/PHP/"/>
     
   </entry>
   
